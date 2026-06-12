@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kickofftime.live/sitemap.xml
