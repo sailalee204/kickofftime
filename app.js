@@ -219,6 +219,11 @@ const locationTranslations = {
 const shareI18n = {
     en: {
         shareMatch: "Share",
+        shareCopyImg: "🖼️ Copy Image",
+        shareSaveImg: "⬇️ Save Image",
+        shareTwitter: "🐦 Share on X / Twitter",
+        shareCopyLink: "🔗 Copy Link",
+        shareCopyText: "📋 Copy Text",
         wc2026: "World Cup 2026",
         kickoff: "Kickoff",
         myKickoff: "My local kickoff",
@@ -232,6 +237,11 @@ const shareI18n = {
     },
     zh: {
         shareMatch: "分享",
+        shareCopyImg: "🖼️ 复制图片",
+        shareSaveImg: "⬇️ 保存图片",
+        shareTwitter: "🐦 分享到 X",
+        shareCopyLink: "🔗 复制链接",
+        shareCopyText: "📋 复制文本",
         wc2026: "2026世界杯",
         kickoff: "开赛时间",
         myKickoff: "本地开赛时间",
@@ -245,6 +255,11 @@ const shareI18n = {
     },
     es: {
         shareMatch: "Compartir",
+        shareCopyImg: "🖼️ Copiar Imagen",
+        shareSaveImg: "⬇️ Guardar Imagen",
+        shareTwitter: "🐦 Compartir en X",
+        shareCopyLink: "🔗 Copiar Enlace",
+        shareCopyText: "📋 Copiar Texto",
         wc2026: "Mundial 2026",
         kickoff: "Inicio",
         myKickoff: "Mi hora de inicio",
@@ -258,6 +273,11 @@ const shareI18n = {
     },
     pt: {
         shareMatch: "Compartilhar",
+        shareCopyImg: "🖼️ Copiar Imagem",
+        shareSaveImg: "⬇️ Salvar Imagem",
+        shareTwitter: "🐦 Compartilhar no X",
+        shareCopyLink: "🔗 Copiar Link",
+        shareCopyText: "📋 Copiar Texto",
         wc2026: "Copa do Mundo 2026",
         kickoff: "Início",
         myKickoff: "Meu início local",
@@ -271,6 +291,11 @@ const shareI18n = {
     },
     fr: {
         shareMatch: "Partager",
+        shareCopyImg: "🖼️ Copier l'image",
+        shareSaveImg: "⬇️ Enregistrer l'image",
+        shareTwitter: "🐦 Partager sur X",
+        shareCopyLink: "🔗 Copier le lien",
+        shareCopyText: "📋 Copier le texte",
         wc2026: "Coupe du Monde 2026",
         kickoff: "Coup d'envoi",
         myKickoff: "Mon coup d'envoi local",
@@ -284,6 +309,11 @@ const shareI18n = {
     },
     ar: {
         shareMatch: "مشاركة",
+        shareCopyImg: "🖼️ نسخ الصورة",
+        shareSaveImg: "⬇️ حفظ الصورة",
+        shareTwitter: "🐦 شارك على X",
+        shareCopyLink: "🔗 نسخ الرابط",
+        shareCopyText: "📋 نسخ النص",
         wc2026: "كأس العالم 2026",
         kickoff: "ركلة البداية",
         myKickoff: "وقت البداية المحلي",
@@ -1857,9 +1887,9 @@ function updateLanguage() {
 
     // Share Modal Buttons
     const st = shareI18n[currentLang];
-    const btnCopyImage = document.getElementById("btnCopyImage");
+    const btnCopyImage = document.getElementById("btnCopyImg");
     if(btnCopyImage) btnCopyImage.textContent = st.shareCopyImg;
-    const btnDownloadImage = document.getElementById("btnDownloadImage");
+    const btnDownloadImage = document.getElementById("btnDownloadImg");
     if(btnDownloadImage) btnDownloadImage.textContent = st.shareSaveImg;
     const btnShareTwitter = document.getElementById("btnShareTwitter");
     if(btnShareTwitter) btnShareTwitter.textContent = st.shareTwitter;
