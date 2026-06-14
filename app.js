@@ -177,6 +177,9 @@ const i18n = {
         thirdPlace: "3rd Place",
         fourthPlace: "4th Place",
         thirdPlaceMatch: "3rd Place Match",
+        btnShare: "🎨 Share",
+        matchEnded: "Match ended",
+        shareTeamTitle: "Share Team Matches",
         optWc: "🏆 World Cup 2026",
         optUcl: "⚽ UEFA Champions League (Soon)",
         optNba: "🏀 NBA Finals (Soon)",
@@ -243,6 +246,9 @@ const i18n = {
         thirdPlace: "3er Lugar",
         fourthPlace: "4to Lugar",
         thirdPlaceMatch: "Partido por el 3er Lugar",
+        btnShare: "🎨 Compartir",
+        matchEnded: "Partido finalizado",
+        shareTeamTitle: "Compartir Partidos del Equipo",
         optWc: "🏆 Copa Mundial 2026",
         optUcl: "⚽ UEFA Champions League (Pronto)",
         optNba: "🏀 Finales de la NBA (Pronto)",
@@ -308,6 +314,9 @@ const i18n = {
         thirdPlace: "3º Lugar",
         fourthPlace: "4º Lugar",
         thirdPlaceMatch: "Disputa do 3º Lugar",
+        btnShare: "🎨 Compartilhar",
+        matchEnded: "Partida encerrada",
+        shareTeamTitle: "Compartilhar Partidas da Seleção",
         optWc: "🏆 Copa do Mundo 2026",
         optUcl: "⚽ UEFA Champions League",
         optNba: "🏀 Finais da NBA",
@@ -373,6 +382,9 @@ const i18n = {
         thirdPlace: "3e Place",
         fourthPlace: "4e Place",
         thirdPlaceMatch: "Match pour la 3e Place",
+        btnShare: "🎨 Partager",
+        matchEnded: "Match terminé",
+        shareTeamTitle: "Partager les Matchs de l'Équipe",
         optWc: "🏆 Coupe du Monde 2026",
         optUcl: "⚽ UEFA Champions League",
         optNba: "🏀 Finales NBA",
@@ -438,6 +450,9 @@ const i18n = {
         thirdPlace: "المركز الثالث",
         fourthPlace: "المركز الرابع",
         thirdPlaceMatch: "مباراة المركز الثالث",
+        btnShare: "🎨 مشاركة",
+        matchEnded: "انتهت المباراة",
+        shareTeamTitle: "مشاركة مباريات الفريق",
         optWc: "🏆 كأس العالم 2026",
         optUcl: "⚽ دوري أبطال أوروبا",
         optNba: "🏀 نهائيات الدوري الاميركي للمحترفين",
@@ -503,6 +518,9 @@ const i18n = {
         thirdPlace: "小组第三",
         fourthPlace: "小组第四",
         thirdPlaceMatch: "季军赛",
+        btnShare: "🎨 分享",
+        matchEnded: "比赛已结束",
+        shareTeamTitle: "分享球队赛程",
         optWc: "🏆 2026 世界杯",
         optUcl: "⚽ 欧冠联赛 (即将推出)",
         optNba: "🏀 NBA 总决赛 (即将推出)",
@@ -837,8 +855,11 @@ function formatMatchTime(utcString, timezone, lang) {
         timeZone: timezone
     };
 
-    const formatterDate = new Intl.DateTimeFormat(lang === "es" ? "es-ES" : "en-US", dateOptions);
-    const formatterTime = new Intl.DateTimeFormat(lang === "es" ? "es-ES" : "en-US", timeOptions);
+    const locales = { en: "en-US", es: "es-ES", pt: "pt-BR", fr: "fr-FR", ar: "ar-SA", zh: "zh-CN" };
+    const targetLocale = locales[lang] || "en-US";
+
+    const formatterDate = new Intl.DateTimeFormat(targetLocale, dateOptions);
+    const formatterTime = new Intl.DateTimeFormat(targetLocale, timeOptions);
 
     let dateStr = formatterDate.format(date);
     let timeStr = formatterTime.format(date);
@@ -846,14 +867,18 @@ function formatMatchTime(utcString, timezone, lang) {
     // Capitalize first letter of localized date
     dateStr = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
 
-    // Extract AM/PM
+    // Extract AM/PM if they are at the end (for styling)
     let suffix = "";
-    if (timeStr.toLowerCase().includes("am")) {
+    const timeMatch = timeStr.match(/^([\d:]+)\s+([a-zA-Z. ]+)$/);
+    if (timeMatch) {
+        timeStr = timeMatch[1];
+        suffix = timeMatch[2].trim();
+    } else if (timeStr.toLowerCase().includes("am")) {
         suffix = "AM";
-        timeStr = timeStr.replace(/ am/i, "");
+        timeStr = timeStr.replace(/am/i, "").trim();
     } else if (timeStr.toLowerCase().includes("pm")) {
         suffix = "PM";
-        timeStr = timeStr.replace(/ pm/i, "");
+        timeStr = timeStr.replace(/pm/i, "").trim();
     }
 
     return { dateStr, timeStr, suffix };
@@ -989,7 +1014,7 @@ function buildTeamCalPanel() {
         const shareBtn = document.createElement("button");
         shareBtn.className = "team-cal-btn share-team-btn";
         shareBtn.innerHTML = `🎨`;
-        shareBtn.title = "Share Team Matches";
+        shareBtn.title = i18n[currentLang].shareTeamTitle;
         shareBtn.style.flexGrow = "0";
         shareBtn.style.padding = "0.5rem 1rem";
         shareBtn.onclick = () => openTeamShareModal(team);
@@ -1182,7 +1207,7 @@ function renderMatches() {
                 <div class="time-details">
                     <div class="local-date">${dateStr}</div>
                     <div class="local-time">
-                        ${isFinished ? '<span style="font-size:0.9rem;color:var(--text-muted)">Match ended</span>' : `${timeStr}${suffix ? `<span class="time-suffix">${suffix}</span>` : ''}`}
+                        ${isFinished ? `<span style="font-size:0.9rem;color:var(--text-muted)">${t.matchEnded}</span>` : `${timeStr}${suffix ? `<span class="time-suffix">${suffix}</span>` : ''}`}
                     </div>
                     <div class="match-venue">📍 ${match.venue}</div>
                 </div>
@@ -1191,7 +1216,7 @@ function renderMatches() {
                         📅 ${t.addToCalendar}
                     </button>
                     <button class="share-btn" onclick="openShareModal(${originalIndex})">
-                        🎨 Share
+                        ${t.btnShare}
                     </button>
                 </div>
             </div>
