@@ -961,12 +961,15 @@ function renderMatches() {
         }
 
         // Resolve team names: use API data, then knockout code parser, then raw
-        let team1Display = live?.homeTeam || parseKnockoutCode(match.team1);
-        let team2Display = live?.awayTeam || parseKnockoutCode(match.team2);
-        const isTeam1Placeholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(team1Display);
-        const isTeam2Placeholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(team2Display);
-        if (!isTeam1Placeholder) team1Display = getTeamName(team1Display);
-        if (!isTeam2Placeholder) team2Display = getTeamName(team2Display);
+        const team1Raw = live?.homeTeam || parseKnockoutCode(match.team1);
+        const team2Raw = live?.awayTeam || parseKnockoutCode(match.team2);
+        
+        let team1Display = team1Raw;
+        let team2Display = team2Raw;
+        const isTeam1Placeholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(team1Raw);
+        const isTeam2Placeholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(team2Raw);
+        if (!isTeam1Placeholder) team1Display = getTeamName(team1Raw);
+        if (!isTeam2Placeholder) team2Display = getTeamName(team2Raw);
 
         // Score / Status badge
         let statusHTML = "";
@@ -993,11 +996,11 @@ function renderMatches() {
             </div>
             <div class="match-teams">
                 <div class="team-row">
-                    <span class="team-flag">${getFlag(team1Display)}</span>
+                    <span class="team-flag">${getFlag(team1Raw)}</span>
                     <span class="team-name ${isTeam1Placeholder ? 'placeholder' : ''}">${team1Display}</span>
                 </div>
                 <div class="team-row">
-                    <span class="team-flag">${getFlag(team2Display)}</span>
+                    <span class="team-flag">${getFlag(team2Raw)}</span>
                     <span class="team-name ${isTeam2Placeholder ? 'placeholder' : ''}">${team2Display}</span>
                 </div>
             </div>
