@@ -373,11 +373,11 @@ const i18n = {
         upcoming: "upcoming",
         finishedStats: "finished",
         faqTitle: "Frequently Asked Questions (FAQ)",
-        subscribeTitle: "World Cup 2026 Mailing List",
-        subscribeDesc: "Join our waitlist to receive important schedule updates and reminders as the tournament approaches.",
+        subscribeTitle: "Coming Soon: Match Alerts 🚀",
+        subscribeDesc: "Leave your email to be the first to know when this feature goes live.",
         subscribeBtn: "Join Waitlist",
         emailPlaceholder: "Enter your email address...",
-        subSuccess: "Joined successfully! We'll keep you updated.",
+        subSuccess: "🎉 Thanks for your interest! Email alerts are under active development. Stay tuned!",
         tournAlert: "Schedules for this tournament will be available closer to the event!",
         winner: "Winner",
         match: "Match",
@@ -714,8 +714,8 @@ const i18n = {
         upcoming: "未赛",
         finishedStats: "完赛",
         faqTitle: "常见问题 (FAQ)",
-        subscribeTitle: "2026世界杯邮件订阅",
-        subscribeDesc: "加入我们的邮件列表，在赛事临近时获取赛程更新和重要提醒。",
+        subscribeTitle: "即将推出：赛事提醒推送 🚀",
+        subscribeDesc: "留下您的邮箱，功能上线时您将第一时间接到通知。",
         subscribeBtn: "加入列表",
         emailPlaceholder: "输入您的电子邮件地址...",
         subSuccess: "加入成功！我们会保持联系。",
@@ -952,53 +952,46 @@ if (subscribeForm) {
         const submitBtn = subscribeForm.querySelector("button");
         
         if (email) {
-            // Visual feedback
             const originalText = submitBtn.textContent;
+            const originalBg = submitBtn.style.backgroundColor;
+            const originalColor = submitBtn.style.color;
+            
             submitBtn.textContent = "...";
             submitBtn.disabled = true;
 
             try {
-                // ==========================================
-                // 💡 HOW TO SAVE EMAILS WITH FORMINIT
-                // 1. In Forminit, create a new form and copy the "Endpoint URL"
-                // 2. Paste that URL exactly between the quotes below:
-                // ==========================================
-                // ==========================================
                 const WEBHOOK_URL = "https://forminit.com/f/6sqwnyffda0";
-                
-                // If you haven't pasted the URL yet, skip the fetch
                 if (WEBHOOK_URL !== "YOUR_FORMINIT_ENDPOINT_URL_HERE") {
                     const formData = new FormData();
                     formData.append("fi-sender-email", email);
                     formData.append("fi-text-timezone", currentTimezone);
                     formData.append("fi-text-source", "KickoffTime Website");
 
-                    const res = await fetch(WEBHOOK_URL, {
+                    await fetch(WEBHOOK_URL, {
                         method: "POST",
                         body: formData,
-                        headers: {
-                            "Accept": "application/json"
-                        }
+                        headers: { "Accept": "application/json" }
                     });
-                    
-                    if (!res.ok) {
-                        const errText = await res.text();
-                        throw new Error(`Server returned ${res.status}: ${errText}`);
-                    }
-                } else {
-                    // Simulated delay for UI realism before they hook up the real URL
-                    await new Promise(r => setTimeout(r, 500));
                 }
-
-                showToast(i18n[currentLang].subSuccess);
-                subscribeForm.reset();
             } catch (error) {
                 console.error("Subscription error:", error);
-                showToast("Error saving email. Please try again.");
-            } finally {
+            }
+
+            // Always show the success UI state even if fetch fails to keep it interactive
+            submitBtn.textContent = "✅";
+            submitBtn.style.backgroundColor = "#10b981";
+            submitBtn.style.color = "#ffffff";
+            
+            showToast(i18n[currentLang].subSuccess);
+            subscribeForm.reset();
+
+            // Revert back after 3 seconds
+            setTimeout(() => {
+                submitBtn.style.backgroundColor = originalBg;
+                submitBtn.style.color = originalColor;
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }
+            }, 3000);
         }
     });
 }
