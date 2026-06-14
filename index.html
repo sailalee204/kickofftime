@@ -160,6 +160,9 @@
                 <a class="share-action-btn twitter" id="btnShareTwitter" href="#" target="_blank" rel="noopener">
                     🐦 Share on X / Twitter
                 </a>
+                <button class="share-action-btn" id="btnCopyLink" onclick="copyShareLink()">
+                    🔗 Copy Link
+                </button>
                 <button class="share-action-btn" id="btnCopyText" onclick="copyShareText()">
                     📋 Copy Text
                 </button>
@@ -185,7 +188,14 @@
                 <option value="nba">🏀 NBA Finals (Soon)</option>
                 <option value="la2028">🏅 LA 2028 Olympics (Soon)</option>
             </select>
-            <button class="btn-language" id="langToggle">🌐 Español</button>
+            <select class="btn-language" id="langSelect">
+                <option value="en">🇺🇸 English</option>
+                <option value="es">🇪🇸 Español</option>
+                <option value="pt">🇧🇷 Português</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="ar">🇸🇦 العربية</option>
+                <option value="zh">🇨🇳 中文</option>
+            </select>
             <button class="btn-icon" id="themeToggle" aria-label="Toggle Theme">☀️</button>
         </div>
     </header>

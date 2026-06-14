@@ -39,6 +39,88 @@ function parseKnockoutCode(code) {
 
 // =============================================
 // Bilingual Translations Dictionary
+
+const teamTranslations = {
+  "zh": {
+    "Mexico": "墨西哥", "South Africa": "南非", "South Korea": "韩国", "Czech Republic": "捷克",
+    "Canada": "加拿大", "Bosnia & Herzegovina": "波黑", "USA": "美国", "Paraguay": "巴拉圭",
+    "Qatar": "卡塔尔", "Switzerland": "瑞士", "Brazil": "巴西", "Morocco": "摩洛哥",
+    "Haiti": "海地", "Scotland": "苏格兰", "Australia": "澳大利亚", "Turkey": "土耳其",
+    "Germany": "德国", "Curaçao": "库拉索", "Netherlands": "荷兰", "Japan": "日本",
+    "Ivory Coast": "科特迪瓦", "Ecuador": "厄瓜多尔", "Sweden": "瑞典", "Tunisia": "突尼斯",
+    "Spain": "西班牙", "Cape Verde": "佛得角", "Belgium": "比利时", "Egypt": "埃及",
+    "Saudi Arabia": "沙特阿拉伯", "Uruguay": "乌拉圭", "Iran": "伊朗", "New Zealand": "新西兰",
+    "France": "法国", "Senegal": "塞内加尔", "Iraq": "伊拉克", "Norway": "挪威",
+    "Argentina": "阿根廷", "Algeria": "阿尔及利亚", "Austria": "奥地利", "Jordan": "约旦",
+    "Portugal": "葡萄牙", "DR Congo": "刚果（金）", "England": "英格兰", "Croatia": "克罗地亚",
+    "Ghana": "加纳", "Panama": "巴拿马", "Uzbekistan": "乌兹别克斯坦", "Colombia": "哥伦比亚"
+  },
+  "es": {
+    "Mexico": "México", "South Africa": "Sudáfrica", "South Korea": "Corea del Sur", "Czech Republic": "Chequia",
+    "Canada": "Canadá", "Bosnia & Herzegovina": "Bosnia y Herzegovina", "USA": "Estados Unidos", "Paraguay": "Paraguay",
+    "Qatar": "Catar", "Switzerland": "Suiza", "Brazil": "Brasil", "Morocco": "Marruecos",
+    "Haiti": "Haití", "Scotland": "Escocia", "Australia": "Australia", "Turkey": "Turquía",
+    "Germany": "Alemania", "Curaçao": "Curazao", "Netherlands": "Países Bajos", "Japan": "Japón",
+    "Ivory Coast": "Costa de Marfil", "Ecuador": "Ecuador", "Sweden": "Suecia", "Tunisia": "Túnez",
+    "Spain": "España", "Cape Verde": "Cabo Verde", "Belgium": "Bélgica", "Egypt": "Egipto",
+    "Saudi Arabia": "Arabia Saudí", "Uruguay": "Uruguay", "Iran": "Irán", "New Zealand": "Nueva Zelanda",
+    "France": "Francia", "Senegal": "Senegal", "Iraq": "Irak", "Norway": "Noruega",
+    "Argentina": "Argentina", "Algeria": "Argelia", "Austria": "Austria", "Jordan": "Jordania",
+    "Portugal": "Portugal", "DR Congo": "RD Congo", "England": "Inglaterra", "Croatia": "Croacia",
+    "Ghana": "Ghana", "Panama": "Panamá", "Uzbekistan": "Uzbekistán", "Colombia": "Colombia"
+  },
+  "pt": {
+    "Mexico": "México", "South Africa": "África do Sul", "South Korea": "Coreia do Sul", "Czech Republic": "Tchéquia",
+    "Canada": "Canadá", "Bosnia & Herzegovina": "Bósnia e Herzegovina", "USA": "Estados Unidos", "Paraguay": "Paraguai",
+    "Qatar": "Catar", "Switzerland": "Suíça", "Brazil": "Brasil", "Morocco": "Marrocos",
+    "Haiti": "Haiti", "Scotland": "Escócia", "Australia": "Austrália", "Turkey": "Turquia",
+    "Germany": "Alemanha", "Curaçao": "Curaçao", "Netherlands": "Países Baixos", "Japan": "Japão",
+    "Ivory Coast": "Costa do Marfim", "Ecuador": "Equador", "Sweden": "Suécia", "Tunisia": "Tunísia",
+    "Spain": "Espanha", "Cape Verde": "Cabo Verde", "Belgium": "Bélgica", "Egypt": "Egito",
+    "Saudi Arabia": "Arábia Saudita", "Uruguay": "Uruguai", "Iran": "Irã", "New Zealand": "Nova Zelândia",
+    "France": "França", "Senegal": "Senegal", "Iraq": "Iraque", "Norway": "Noruega",
+    "Argentina": "Argentina", "Algeria": "Argélia", "Austria": "Áustria", "Jordan": "Jordânia",
+    "Portugal": "Portugal", "DR Congo": "RD Congo", "England": "Inglaterra", "Croatia": "Croácia",
+    "Ghana": "Gana", "Panama": "Panamá", "Uzbekistan": "Uzbequistão", "Colombia": "Colômbia"
+  },
+  "fr": {
+    "Mexico": "Mexique", "South Africa": "Afrique du Sud", "South Korea": "Corée du Sud", "Czech Republic": "Tchéquie",
+    "Canada": "Canada", "Bosnia & Herzegovina": "Bosnie-Herzégovine", "USA": "États-Unis", "Paraguay": "Paraguay",
+    "Qatar": "Qatar", "Switzerland": "Suisse", "Brazil": "Brésil", "Morocco": "Maroc",
+    "Haiti": "Haïti", "Scotland": "Écosse", "Australia": "Australie", "Turkey": "Turquie",
+    "Germany": "Allemagne", "Curaçao": "Curaçao", "Netherlands": "Pays-Bas", "Japan": "Japon",
+    "Ivory Coast": "Côte d’Ivoire", "Ecuador": "Équateur", "Sweden": "Suède", "Tunisia": "Tunisie",
+    "Spain": "Espagne", "Cape Verde": "Cap-Vert", "Belgium": "Belgique", "Egypt": "Égypte",
+    "Saudi Arabia": "Arabie saoudite", "Uruguay": "Uruguay", "Iran": "Iran", "New Zealand": "Nouvelle-Zélande",
+    "France": "France", "Senegal": "Sénégal", "Iraq": "Irak", "Norway": "Norvège",
+    "Argentina": "Argentine", "Algeria": "Algérie", "Austria": "Autriche", "Jordan": "Jordanie",
+    "Portugal": "Portugal", "DR Congo": "RD Congo", "England": "Angleterre", "Croatia": "Croatie",
+    "Ghana": "Ghana", "Panama": "Panama", "Uzbekistan": "Ouzbékistan", "Colombia": "Colombie"
+  },
+  "ar": {
+    "Mexico": "المكسيك", "South Africa": "جنوب أفريقيا", "South Korea": "كوريا الجنوبية", "Czech Republic": "التشيك",
+    "Canada": "كندا", "Bosnia & Herzegovina": "البوسنة والهرسك", "USA": "الولايات المتحدة", "Paraguay": "باراغواي",
+    "Qatar": "قطر", "Switzerland": "سويسرا", "Brazil": "البرازيل", "Morocco": "المغرب",
+    "Haiti": "هايتي", "Scotland": "اسكتلندا", "Australia": "أستراليا", "Turkey": "تركيا",
+    "Germany": "ألمانيا", "Curaçao": "كوراساو", "Netherlands": "هولندا", "Japan": "اليابان",
+    "Ivory Coast": "ساحل العاج", "Ecuador": "الإكوادور", "Sweden": "السويد", "Tunisia": "تونس",
+    "Spain": "إسبانيا", "Cape Verde": "الرأس الأخضر", "Belgium": "بلجيكا", "Egypt": "مصر",
+    "Saudi Arabia": "السعودية", "Uruguay": "أورغواي", "Iran": "إيران", "New Zealand": "نيوزيلندا",
+    "France": "فرنسا", "Senegal": "السنغال", "Iraq": "العراق", "Norway": "النرويج",
+    "Argentina": "الأرجنتين", "Algeria": "الجزائر", "Austria": "النمسا", "Jordan": "الأردن",
+    "Portugal": "البرتغال", "DR Congo": "الكونغو", "England": "إنجلترا", "Croatia": "كرواتيا",
+    "Ghana": "غانا", "Panama": "بنما", "Uzbekistan": "أوزبكستان", "Colombia": "كولومبيا"
+  }
+};
+
+function getTeamName(englishName) {
+    if (currentLang === "en") return englishName;
+    if (teamTranslations[currentLang] && teamTranslations[currentLang][englishName]) {
+        return teamTranslations[currentLang][englishName];
+    }
+    return englishName;
+}
+
 const i18n = {
     en: {
         title: "World Cup 2026 Timezone Converter",
@@ -121,6 +203,166 @@ const i18n = {
         hostedIn: "Estadios Anfitriones: EE. UU., Canadá, México",
         groupStage: "Fase de Grupos",
         knockoutStage: "Eliminatorias"
+    },
+    pt: {
+        title: "Conversor de Fuso Horário da Copa do Mundo 2026",
+        subtitle: "Converta todas as 104 partidas da Copa do Mundo FIFA 2026 para o seu horário local. Nunca perca um jogo.",
+        tzLabel: "Seu Fuso Horário",
+        searchPlaceholder: "Pesquise por país, grupo ou estádio...",
+        tabAll: "Todas as Partidas",
+        tabGroup: "Fase de Grupos",
+        tabKnockout: "Fase Eliminatória",
+        statsLabel: "Mostrando {count} de {total} partidas",
+        emptyState: "Nenhuma partida encontrada para este filtro.",
+        addToCalendar: "Adicionar ao Cal",
+        localTime: "Seu Horário",
+        venueLabel: "Local",
+        todayTitle: "Partidas de Hoje",
+        nextMatch: "Próxima partida em",
+        liveNow: "AO VIVO",
+        finished: "FIM",
+        faqTitle: "Perguntas Frequentes (FAQ)",
+        subscribeTitle: "Nunca perca uma partida importante.",
+        subscribeDesc: "Receba um e-mail antes de começar.",
+        subscribeBtn: "Inscrever-se",
+        subSuccess: "Inscrito com sucesso!",
+        tournAlert: "Os horários para este torneio estarão disponíveis em breve!",
+        optWc: "🏆 Copa do Mundo 2026",
+        optUcl: "⚽ UEFA Champions League",
+        optNba: "🏀 Finais da NBA",
+        optLa: "🏅 Olimpíadas LA 2028",
+        q1: "As partidas se ajustarão automaticamente?",
+        a1: "Sim! O site detecta automaticamente seu fuso horário.",
+        q2: "Posso selecionar manualmente?",
+        a2: "Sim, use o menu suspenso.",
+        q3: "Como adiciono ao calendário?",
+        a3: "Clique no botão Adicionar ao Cal.",
+        q4: "Quando começa a Copa do Mundo 2026?",
+        a4: "A partida de abertura será em 11 de junho de 2026.",
+        disclaimer: "Isenção de responsabilidade: Ferramenta independente.",
+        hostedIn: "Estádios: EUA, Canadá, México",
+        groupStage: "Fase de Grupos",
+        knockoutStage: "Eliminatórias"
+    },
+    fr: {
+        title: "Convertisseur de Fuseau Horaire Coupe du Monde 2026",
+        subtitle: "Convertissez les 104 matchs à votre heure locale.",
+        tzLabel: "Votre Fuseau Horaire",
+        searchPlaceholder: "Rechercher par pays, groupe ou stade...",
+        tabAll: "Tous les Matchs",
+        tabGroup: "Phase de Groupes",
+        tabKnockout: "Phase à Élimination Directe",
+        statsLabel: "Affichage de {count} sur {total} matchs",
+        emptyState: "Aucun match trouvé.",
+        addToCalendar: "Ajouter au Cal",
+        localTime: "Votre Heure",
+        venueLabel: "Lieu",
+        todayTitle: "Matchs d'aujourd'hui",
+        nextMatch: "Prochain match dans",
+        liveNow: "EN DIRECT",
+        finished: "FIN",
+        faqTitle: "Foire Aux Questions (FAQ)",
+        subscribeTitle: "Ne manquez jamais un match important.",
+        subscribeDesc: "Recevez un e-mail rapide avant le début.",
+        subscribeBtn: "S'abonner",
+        subSuccess: "Abonnement réussi !",
+        tournAlert: "Bientôt disponible !",
+        optWc: "🏆 Coupe du Monde 2026",
+        optUcl: "⚽ UEFA Champions League",
+        optNba: "🏀 Finales NBA",
+        optLa: "🏅 JO LA 2028",
+        q1: "Les matchs s'ajustent-ils ?",
+        a1: "Oui, automatiquement.",
+        q2: "Puis-je changer de fuseau ?",
+        a2: "Absolument.",
+        q3: "Comment ajouter au calendrier ?",
+        a3: "Cliquez sur Ajouter au Cal.",
+        q4: "Quand commence la Coupe ?",
+        a4: "Le 11 juin 2026.",
+        disclaimer: "Outil indépendant.",
+        hostedIn: "Stades: USA, Canada, Mexique",
+        groupStage: "Groupes",
+        knockoutStage: "Élimination Directe"
+    },
+    ar: {
+        title: "محول المنطقة الزمنية لكأس العالم 2026",
+        subtitle: "قم بتحويل جميع المباريات البالغ عددها 104 إلى توقيتك المحلي.",
+        tzLabel: "منطقتك الزمنية",
+        searchPlaceholder: "البحث عن طريق البلد، المجموعة...",
+        tabAll: "جميع المباريات",
+        tabGroup: "دور المجموعات",
+        tabKnockout: "مرحلة خروج المغلوب",
+        statsLabel: "عرض {count} من {total} مباريات",
+        emptyState: "لا توجد مباريات.",
+        addToCalendar: "إضافة للتقويم",
+        localTime: "وقتك",
+        venueLabel: "المكان",
+        todayTitle: "مباريات اليوم",
+        nextMatch: "المباراة القادمة في",
+        liveNow: "مباشر",
+        finished: "نهاية",
+        faqTitle: "الأسئلة الشائعة",
+        subscribeTitle: "لا تفوت أي مباراة.",
+        subscribeDesc: "احصل على بريد إلكتروني قبل البدء.",
+        subscribeBtn: "اشتراك",
+        subSuccess: "تم الاشتراك!",
+        tournAlert: "قريباً!",
+        optWc: "🏆 كأس العالم 2026",
+        optUcl: "⚽ دوري أبطال أوروبا",
+        optNba: "🏀 نهائيات الدوري الاميركي للمحترفين",
+        optLa: "🏅 أولمبياد لوس أنجلوس 2028",
+        q1: "هل تتكيف المباريات تلقائياً؟",
+        a1: "نعم!",
+        q2: "هل يمكنني اختيار منطقة مختلفة؟",
+        a2: "بالتأكيد.",
+        q3: "كيف أضيف للتقويم؟",
+        a3: "اضغط إضافة للتقويم.",
+        q4: "متى يبدأ كأس العالم؟",
+        a4: "11 يونيو 2026.",
+        disclaimer: "أداة مستقلة.",
+        hostedIn: "الملاعب: أمريكا، كندا، المكسيك",
+        groupStage: "المجموعات",
+        knockoutStage: "خروج المغلوب"
+    },
+    zh: {
+        title: "2026 世界杯时区转换器",
+        subtitle: "将 104 场比赛一键转换为您的本地时间。永远不会错过开球。",
+        tzLabel: "您的时区",
+        searchPlaceholder: "按国家、小组或场馆搜索...",
+        tabAll: "所有比赛",
+        tabGroup: "小组赛",
+        tabKnockout: "淘汰赛",
+        statsLabel: "显示 {count} / {total} 场比赛",
+        emptyState: "没有符合过滤条件的比赛。",
+        addToCalendar: "加入日历",
+        localTime: "您的时间",
+        venueLabel: "场馆",
+        todayTitle: "今日比赛",
+        nextMatch: "下一场比赛倒计时",
+        liveNow: "直播中",
+        finished: "完赛",
+        faqTitle: "常见问题 (FAQ)",
+        subscribeTitle: "永远不错过重磅对决。",
+        subscribeDesc: "在关键赛事开始前获取一封邮件提醒。",
+        subscribeBtn: "订阅",
+        subSuccess: "订阅成功！我们会保持联系。",
+        tournAlert: "其他赛事的赛程将在临近时公布！",
+        optWc: "🏆 2026 世界杯",
+        optUcl: "⚽ 欧冠联赛 (即将推出)",
+        optNba: "🏀 NBA 总决赛 (即将推出)",
+        optLa: "🏅 2028 洛杉矶奥运会 (即将推出)",
+        q1: "时间会自动转换为我的本地时间吗？",
+        a1: "是的！网站会自动检测您浏览器的时区。",
+        q2: "我可以手动切换时区吗？",
+        a2: "可以，请使用顶部的下拉菜单。",
+        q3: "如何添加到我的日历？",
+        a3: "点击卡片上的‘加入日历’按钮即可下载 ICS 文件。",
+        q4: "2026世界杯什么时候开始？",
+        a4: "揭幕战将于2026年6月11日在墨西哥城阿兹特克体育场打响。",
+        disclaimer: "免责声明：本网站是为球迷提供的独立工具，与 FIFA 或官方组织无关。",
+        hostedIn: "主办国：美国、加拿大、墨西哥",
+        groupStage: "小组赛",
+        knockoutStage: "淘汰赛"
     }
 };
 
@@ -259,13 +501,18 @@ themeToggle.addEventListener("click", () => {
     localStorage.setItem("wc_theme", currentTheme);
 });
 
-const langToggle = document.getElementById("langToggle");
-langToggle.addEventListener("click", () => {
-    currentLang = currentLang === "en" ? "es" : "en";
-    localStorage.setItem("wc_lang", currentLang);
-    updateLanguage();
-    renderMatches();
-});
+const langSelect = document.getElementById("langSelect");
+if (langSelect) {
+    langSelect.value = currentLang;
+    langSelect.addEventListener("change", (e) => {
+        currentLang = e.target.value;
+        localStorage.setItem("wc_lang", currentLang);
+        document.documentElement.setAttribute("dir", currentLang === "ar" ? "rtl" : "ltr");
+        updateLanguage();
+        renderMatches();
+    });
+}
+document.documentElement.setAttribute("dir", currentLang === "ar" ? "rtl" : "ltr");
 
 tzSelect.addEventListener("change", (e) => {
     currentTimezone = e.target.value;
@@ -554,11 +801,28 @@ function buildTeamCalPanel() {
     });
     const sorted = Array.from(teamSet).sort();
     sorted.forEach(team => {
+        const wrap = document.createElement("div");
+        wrap.className = "team-cal-wrap";
+        wrap.style.display = "flex";
+        wrap.style.gap = "0.5rem";
+        
         const btn = document.createElement("button");
         btn.className = "team-cal-btn";
-        btn.innerHTML = `${getFlag(team)} ${team}`;
+        btn.style.flexGrow = "1";
+        btn.innerHTML = `${getFlag(team)} ${getTeamName(team)}`;
         btn.onclick = () => downloadTeamICS(team);
-        grid.appendChild(btn);
+        
+        const shareBtn = document.createElement("button");
+        shareBtn.className = "team-cal-btn share-team-btn";
+        shareBtn.innerHTML = `🎨`;
+        shareBtn.title = "Share Team Matches";
+        shareBtn.style.flexGrow = "0";
+        shareBtn.style.padding = "0.5rem 1rem";
+        shareBtn.onclick = () => openTeamShareModal(team);
+        
+        wrap.appendChild(btn);
+        wrap.appendChild(shareBtn);
+        grid.appendChild(wrap);
     });
 }
 
@@ -627,9 +891,7 @@ function renderMatches() {
         // LIVE → top
         if (isLiveA && !isLiveB) return -1;
         if (!isLiveA && isLiveB) return 1;
-        // Finished → bottom
-        if (isFinishedA && !isFinishedB) return 1;
-        if (!isFinishedA && isFinishedB) return -1;
+
         // Otherwise keep original order (by time)
         return new Date(a.time_utc) - new Date(b.time_utc);
     });
@@ -684,29 +946,38 @@ function renderMatches() {
         }
 
         let displayGroup = match.group;
-        if (currentLang === "es") {
-            displayGroup = displayGroup
-                .replace("Group", "Grupo")
-                .replace("Round of 32", "Dieciseisavos de Final")
-                .replace("Round of 16", "Octavos de Final")
-                .replace("Quarter-finals", "Cuartos de Final")
-                .replace("Semi-finals", "Semifinales")
-                .replace("Third-place play-off", "Tercer Puesto")
-                .replace("Final", "Gran Final");
+        const groupTranslations = {
+            es: { "Group": "Grupo", "Round of 32": "Dieciseisavos", "Round of 16": "Octavos", "Quarter-finals": "Cuartos", "Semi-finals": "Semis", "Third-place play-off": "3er Puesto", "Final": "Gran Final" },
+            pt: { "Group": "Grupo", "Round of 32": "Fase de 32", "Round of 16": "Oitavas", "Quarter-finals": "Quartas", "Semi-finals": "Semis", "Third-place play-off": "3º Lugar", "Final": "Final" },
+            fr: { "Group": "Groupe", "Round of 32": "32e de Finale", "Round of 16": "16e de Finale", "Quarter-finals": "Quarts", "Semi-finals": "Demies", "Third-place play-off": "3e Place", "Final": "Finale" },
+            zh: { "Group": "小组", "Round of 32": "32强", "Round of 16": "16强", "Quarter-finals": "四分之一", "Semi-finals": "半决赛", "Third-place play-off": "季军赛", "Final": "决赛" },
+            ar: { "Group": "مجموعة", "Round of 32": "دور الـ32", "Round of 16": "دور الـ16", "Quarter-finals": "ربع النهائي", "Semi-finals": "نصف النهائي", "Third-place play-off": "المركز الثالث", "Final": "النهائي" }
+        };
+        if (groupTranslations[currentLang]) {
+            const gt = groupTranslations[currentLang];
+            for (const [en, tr] of Object.entries(gt)) {
+                displayGroup = displayGroup.replace(en, tr);
+            }
         }
 
         // Resolve team names: use API data, then knockout code parser, then raw
-        const team1Display = live?.homeTeam || parseKnockoutCode(match.team1);
-        const team2Display = live?.awayTeam || parseKnockoutCode(match.team2);
+        let team1Display = live?.homeTeam || parseKnockoutCode(match.team1);
+        let team2Display = live?.awayTeam || parseKnockoutCode(match.team2);
         const isTeam1Placeholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(team1Display);
         const isTeam2Placeholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(team2Display);
+        if (!isTeam1Placeholder) team1Display = getTeamName(team1Display);
+        if (!isTeam2Placeholder) team2Display = getTeamName(team2Display);
 
         // Score / Status badge
         let statusHTML = "";
         if (isLive) {
             statusHTML = `<span class="badge-live">● ${t.liveNow}</span>`;
-        } else if (isFinished && live.homeScore !== null && live.homeScore !== undefined) {
-            statusHTML = `<span class="badge-ft">${t.finished} &nbsp; ${live.homeScore} – ${live.awayScore}</span>`;
+        } else if (isFinished) {
+            if (live && live.homeScore !== null && live.homeScore !== undefined) {
+                statusHTML = `<span class="badge-ft">${t.finished} &nbsp; ${live.homeScore} – ${live.awayScore}</span>`;
+            } else {
+                statusHTML = `<span class="badge-ft">${t.finished}</span>`;
+            }
         }
 
         const card = document.createElement("div");
@@ -761,9 +1032,11 @@ window.triggerICS = function(originalIndex) {
 // Share Modal + Canvas Card System
 // =============================================
 let currentShareIndex = null;
+let currentShareTeam = null;
 
 function openShareModal(matchIndex) {
     currentShareIndex = matchIndex;
+    currentShareTeam = null;
     const match = matches[matchIndex];
     const live = liveMatchData[matchIndex];
     const team1 = live?.homeTeam || parseKnockoutCode(match.team1);
@@ -934,12 +1207,20 @@ function roundRect(ctx, x, y, w, h, r) {
 // Download the canvas as PNG
 function downloadShareImage() {
     const canvas = document.getElementById("shareCanvas");
-    const match = matches[currentShareIndex];
     const link = document.createElement("a");
     link.href = canvas.toDataURL("image/png");
-    const t1 = match.team1.replace(/\s+/g, "_");
-    const t2 = match.team2.replace(/\s+/g, "_");
-    link.download = `WC2026_${t1}_vs_${t2}_KickoffTime.png`;
+    
+    if (currentShareIndex !== null) {
+        const match = matches[currentShareIndex];
+        const t1 = match.team1.replace(/\s+/g, "_");
+        const t2 = match.team2.replace(/\s+/g, "_");
+        link.download = `WC2026_${t1}_vs_${t2}_KickoffTime.png`;
+    } else if (currentShareTeam) {
+        link.download = `WC2026_${currentShareTeam.replace(/\s+/g, "_")}_Schedule.png`;
+    } else {
+        link.download = "WC2026_Schedule.png";
+    }
+    
     link.click();
     showToast("🖼️ Image saved!");
 }
@@ -978,12 +1259,155 @@ async function copyShareText() {
 }
 window.copyShareText = copyShareText;
 
+// ---- Team Share Modal ----
+function openTeamShareModal(teamName) {
+    currentShareIndex = null;
+    currentShareTeam = teamName;
+    
+    // Update modal title
+    document.getElementById("shareModalTitle").textContent = `🎨 Share: ${teamName} Schedule`;
+    
+    // Update Twitter link
+    const tweetText = encodeURIComponent(
+        `🏆 Follow ${teamName} at the World Cup 2026!\n` +
+        `Check their full match schedule in your local time → kickofftime.live`
+    );
+    document.getElementById("btnShareTwitter").href = `https://twitter.com/intent/tweet?text=${tweetText}`;
+    
+    document.getElementById("btnCopyText").dataset.text = 
+        `🏆 ${teamName} — FIFA World Cup 2026 Schedule\n` +
+        `🌐 See all matches in your local time → https://kickofftime.live`;
+        
+    renderTeamShareCanvas(teamName);
+    document.getElementById("shareModalOverlay").classList.add("open");
+    document.body.style.overflow = "hidden";
+}
+window.openTeamShareModal = openTeamShareModal;
+
+// ---- Team Share Canvas Renderer ----
+function renderTeamShareCanvas(teamName) {
+    const canvas = document.getElementById("shareCanvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const W = 800, H = 420;
+    canvas.width = W;
+    canvas.height = H;
+
+    // Background
+    const bgGrad = ctx.createLinearGradient(0, 0, W, H);
+    bgGrad.addColorStop(0, "#0d1117");
+    bgGrad.addColorStop(0.5, "#111827");
+    bgGrad.addColorStop(1, "#0d1117");
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    // Gold top border stripe
+    const goldGrad = ctx.createLinearGradient(0, 0, W, 0);
+    goldGrad.addColorStop(0, "hsl(45,85%,58%)");
+    goldGrad.addColorStop(0.5, "hsl(150,75%,42%)");
+    goldGrad.addColorStop(1, "hsl(45,85%,58%)");
+    ctx.fillStyle = goldGrad;
+    ctx.fillRect(0, 0, W, 5);
+
+    // Subtle glow blob top-left
+    const glowGrad = ctx.createRadialGradient(200, 150, 0, 200, 150, 350);
+    glowGrad.addColorStop(0, "hsla(45,85%,58%,0.07)");
+    glowGrad.addColorStop(1, "transparent");
+    ctx.fillStyle = glowGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    // Header Text
+    ctx.font = "bold 38px 'Outfit', 'Inter', sans-serif";
+    ctx.fillStyle = "#f0f4ff";
+    ctx.textAlign = "center";
+    ctx.fillText(`${teamName} Schedule`, W / 2, 60);
+
+    ctx.font = "500 15px 'Inter', sans-serif";
+    ctx.fillStyle = "hsl(45,85%,58%)";
+    ctx.fillText("FIFA WORLD CUP 2026", W / 2, 90);
+
+    // Matches Loop
+    const teamMatches = matches.filter(m => m.team1 === teamName || m.team2 === teamName).slice(0, 4);
+    
+    let y = 115;
+    ctx.textAlign = "left";
+    teamMatches.forEach((m) => {
+        const { dateStr, timeStr, suffix } = formatMatchTime(m.time_utc, currentTimezone, currentLang);
+        
+        // Match Pill Background
+        ctx.fillStyle = "hsla(45,85%,58%,0.1)";
+        roundRect(ctx, 40, y, W - 80, 52, 10);
+        ctx.fill();
+        ctx.strokeStyle = "hsla(45,85%,58%,0.25)";
+        ctx.stroke();
+
+        // VS Text
+        ctx.font = "bold 18px 'Outfit', sans-serif";
+        ctx.fillStyle = "#fff";
+        const vsText = `${m.team1} vs ${m.team2}`;
+        ctx.fillText(vsText, 60, y + 33);
+        
+        // Date
+        ctx.font = "14px 'Inter', sans-serif";
+        ctx.fillStyle = "hsla(220,20%,96%,0.65)";
+        ctx.textAlign = "center";
+        ctx.fillText(dateStr, W / 2 + 30, y + 31);
+        
+        // Time
+        ctx.textAlign = "right";
+        ctx.fillStyle = "hsl(45,85%,58%)";
+        ctx.font = "bold 18px 'Outfit', sans-serif";
+        ctx.fillText(`${timeStr} ${suffix}`, W - 60, y + 33);
+        
+        ctx.textAlign = "left"; // Reset
+        y += 62;
+    });
+
+    // Timezone Footnote
+    ctx.font = "13px 'Inter', sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillStyle = "hsla(45,85%,58%,0.8)";
+    ctx.fillText(`Your local time: ${currentTimezone.replace(/_/g, " ")}`, W / 2, y + 10);
+
+    // Bottom branding bar
+    ctx.fillStyle = "hsla(220,20%,96%,0.06)";
+    ctx.fillRect(0, H - 48, W, 48);
+    ctx.font = "bold 15px 'Outfit', 'Inter', sans-serif";
+    ctx.fillStyle = "hsl(45,85%,58%)";
+    ctx.textAlign = "left";
+    ctx.fillText("⏱ KICKOFF TIME", 28, H - 17);
+    ctx.font = "13px 'Inter', sans-serif";
+    ctx.fillStyle = "hsla(220,20%,96%,0.45)";
+    ctx.textAlign = "right";
+    ctx.fillText("kickofftime.live", W - 28, H - 17);
+}
+
+// ---- Copy Share Deep Link ----
+async function copyShareLink() {
+    if (currentShareIndex === null && !currentShareTeam) return;
+    const baseUrl = window.location.origin + window.location.pathname;
+    let url = "";
+    if (currentShareIndex !== null) {
+        url = `${baseUrl}?shareMatch=${currentShareIndex}`;
+    } else if (currentShareTeam) {
+        url = `${baseUrl}?shareTeam=${encodeURIComponent(currentShareTeam)}`;
+    }
+    try {
+        await navigator.clipboard.writeText(url);
+        showToast("🔗 Share link copied!");
+    } catch {
+        showToast("Could not copy link.");
+    }
+}
+window.copyShareLink = copyShareLink;
+
 // Update static language content on page
 function updateLanguage() {
     const t = i18n[currentLang];
     
-    // Toggle Button Text
-    langToggle.innerHTML = `🌐 ${currentLang === "en" ? "Español" : "English"}`;
+    // Toggle Button Text (Sync dropdown if changed elsewhere)
+    const langSel = document.getElementById("langSelect");
+    if(langSel) langSel.value = currentLang;
     
     // Hero Texts
     document.getElementById("heroTitle").textContent = t.title;
@@ -1149,12 +1573,21 @@ function renderTodaysBanner() {
         const idx = matches.indexOf(m);
         const live = liveMatchData[idx];
         const { timeStr, suffix } = formatMatchTime(m.time_utc, currentTimezone, currentLang);
-        const statusBadge = live?.status === "IN_PLAY" || live?.status === "PAUSED"
-            ? `<span class="badge-live">● ${t.liveNow}</span>`
-            : live?.status === "FINISHED"
-            ? `<span class="badge-ft">${t.finished} ${live.homeScore}-${live.awayScore}</span>`
-            : `<span class="badge-time">${timeStr} ${suffix}</span>`;
-        return `<div class="today-card">${getFlag(m.team1)} <strong>${m.team1}</strong> vs <strong>${m.team2}</strong> ${getFlag(m.team2)} ${statusBadge}</div>`;
+        const isLiveNow = live?.status === "IN_PLAY" || live?.status === "PAUSED";
+        const isDone = matchIsFinished(m, live);
+        let statusBadge;
+        if (isLiveNow) {
+            statusBadge = `<span class="badge-live">● ${t.liveNow}</span>`;
+        } else if (isDone) {
+            const score = (live && live.homeScore !== null && live.homeScore !== undefined)
+                ? ` ${live.homeScore}-${live.awayScore}` : "";
+            statusBadge = `<span class="badge-ft">${t.finished}${score}</span>`;
+        } else {
+            statusBadge = `<span class="badge-time">${timeStr} ${suffix}</span>`;
+        }
+        const t1 = getTeamName(m.team1);
+        const t2 = getTeamName(m.team2);
+        return `<div class="today-card">${getFlag(m.team1)} <strong>${t1}</strong> vs <strong>${t2}</strong> ${getFlag(m.team2)} ${statusBadge}</div>`;
     }).join("");
     section.innerHTML = `<h3 class="today-title">🗓 ${t.todayTitle}</h3><div class="today-list">${list}</div>`;
 }
@@ -1166,3 +1599,24 @@ updateLanguage();
 renderMatches(); // Render immediately with static data
 fetchLiveData(); // Then fetch API data and re-render
 console.log("App loaded with local timezone:", currentTimezone);
+
+// =============================================
+// Deep Linking
+// =============================================
+function handleDeepLinking() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("shareMatch")) {
+        const idx = parseInt(params.get("shareMatch"));
+        if (!isNaN(idx) && matches[idx]) {
+            setTimeout(() => openShareModal(idx), 500);
+        }
+    } else if (params.has("shareTeam")) {
+        const t = params.get("shareTeam");
+        if (t) {
+            // Need to open team cal panel first so it builds
+            toggleTeamCalPanel();
+            setTimeout(() => openTeamShareModal(t), 500);
+        }
+    }
+}
+handleDeepLinking();
