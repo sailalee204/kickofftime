@@ -140,6 +140,11 @@ const i18n = {
         nextMatch: "Next match in",
         liveNow: "LIVE",
         finished: "FT",
+        btnDownloadAll: "📥 Download All 104 Matches",
+        btnTeamCal: "⭐ Subscribe by Team",
+        tzHelper: "Detected automatically. Adjust manually below if needed.",
+        upcoming: "upcoming",
+        finishedStats: "finished",
         faqTitle: "Frequently Asked Questions (FAQ)",
         subscribeTitle: "Never miss a major match.",
         subscribeDesc: "Get a quick email before the Champions League Final, Super Bowl, or Olympics starts.",
@@ -193,6 +198,11 @@ const i18n = {
         nextMatch: "Próximo partido en",
         liveNow: "EN VIVO",
         finished: "FIN",
+        btnDownloadAll: "📥 Descargar los 104 Partidos",
+        btnTeamCal: "⭐ Suscribirse por Equipo",
+        tzHelper: "Detectado automáticamente. Ajusta manualmente a continuación si es necesario.",
+        upcoming: "próximos",
+        finishedStats: "terminados",
         faqTitle: "Preguntas Frecuentes (FAQ)",
         subscribeTitle: "No te pierdas ningún partidazo.",
         subscribeDesc: "Recibe un email rápido antes de que empiece la final de la Champions, la Super Bowl o los Juegos Olímpicos.",
@@ -245,6 +255,11 @@ const i18n = {
         nextMatch: "Próxima partida em",
         liveNow: "AO VIVO",
         finished: "FIM",
+        btnDownloadAll: "📥 Baixar Todas as 104 Partidas",
+        btnTeamCal: "⭐ Inscrever-se por Seleção",
+        tzHelper: "Detectado automaticamente. Ajuste manualmente abaixo se necessário.",
+        upcoming: "próximas",
+        finishedStats: "encerradas",
         faqTitle: "Perguntas Frequentes (FAQ)",
         subscribeTitle: "Nunca perca uma partida importante.",
         subscribeDesc: "Receba um e-mail antes de começar.",
@@ -297,6 +312,11 @@ const i18n = {
         nextMatch: "Prochain match dans",
         liveNow: "EN DIRECT",
         finished: "FIN",
+        btnDownloadAll: "📥 Télécharger les 104 Matchs",
+        btnTeamCal: "⭐ S'abonner par Équipe",
+        tzHelper: "Détecté automatiquement. Ajustez manuellement ci-dessous si nécessaire.",
+        upcoming: "à venir",
+        finishedStats: "terminés",
         faqTitle: "Foire Aux Questions (FAQ)",
         subscribeTitle: "Ne manquez jamais un match important.",
         subscribeDesc: "Recevez un e-mail rapide avant le début.",
@@ -349,6 +369,11 @@ const i18n = {
         nextMatch: "المباراة القادمة في",
         liveNow: "مباشر",
         finished: "نهاية",
+        btnDownloadAll: "📥 تحميل جميع المباريات البالغ عددها 104",
+        btnTeamCal: "⭐ اشترك حسب الفريق",
+        tzHelper: "تم الكشف تلقائياً. قم بالتعديل يدوياً أدناه إذا لزم الأمر.",
+        upcoming: "قادمة",
+        finishedStats: "منتهية",
         faqTitle: "الأسئلة الشائعة",
         subscribeTitle: "لا تفوت أي مباراة.",
         subscribeDesc: "احصل على بريد إلكتروني قبل البدء.",
@@ -401,6 +426,11 @@ const i18n = {
         nextMatch: "下一场比赛倒计时",
         liveNow: "直播中",
         finished: "完赛",
+        btnDownloadAll: "📥 下载所有104场比赛",
+        btnTeamCal: "⭐ 按球队订阅",
+        tzHelper: "自动检测。如需修改请在下方手动选择。",
+        upcoming: "未赛",
+        finishedStats: "完赛",
         faqTitle: "常见问题 (FAQ)",
         subscribeTitle: "永远不错过重磅对决。",
         subscribeDesc: "在关键赛事开始前获取一封邮件提醒。",
@@ -979,9 +1009,9 @@ function renderMatches() {
     const statsLabel = document.getElementById("statsLabel");
     let statsText = t.statsLabel.replace("{count}", filtered.length).replace("{total}", matches.length);
     if (finishedCount > 0 && upcomingCount > 0) {
-        statsText += ` · ${upcomingCount} upcoming · ${finishedCount} finished`;
+        statsText += ` · ${upcomingCount} ${t.upcoming} · ${finishedCount} ${t.finishedStats}`;
     } else if (finishedCount > 0) {
-        statsText += ` · ${finishedCount} finished`;
+        statsText += ` · ${finishedCount} ${t.finishedStats}`;
     }
     statsLabel.textContent = statsText;
 
@@ -1488,9 +1518,12 @@ function updateLanguage() {
     document.getElementById("heroTitle").textContent = t.title;
     document.getElementById("heroSubtitle").textContent = t.subtitle;
     document.getElementById("hostedInLabel").textContent = t.hostedIn;
+    document.getElementById("btnDownloadAll").textContent = t.btnDownloadAll;
+    document.getElementById("btnTeamCal").textContent = t.btnTeamCal;
     
     // Timezone Selector Header
     document.getElementById("tzLabel").textContent = t.tzLabel;
+    document.getElementById("tzHelper").textContent = t.tzHelper;
     
     // Search input
     searchInput.placeholder = t.searchPlaceholder;
@@ -1639,7 +1672,7 @@ function renderCountdown() {
     banner.innerHTML = `
         <span class="cd-label">⏱ ${t.nextMatch}:</span>
         <span class="cd-time">${h}h ${m}m ${s}s</span>
-        <span class="cd-match">${getFlag(next.team1)} ${next.team1} vs ${next.team2} ${getFlag(next.team2)}</span>
+        <span class="cd-match">${getFlag(next.team1)} ${getTeamName(next.team1)} vs ${getTeamName(next.team2)} ${getFlag(next.team2)}</span>
     `;
     setTimeout(renderCountdown, 1000);
 }
