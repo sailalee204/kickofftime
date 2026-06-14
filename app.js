@@ -1424,8 +1424,10 @@ function openShareModal(matchIndex) {
     currentShareTeam = null;
     const match = matches[matchIndex];
     const live = liveMatchData[matchIndex];
-    const team1 = live?.homeTeam || parseKnockoutCode(match.team1);
-    const team2 = live?.awayTeam || parseKnockoutCode(match.team2);
+    const team1Raw = live?.homeTeam || parseKnockoutCode(match.team1);
+    const team2Raw = live?.awayTeam || parseKnockoutCode(match.team2);
+    const team1 = getTeamName(team1Raw);
+    const team2 = getTeamName(team2Raw);
     const { dateStr, timeStr, suffix } = formatMatchTime(match.time_utc, currentTimezone, currentLang);
 
     // Update modal title
@@ -1649,18 +1651,20 @@ function openTeamShareModal(teamName) {
     currentShareIndex = null;
     currentShareTeam = teamName;
     
+    const teamDisplay = getTeamName(teamName);
+    
     // Update modal title
-    document.getElementById("shareModalTitle").textContent = `🎨 ${shareI18n[currentLang].shareMatch}: ${teamName} ${shareI18n[currentLang].schedule}`;
+    document.getElementById("shareModalTitle").textContent = `🎨 ${shareI18n[currentLang].shareMatch}: ${teamDisplay} ${shareI18n[currentLang].schedule}`;
     
     // Update Twitter link
     const tweetText = encodeURIComponent(
-        `🏆 ${shareI18n[currentLang].followTeam.replace('{team}', teamName)}\n` +
+        `🏆 ${shareI18n[currentLang].followTeam.replace('{team}', teamDisplay)}\n` +
         `${shareI18n[currentLang].fullSchedule} → kickofftime.live`
     );
     document.getElementById("btnShareTwitter").href = `https://twitter.com/intent/tweet?text=${tweetText}`;
     
     document.getElementById("btnCopyText").dataset.text =
-        `🏆 ${teamName} — ${shareI18n[currentLang].wc2026} ${shareI18n[currentLang].schedule}\n` +
+        `🏆 ${teamDisplay} — ${shareI18n[currentLang].wc2026} ${shareI18n[currentLang].schedule}\n` +
         `🌐 ${shareI18n[currentLang].seeAllMatches} → https://kickofftime.live`;
         
     renderTeamShareCanvas(teamName);
@@ -1671,6 +1675,7 @@ window.openTeamShareModal = openTeamShareModal;
 
 // ---- Team Share Canvas Renderer ----
 function renderTeamShareCanvas(teamName) {
+    const teamDisplay = getTeamName(teamName);
     const canvas = document.getElementById("shareCanvas");
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -1705,7 +1710,7 @@ function renderTeamShareCanvas(teamName) {
     ctx.font = "bold 38px 'Outfit', 'Inter', sans-serif";
     ctx.fillStyle = "#f0f4ff";
     ctx.textAlign = "center";
-    ctx.fillText(`${teamName} ${shareI18n[currentLang].schedule}`, W / 2, 60);
+    ctx.fillText(`${teamDisplay || teamName} ${shareI18n[currentLang].schedule}`, W / 2, 60);
 
     ctx.font = "500 15px 'Inter', sans-serif";
     ctx.fillStyle = "hsl(45,85%,58%)";
@@ -1729,7 +1734,9 @@ function renderTeamShareCanvas(teamName) {
         // VS Text
         ctx.font = "bold 18px 'Outfit', sans-serif";
         ctx.fillStyle = "#fff";
-        const vsText = `${m.team1} vs ${m.team2}`;
+        const team1Local = getTeamName(m.team1);
+        const team2Local = getTeamName(m.team2);
+        const vsText = `${team1Local} vs ${team2Local}`;
         ctx.fillText(vsText, 60, y + 33);
         
         // Date
@@ -1847,6 +1854,19 @@ function updateLanguage() {
         const emailInput = document.getElementById("emailInput");
         if(emailInput) emailInput.placeholder = t.emailPlaceholder;
     }
+
+    // Share Modal Buttons
+    const st = shareI18n[currentLang];
+    const btnCopyImage = document.getElementById("btnCopyImage");
+    if(btnCopyImage) btnCopyImage.textContent = st.shareCopyImg;
+    const btnDownloadImage = document.getElementById("btnDownloadImage");
+    if(btnDownloadImage) btnDownloadImage.textContent = st.shareSaveImg;
+    const btnShareTwitter = document.getElementById("btnShareTwitter");
+    if(btnShareTwitter) btnShareTwitter.textContent = st.shareTwitter;
+    const btnCopyLink = document.getElementById("btnCopyLink");
+    if(btnCopyLink) btnCopyLink.textContent = st.shareCopyLink;
+    const btnCopyTextModal = document.getElementById("btnCopyText");
+    if(btnCopyTextModal) btnCopyTextModal.textContent = st.shareCopyText;
 
     // Tournament Selector Options
     const tournSelect = document.getElementById("tournamentSelect");
