@@ -149,6 +149,7 @@ const i18n = {
         subscribeTitle: "Never miss a major match.",
         subscribeDesc: "Get a quick email before the Champions League Final, Super Bowl, or Olympics starts.",
         subscribeBtn: "Subscribe",
+        emailPlaceholder: "Enter your email address...",
         subSuccess: "Subscribed successfully! We'll keep you updated.",
         tournAlert: "Schedules for this tournament will be available closer to the event!",
         optWc: "🏆 World Cup 2026",
@@ -207,6 +208,7 @@ const i18n = {
         subscribeTitle: "No te pierdas ningún partidazo.",
         subscribeDesc: "Recibe un email rápido antes de que empiece la final de la Champions, la Super Bowl o los Juegos Olímpicos.",
         subscribeBtn: "Suscribirse",
+        emailPlaceholder: "Ingresa tu correo electrónico...",
         subSuccess: "¡Suscrito con éxito! Te mantendremos informado.",
         tournAlert: "¡Los horarios para este torneo estarán disponibles más cerca de la fecha!",
         optWc: "🏆 Copa Mundial 2026",
@@ -264,6 +266,7 @@ const i18n = {
         subscribeTitle: "Nunca perca uma partida importante.",
         subscribeDesc: "Receba um e-mail antes de começar.",
         subscribeBtn: "Inscrever-se",
+        emailPlaceholder: "Digite seu endereço de e-mail...",
         subSuccess: "Inscrito com sucesso!",
         tournAlert: "Os horários para este torneio estarão disponíveis em breve!",
         optWc: "🏆 Copa do Mundo 2026",
@@ -321,6 +324,7 @@ const i18n = {
         subscribeTitle: "Ne manquez jamais un match important.",
         subscribeDesc: "Recevez un e-mail rapide avant le début.",
         subscribeBtn: "S'abonner",
+        emailPlaceholder: "Entrez votre adresse e-mail...",
         subSuccess: "Abonnement réussi !",
         tournAlert: "Bientôt disponible !",
         optWc: "🏆 Coupe du Monde 2026",
@@ -378,6 +382,7 @@ const i18n = {
         subscribeTitle: "لا تفوت أي مباراة.",
         subscribeDesc: "احصل على بريد إلكتروني قبل البدء.",
         subscribeBtn: "اشتراك",
+        emailPlaceholder: "أدخل عنوان بريدك الإلكتروني...",
         subSuccess: "تم الاشتراك!",
         tournAlert: "قريباً!",
         optWc: "🏆 كأس العالم 2026",
@@ -435,6 +440,7 @@ const i18n = {
         subscribeTitle: "永远不错过重磅对决。",
         subscribeDesc: "在关键赛事开始前获取一封邮件提醒。",
         subscribeBtn: "订阅",
+        emailPlaceholder: "输入您的电子邮件地址...",
         subSuccess: "订阅成功！我们会保持联系。",
         tournAlert: "其他赛事的赛程将在临近时公布！",
         optWc: "🏆 2026 世界杯",
@@ -1562,6 +1568,9 @@ function updateLanguage() {
         subTitle.textContent = t.subscribeTitle;
         document.getElementById("subscribeDesc").textContent = t.subscribeDesc;
         document.getElementById("subscribeBtn").textContent = t.subscribeBtn;
+        
+        const emailInput = document.getElementById("emailInput");
+        if(emailInput) emailInput.placeholder = t.emailPlaceholder;
     }
 
     // Tournament Selector Options
