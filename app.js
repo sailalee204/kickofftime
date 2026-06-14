@@ -28,12 +28,30 @@ function parseKnockoutCode(code) {
     if (!code) return code;
     // Already a real team name
     if (!/^[1-4][A-L]$|^W\d+$|^L\d+$|^3/.test(code)) return code;
-    if (code.startsWith("W")) return `Winner Match ${code.slice(1)}`;
-    if (code.startsWith("L")) return `3rd Place Match`;
+    
+    const tWinner = i18n[currentLang]?.winner || "Winner";
+    const tMatch = i18n[currentLang]?.match || "Match";
+    const tGroup = i18n[currentLang]?.group || "Group";
+    const tRunnerUp = i18n[currentLang]?.runnerUp || "Runner-up";
+    const tThirdPlace = i18n[currentLang]?.thirdPlace || "3rd Place";
+    const tFourthPlace = i18n[currentLang]?.fourthPlace || "4th Place";
+    const tThirdPlaceMatch = i18n[currentLang]?.thirdPlaceMatch || "3rd Place Match";
+
+    if (code.startsWith("W")) {
+        if (currentLang === "zh") return `第${code.slice(1)}场胜者`;
+        return `${tWinner} ${tMatch} ${code.slice(1)}`;
+    }
+    if (code.startsWith("L")) return tThirdPlaceMatch;
+    
     const pos = code[0];
     const grp = code[1];
-    const labels = { "1": "Winner", "2": "Runner-up", "3": "3rd Place", "4": "4th Place" };
-    if (grp && grp.match(/[A-L]/)) return `${labels[pos] || pos} · Group ${grp}`;
+    const labels = { "1": tWinner, "2": tRunnerUp, "3": tThirdPlace, "4": tFourthPlace };
+    
+    if (grp && grp.match(/[A-L]/)) {
+        if (currentLang === "zh") return `${labels[pos] || pos} · ${grp}组`;
+        return `${labels[pos] || pos} · ${tGroup} ${grp}`;
+    }
+    
     return code; // e.g. "3A/B/C/D/F" → show as-is
 }
 
@@ -152,6 +170,13 @@ const i18n = {
         emailPlaceholder: "Enter your email address...",
         subSuccess: "Subscribed successfully! We'll keep you updated.",
         tournAlert: "Schedules for this tournament will be available closer to the event!",
+        winner: "Winner",
+        match: "Match",
+        group: "Group",
+        runnerUp: "Runner-up",
+        thirdPlace: "3rd Place",
+        fourthPlace: "4th Place",
+        thirdPlaceMatch: "3rd Place Match",
         optWc: "🏆 World Cup 2026",
         optUcl: "⚽ UEFA Champions League (Soon)",
         optNba: "🏀 NBA Finals (Soon)",
@@ -211,6 +236,13 @@ const i18n = {
         emailPlaceholder: "Ingresa tu correo electrónico...",
         subSuccess: "¡Suscrito con éxito! Te mantendremos informado.",
         tournAlert: "¡Los horarios para este torneo estarán disponibles más cerca de la fecha!",
+        winner: "Ganador",
+        match: "Partido",
+        group: "Grupo",
+        runnerUp: "Subcampeón",
+        thirdPlace: "3er Lugar",
+        fourthPlace: "4to Lugar",
+        thirdPlaceMatch: "Partido por el 3er Lugar",
         optWc: "🏆 Copa Mundial 2026",
         optUcl: "⚽ UEFA Champions League (Pronto)",
         optNba: "🏀 Finales de la NBA (Pronto)",
@@ -269,6 +301,13 @@ const i18n = {
         emailPlaceholder: "Digite seu endereço de e-mail...",
         subSuccess: "Inscrito com sucesso!",
         tournAlert: "Os horários para este torneio estarão disponíveis em breve!",
+        winner: "Vencedor",
+        match: "Jogo",
+        group: "Grupo",
+        runnerUp: "Vice-campeão",
+        thirdPlace: "3º Lugar",
+        fourthPlace: "4º Lugar",
+        thirdPlaceMatch: "Disputa do 3º Lugar",
         optWc: "🏆 Copa do Mundo 2026",
         optUcl: "⚽ UEFA Champions League",
         optNba: "🏀 Finais da NBA",
@@ -327,6 +366,13 @@ const i18n = {
         emailPlaceholder: "Entrez votre adresse e-mail...",
         subSuccess: "Abonnement réussi !",
         tournAlert: "Bientôt disponible !",
+        winner: "Vainqueur",
+        match: "Match",
+        group: "Groupe",
+        runnerUp: "Deuxième",
+        thirdPlace: "3e Place",
+        fourthPlace: "4e Place",
+        thirdPlaceMatch: "Match pour la 3e Place",
         optWc: "🏆 Coupe du Monde 2026",
         optUcl: "⚽ UEFA Champions League",
         optNba: "🏀 Finales NBA",
@@ -385,6 +431,13 @@ const i18n = {
         emailPlaceholder: "أدخل عنوان بريدك الإلكتروني...",
         subSuccess: "تم الاشتراك!",
         tournAlert: "قريباً!",
+        winner: "الفائز",
+        match: "مباراة",
+        group: "المجموعة",
+        runnerUp: "الوصيف",
+        thirdPlace: "المركز الثالث",
+        fourthPlace: "المركز الرابع",
+        thirdPlaceMatch: "مباراة المركز الثالث",
         optWc: "🏆 كأس العالم 2026",
         optUcl: "⚽ دوري أبطال أوروبا",
         optNba: "🏀 نهائيات الدوري الاميركي للمحترفين",
@@ -443,6 +496,13 @@ const i18n = {
         emailPlaceholder: "输入您的电子邮件地址...",
         subSuccess: "订阅成功！我们会保持联系。",
         tournAlert: "其他赛事的赛程将在临近时公布！",
+        winner: "胜者",
+        match: "第",
+        group: "小组",
+        runnerUp: "小组第二",
+        thirdPlace: "小组第三",
+        fourthPlace: "小组第四",
+        thirdPlaceMatch: "季军赛",
         optWc: "🏆 2026 世界杯",
         optUcl: "⚽ 欧冠联赛 (即将推出)",
         optNba: "🏀 NBA 总决赛 (即将推出)",
