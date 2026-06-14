@@ -678,6 +678,12 @@ if (langSelect) {
         document.documentElement.setAttribute("dir", currentLang === "ar" ? "rtl" : "ltr");
         updateLanguage();
         renderMatches();
+        renderTodaysBanner();
+        const teamGrid = document.getElementById("teamCalGrid");
+        if (teamGrid) teamGrid.innerHTML = "";
+        if (document.getElementById("teamCalPanel")?.classList.contains("open")) {
+            buildTeamCalPanel();
+        }
     });
 }
 document.documentElement.setAttribute("dir", currentLang === "ar" ? "rtl" : "ltr");
