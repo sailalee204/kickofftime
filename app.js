@@ -655,15 +655,19 @@ if (!majorTimezones.includes(currentTimezone)) {
 
 // Populate Timezone Dropdown
 const tzSelect = document.getElementById("timezoneSelect");
-majorTimezones.forEach(tz => {
-    const opt = document.createElement("option");
-    opt.value = tz;
-    opt.textContent = tz.replace(/_/g, " ");
-    if (tz === currentTimezone) {
-        opt.selected = true;
-    }
-    tzSelect.appendChild(opt);
-});
+function renderTimezoneOptions() {
+    tzSelect.innerHTML = "";
+    majorTimezones.forEach(tz => {
+        const opt = document.createElement("option");
+        opt.value = tz;
+        opt.textContent = getLocString(tz);
+        if (tz === currentTimezone) {
+            opt.selected = true;
+        }
+        tzSelect.appendChild(opt);
+    });
+}
+renderTimezoneOptions();
 
 // Theme Toggle Logic
 const themeToggle = document.getElementById("themeToggle");
@@ -898,7 +902,7 @@ function buildVEVENT(match, index) {
     const t1 = match.team1.replace(/[^\w\s]/g, "");
     const t2 = match.team2.replace(/[^\w\s]/g, "");
     const summary = `${t1} vs ${t2} - FIFA World Cup 2026`;
-    const description = `FIFA World Cup 2026\\n${match.group}\\nVenue: ${match.venue}\\nConverted to your timezone by kickofftime.live`;
+    const description = `FIFA World Cup 2026\\n${match.group}\\nVenue: ${getLocString(match.venue)}\\nConverted to your timezone by kickofftime.live`;
 
     return [
         "BEGIN:VEVENT",
@@ -1048,6 +1052,7 @@ function renderMatches() {
     grid.innerHTML = "";
 
     const t = i18n[currentLang];
+    renderTimezoneOptions();
 
     // Filter Matches
     const filtered = matches.filter((match, idx) => {
@@ -1209,7 +1214,7 @@ function renderMatches() {
                     <div class="local-time">
                         ${isFinished ? `<span style="font-size:0.9rem;color:var(--text-muted)">${t.matchEnded}</span>` : `${timeStr}${suffix ? `<span class="time-suffix">${suffix}</span>` : ''}`}
                     </div>
-                    <div class="match-venue">📍 ${match.venue}</div>
+                    <div class="match-venue">📍 ${getLocString(match.venue)}</div>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:0.4rem; align-items:flex-end;">
                     <button class="add-calendar-btn" onclick="triggerICS(${originalIndex})">
@@ -1261,7 +1266,7 @@ function openShareModal(matchIndex) {
     document.getElementById("btnCopyText").dataset.text =
         `🏆 ${team1} vs ${team2} — FIFA World Cup 2026\n` +
         `⏰ My local kickoff: ${timeStr} ${suffix} (${dateStr})\n` +
-        `📅 ${match.venue}\n` +
+        `📅 ${getLocString(match.venue)}\n` +
         `🌐 See your local time → https://kickofftime.live`;
 
     // Render Canvas card
@@ -1369,7 +1374,7 @@ function renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match) {
 
     ctx.font = "14px 'Inter', sans-serif";
     ctx.fillStyle = "hsla(220,20%,96%,0.45)";
-    ctx.fillText(`📍 ${match.venue}`, W / 2, 338);
+    ctx.fillText(`📍 ${getLocString(match.venue)}`, W / 2, 338);
 
     // --- Timezone label ---
     ctx.font = "13px 'Inter', sans-serif";
@@ -1606,6 +1611,7 @@ window.copyShareLink = copyShareLink;
 // Update static language content on page
 function updateLanguage() {
     const t = i18n[currentLang];
+    renderTimezoneOptions();
     
     // Toggle Button Text (Sync dropdown if changed elsewhere)
     const langSel = document.getElementById("langSelect");
