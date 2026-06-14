@@ -215,6 +215,88 @@ const locationTranslations = {
   }
 };
 
+
+const shareI18n = {
+    en: {
+        shareMatch: "Share",
+        wc2026: "World Cup 2026",
+        kickoff: "Kickoff",
+        myKickoff: "My local kickoff",
+        checkTime: "Check your local time",
+        seeTime: "See your local time",
+        seeAllMatches: "See all matches in your local time",
+        yourTime: "Your local time",
+        schedule: "Schedule",
+        followTeam: "Follow {team} at the World Cup 2026!",
+        fullSchedule: "Check their full match schedule in your local time"
+    },
+    zh: {
+        shareMatch: "分享",
+        wc2026: "2026世界杯",
+        kickoff: "开赛时间",
+        myKickoff: "本地开赛时间",
+        checkTime: "查看本地时间",
+        seeTime: "查看本地时间",
+        seeAllMatches: "查看所有比赛的本地时间",
+        yourTime: "您的本地时间",
+        schedule: "赛程",
+        followTeam: "在2026世界杯关注 {team}！",
+        fullSchedule: "使用本地时间查看完整赛程"
+    },
+    es: {
+        shareMatch: "Compartir",
+        wc2026: "Mundial 2026",
+        kickoff: "Inicio",
+        myKickoff: "Mi hora de inicio",
+        checkTime: "Consulta tu hora local",
+        seeTime: "Ver tu hora local",
+        seeAllMatches: "Ver todos los partidos en tu hora local",
+        yourTime: "Tu hora local",
+        schedule: "Calendario",
+        followTeam: "¡Sigue a {team} en el Mundial 2026!",
+        fullSchedule: "Consulta su calendario en tu hora local"
+    },
+    pt: {
+        shareMatch: "Compartilhar",
+        wc2026: "Copa do Mundo 2026",
+        kickoff: "Início",
+        myKickoff: "Meu início local",
+        checkTime: "Verifique sua hora local",
+        seeTime: "Veja sua hora local",
+        seeAllMatches: "Veja todas as partidas na sua hora local",
+        yourTime: "Sua hora local",
+        schedule: "Calendário",
+        followTeam: "Acompanhe {team} na Copa 2026!",
+        fullSchedule: "Veja o calendário completo na sua hora local"
+    },
+    fr: {
+        shareMatch: "Partager",
+        wc2026: "Coupe du Monde 2026",
+        kickoff: "Coup d'envoi",
+        myKickoff: "Mon coup d'envoi local",
+        checkTime: "Vérifiez votre heure locale",
+        seeTime: "Voir votre heure locale",
+        seeAllMatches: "Voir tous les matchs à votre heure locale",
+        yourTime: "Votre heure locale",
+        schedule: "Calendrier",
+        followTeam: "Suivez {team} à la Coupe du Monde 2026 !",
+        fullSchedule: "Consultez leur calendrier complet à votre heure locale"
+    },
+    ar: {
+        shareMatch: "مشاركة",
+        wc2026: "كأس العالم 2026",
+        kickoff: "ركلة البداية",
+        myKickoff: "وقت البداية المحلي",
+        checkTime: "تحقق من وقتك المحلي",
+        seeTime: "شاهد وقتك المحلي",
+        seeAllMatches: "شاهد جميع المباريات بتوقيتك المحلي",
+        yourTime: "وقتك المحلي",
+        schedule: "جدول",
+        followTeam: "تابع {team} في كأس العالم 2026!",
+        fullSchedule: "تحقق من جدول مبارياتهم بتوقيتك المحلي"
+    }
+};
+
 function getLocString(str) {
     if (!str) return "";
     if (currentLang === "en") return str.replace(/_/g, " ");
@@ -1347,23 +1429,23 @@ function openShareModal(matchIndex) {
     const { dateStr, timeStr, suffix } = formatMatchTime(match.time_utc, currentTimezone, currentLang);
 
     // Update modal title
-    document.getElementById("shareModalTitle").textContent = `🎨 Share: ${team1} vs ${team2}`;
+    document.getElementById("shareModalTitle").textContent = `🎨 ${shareI18n[currentLang].shareMatch}: ${team1} vs ${team2}`;
 
     // Update Twitter link
     const tweetText = encodeURIComponent(
-        `🏆 ${team1} vs ${team2} — World Cup 2026\n` +
-        `⏰ Kickoff: ${timeStr} ${suffix} (${dateStr})\n` +
-        `Check your local time → kickofftime.live`
+        `🏆 ${team1} vs ${team2} — ${shareI18n[currentLang].wc2026}\n` +
+        `⏰ ${shareI18n[currentLang].kickoff}: ${timeStr} ${suffix} (${dateStr})\n` +
+        `${shareI18n[currentLang].checkTime} → kickofftime.live`
     );
     document.getElementById("btnShareTwitter").href =
         `https://twitter.com/intent/tweet?text=${tweetText}`;
 
     // Store share text for copy
     document.getElementById("btnCopyText").dataset.text =
-        `🏆 ${team1} vs ${team2} — FIFA World Cup 2026\n` +
-        `⏰ My local kickoff: ${timeStr} ${suffix} (${dateStr})\n` +
+        `🏆 ${team1} vs ${team2} — ${shareI18n[currentLang].wc2026}\n` +
+        `⏰ ${shareI18n[currentLang].myKickoff}: ${timeStr} ${suffix} (${dateStr})\n` +
         `📅 ${getLocString(match.venue)}\n` +
-        `🌐 See your local time → https://kickofftime.live`;
+        `🌐 ${shareI18n[currentLang].seeAllMatches} → https://kickofftime.live`;
 
     // Render Canvas card
     renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match);
@@ -1475,7 +1557,7 @@ function renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match) {
     // --- Timezone label ---
     ctx.font = "13px 'Inter', sans-serif";
     ctx.fillStyle = "hsla(45,85%,58%,0.8)";
-    ctx.fillText(`Your time: ${currentTimezone.replace(/_/g, " ")}`, W / 2, 364);
+    ctx.fillText(`${shareI18n[currentLang].yourTime}: ${currentTimezone.replace(/_/g, " ")}`, W / 2, 364);
 
     // --- Bottom branding bar ---
     ctx.fillStyle = "hsla(220,20%,96%,0.06)";
@@ -1568,18 +1650,18 @@ function openTeamShareModal(teamName) {
     currentShareTeam = teamName;
     
     // Update modal title
-    document.getElementById("shareModalTitle").textContent = `🎨 Share: ${teamName} Schedule`;
+    document.getElementById("shareModalTitle").textContent = `🎨 ${shareI18n[currentLang].shareMatch}: ${teamName} ${shareI18n[currentLang].schedule}`;
     
     // Update Twitter link
     const tweetText = encodeURIComponent(
-        `🏆 Follow ${teamName} at the World Cup 2026!\n` +
-        `Check their full match schedule in your local time → kickofftime.live`
+        `🏆 ${shareI18n[currentLang].followTeam.replace('{team}', teamName)}\n` +
+        `${shareI18n[currentLang].fullSchedule} → kickofftime.live`
     );
     document.getElementById("btnShareTwitter").href = `https://twitter.com/intent/tweet?text=${tweetText}`;
     
-    document.getElementById("btnCopyText").dataset.text = 
-        `🏆 ${teamName} — FIFA World Cup 2026 Schedule\n` +
-        `🌐 See all matches in your local time → https://kickofftime.live`;
+    document.getElementById("btnCopyText").dataset.text =
+        `🏆 ${teamName} — ${shareI18n[currentLang].wc2026} ${shareI18n[currentLang].schedule}\n` +
+        `🌐 ${shareI18n[currentLang].seeAllMatches} → https://kickofftime.live`;
         
     renderTeamShareCanvas(teamName);
     document.getElementById("shareModalOverlay").classList.add("open");
@@ -1623,7 +1705,7 @@ function renderTeamShareCanvas(teamName) {
     ctx.font = "bold 38px 'Outfit', 'Inter', sans-serif";
     ctx.fillStyle = "#f0f4ff";
     ctx.textAlign = "center";
-    ctx.fillText(`${teamName} Schedule`, W / 2, 60);
+    ctx.fillText(`${teamName} ${shareI18n[currentLang].schedule}`, W / 2, 60);
 
     ctx.font = "500 15px 'Inter', sans-serif";
     ctx.fillStyle = "hsl(45,85%,58%)";
@@ -1670,7 +1752,7 @@ function renderTeamShareCanvas(teamName) {
     ctx.font = "13px 'Inter', sans-serif";
     ctx.textAlign = "center";
     ctx.fillStyle = "hsla(45,85%,58%,0.8)";
-    ctx.fillText(`Your local time: ${currentTimezone.replace(/_/g, " ")}`, W / 2, y + 10);
+    ctx.fillText(`${shareI18n[currentLang].yourTime}: ${currentTimezone.replace(/_/g, " ")}`, W / 2, y + 10);
 
     // Bottom branding bar
     ctx.fillStyle = "hsla(220,20%,96%,0.06)";
