@@ -788,13 +788,48 @@ footer p {
     background: linear-gradient(90deg, hsl(0, 85%, 55%), hsl(30, 95%, 60%));
 }
 
-/* Finished card – slightly dimmed */
+/* Finished card – clearly dimmed & desaturated */
 .match-card.is-finished {
-    opacity: 0.75;
+    opacity: 0.55;
+    filter: grayscale(40%);
 }
 
 .match-card.is-finished:hover {
-    opacity: 1;
+    opacity: 0.85;
+    filter: grayscale(10%);
+}
+
+.match-card.is-finished::before {
+    background: hsl(220, 10%, 40%) !important;
+}
+
+/* Past matches section divider */
+.past-matches-divider {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.past-matches-divider::before,
+.past-matches-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.past-matches-divider span {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
 /* =============================================
@@ -972,3 +1007,319 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+
+/* =============================================
+   Hero CTA Buttons (Calendar Subscription)
+   ============================================= */
+.hero-cta-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.btn-hero-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+    color: hsl(220, 25%, 8%);
+    border: none;
+    padding: 0.85rem 1.75rem;
+    border-radius: 14px;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 6px 20px hsla(45, 85%, 58%, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-hero-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px hsla(45, 85%, 58%, 0.5);
+}
+
+.btn-hero-secondary {
+    background: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 0.85rem 1.75rem;
+    border-radius: 14px;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-hero-secondary:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* =============================================
+   Team Calendar Subscription Panel
+   ============================================= */
+.team-cal-panel {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    padding: 1.5rem 2rem;
+    background: var(--bg-card);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    display: none;
+    animation: panel-slide-in 0.3s ease;
+}
+
+.team-cal-panel.open {
+    display: block;
+}
+
+@keyframes panel-slide-in {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.team-cal-panel h3 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.team-cal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-height: 220px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+
+.team-cal-btn {
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 0.45rem 0.85rem;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+
+.team-cal-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: hsla(45, 85%, 58%, 0.08);
+    transform: translateY(-1px);
+}
+
+/* =============================================
+   Share Modal
+   ============================================= */
+.share-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.share-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.share-modal {
+    background: var(--bg-card);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    padding: 2rem;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+
+.share-modal-overlay.open .share-modal {
+    transform: scale(1) translateY(0);
+}
+
+.share-modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.share-modal-close:hover {
+    color: var(--text-main);
+    border-color: var(--text-muted);
+}
+
+.share-modal-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    padding-right: 2.5rem;
+}
+
+/* Canvas Card Preview */
+.share-canvas-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1.25rem;
+    background: hsl(220, 25%, 8%);
+    line-height: 0;
+}
+
+.share-canvas-wrapper canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+}
+
+/* Share Action Buttons */
+.share-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+}
+
+.share-action-btn {
+    border: 1px solid var(--border-color);
+    background: var(--bg-main);
+    color: var(--text-main);
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.share-action-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+    color: var(--primary);
+    background: hsla(45, 85%, 58%, 0.06);
+}
+
+.share-action-btn.twitter:hover {
+    border-color: #1DA1F2;
+    color: #1DA1F2;
+    background: rgba(29, 161, 242, 0.06);
+}
+
+.share-action-btn.copy-img:hover {
+    border-color: var(--secondary);
+    color: var(--secondary);
+    background: hsla(150, 75%, 42%, 0.06);
+}
+
+.share-action-btn.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Updated match card share button */
+.share-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 0.4rem 0.75rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all 0.2s ease;
+}
+
+.share-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: hsla(45, 85%, 58%, 0.05);
+}
+
+/* =============================================
+   Responsive for new components
+   ============================================= */
+@media (max-width: 768px) {
+    .share-modal {
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+
+    .share-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .share-action-btn.full-width {
+        grid-column: 1;
+    }
+
+    .team-cal-panel {
+        padding: 1.25rem;
+    }
+
+    .hero-cta-row {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+

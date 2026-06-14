@@ -438,47 +438,145 @@ function formatMatchTime(utcString, timezone, lang) {
     return { dateStr, timeStr, suffix };
 }
 
-// Generate and Download ICS File
-function downloadICS(match, index) {
+// =============================================
+// ICS Helpers
+// =============================================
+const formatICSDate = (date) => date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+
+function buildVEVENT(match, index) {
     const startDate = new Date(match.time_utc);
-    if (isNaN(startDate.getTime())) return;
-    
-    // Duration: 2 hours (typical match duration)
+    if (isNaN(startDate.getTime())) return null;
     const endDate = new Date(startDate.getTime() + 2 * 60 * 60 * 1000);
-    
-    const formatICSDate = (date) => {
-        return date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
-    };
+    const alarmDate = new Date(startDate.getTime() - 30 * 60 * 1000);
 
-    const startStr = formatICSDate(startDate);
-    const endStr = formatICSDate(endDate);
-    const summary = `${getFlag(match.team1)} ${match.team1} vs ${match.team2} ${getFlag(match.team2)} - World Cup 2026`;
-    const description = `FIFA World Cup 2026\\n${match.group}\\nVenue: ${match.venue}\\nConverted automatically to your timezone by WC2026Time.com`;
-    const location = match.venue;
+    const t1 = match.team1.replace(/[^\w\s]/g, "");
+    const t2 = match.team2.replace(/[^\w\s]/g, "");
+    const summary = `${t1} vs ${t2} - FIFA World Cup 2026`;
+    const description = `FIFA World Cup 2026\\n${match.group}\\nVenue: ${match.venue}\\nConverted to your timezone by kickofftime.live`;
 
-    const icsContent = [
-        "BEGIN:VCALENDAR",
-        "VERSION:2.0",
-        "PRODID:-//WC2026Time//NONSGML Calendar Converter//EN",
+    return [
         "BEGIN:VEVENT",
-        `UID:match-${index}-2026@worldcup2026time.com`,
+        `UID:match-${index}-2026@kickofftime.live`,
         `DTSTAMP:${formatICSDate(new Date())}`,
-        `DTSTART:${startStr}`,
-        `DTEND:${endStr}`,
+        `DTSTART:${formatICSDate(startDate)}`,
+        `DTEND:${formatICSDate(endDate)}`,
         `SUMMARY:${summary}`,
         `DESCRIPTION:${description}`,
-        `LOCATION:${location}`,
-        "END:VEVENT",
+        `LOCATION:${match.venue}`,
+        // 30-minute reminder alarm
+        "BEGIN:VALARM",
+        "TRIGGER:-PT30M",
+        "ACTION:DISPLAY",
+        `DESCRIPTION:⏱ Kickoff in 30 min: ${t1} vs ${t2}`,
+        "END:VALARM",
+        "END:VEVENT"
+    ].join("\r\n");
+}
+
+function buildICSBlob(events) {
+    const content = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//KickoffTime//NONSGML WC2026//EN",
+        "X-WR-CALNAME:FIFA World Cup 2026 - KickoffTime",
+        "X-WR-TIMEZONE:UTC",
+        ...events,
         "END:VCALENDAR"
     ].join("\r\n");
+    return new Blob([content], { type: "text/calendar;charset=utf-8" });
+}
 
-    const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+function triggerDownload(blob, filename) {
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `match-${index+1}_${match.team1.replace(/\s+/g, '_')}_vs_${match.team2.replace(/\s+/g, '_')}.ics`;
+    link.download = filename;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+}
+
+// Single match ICS download
+function downloadICS(match, index) {
+    const vevent = buildVEVENT(match, index);
+    if (!vevent) return;
+    const blob = buildICSBlob([vevent]);
+    const fn = `match-${index+1}_${match.team1.replace(/\s+/g, '_')}_vs_${match.team2.replace(/\s+/g, '_')}.ics`;
+    triggerDownload(blob, fn);
+    showToast("📅 Calendar event downloaded!");
+}
+
+// Download ALL 104 matches in one ICS
+function downloadAllICS() {
+    const events = matches
+        .map((m, i) => buildVEVENT(m, i))
+        .filter(Boolean);
+    const blob = buildICSBlob(events);
+    triggerDownload(blob, "FIFA_World_Cup_2026_All_Matches_KickoffTime.ics");
+    showToast(`📅 All ${events.length} matches downloaded!`);
+}
+window.downloadAllICS = downloadAllICS;
+
+// Download a specific team's matches
+function downloadTeamICS(teamName) {
+    const teamMatches = matches
+        .map((m, i) => ({ m, i }))
+        .filter(({ m }) => m.team1 === teamName || m.team2 === teamName);
+    if (!teamMatches.length) { showToast("No matches found for this team."); return; }
+    const events = teamMatches.map(({ m, i }) => buildVEVENT(m, i)).filter(Boolean);
+    const blob = buildICSBlob(events);
+    triggerDownload(blob, `WC2026_${teamName.replace(/\s+/g, '_')}_Schedule_KickoffTime.ics`);
+    showToast(`📅 ${teamName}'s ${events.length} match(es) downloaded!`);
+}
+window.downloadTeamICS = downloadTeamICS;
+
+// Toggle team calendar panel
+function toggleTeamCalPanel() {
+    const panel = document.getElementById("teamCalPanel");
+    if (!panel) return;
+    if (panel.classList.contains("open")) {
+        panel.classList.remove("open");
+    } else {
+        buildTeamCalPanel();
+        panel.classList.add("open");
+    }
+}
+window.toggleTeamCalPanel = toggleTeamCalPanel;
+
+function buildTeamCalPanel() {
+    const grid = document.getElementById("teamCalGrid");
+    if (!grid || grid.children.length > 0) return; // already built
+    // Collect all unique real team names
+    const teamSet = new Set();
+    matches.forEach(m => {
+        if (m.team1 && !m.team1.match(/^[1-4W]/)) teamSet.add(m.team1);
+        if (m.team2 && !m.team2.match(/^[1-4W]/)) teamSet.add(m.team2);
+    });
+    const sorted = Array.from(teamSet).sort();
+    sorted.forEach(team => {
+        const btn = document.createElement("button");
+        btn.className = "team-cal-btn";
+        btn.innerHTML = `${getFlag(team)} ${team}`;
+        btn.onclick = () => downloadTeamICS(team);
+        grid.appendChild(btn);
+    });
+}
+
+// =============================================
+// Helper: Is a match finished?
+// Priority: API status → time-based fallback
+// A match is considered finished if:
+//   1. API explicitly says FINISHED, OR
+//   2. kickoff time + 115 min has already passed (and it's not LIVE)
+// =============================================
+function matchIsFinished(match, live) {
+    if (live?.status === "FINISHED") return true;
+    const isLive = live?.status === "IN_PLAY" || live?.status === "PAUSED";
+    if (isLive) return false;
+    // Time-based fallback: 115 minutes after kickoff
+    const kickoff = new Date(match.time_utc);
+    if (isNaN(kickoff.getTime())) return false;
+    return Date.now() > kickoff.getTime() + 115 * 60 * 1000;
 }
 
 // Render Matches
@@ -515,9 +613,43 @@ function renderMatches() {
         return true;
     });
 
+    // Sort: LIVE first, then upcoming (chronological), then finished
+    filtered.sort((a, b) => {
+        const idxA = matches.indexOf(a);
+        const idxB = matches.indexOf(b);
+        const liveA = liveMatchData[idxA];
+        const liveB = liveMatchData[idxB];
+        const isFinishedA = matchIsFinished(a, liveA);
+        const isFinishedB = matchIsFinished(b, liveB);
+        const isLiveA = liveA?.status === "IN_PLAY" || liveA?.status === "PAUSED";
+        const isLiveB = liveB?.status === "IN_PLAY" || liveB?.status === "PAUSED";
+
+        // LIVE → top
+        if (isLiveA && !isLiveB) return -1;
+        if (!isLiveA && isLiveB) return 1;
+        // Finished → bottom
+        if (isFinishedA && !isFinishedB) return 1;
+        if (!isFinishedA && isFinishedB) return -1;
+        // Otherwise keep original order (by time)
+        return new Date(a.time_utc) - new Date(b.time_utc);
+    });
+
+    // Count upcoming vs finished for stats
+    const finishedCount = filtered.filter((m) => {
+        const i = matches.indexOf(m);
+        return matchIsFinished(m, liveMatchData[i]);
+    }).length;
+    const upcomingCount = filtered.length - finishedCount;
+
     // Update stats count
     const statsLabel = document.getElementById("statsLabel");
-    statsLabel.textContent = t.statsLabel.replace("{count}", filtered.length).replace("{total}", matches.length);
+    let statsText = t.statsLabel.replace("{count}", filtered.length).replace("{total}", matches.length);
+    if (finishedCount > 0 && upcomingCount > 0) {
+        statsText += ` · ${upcomingCount} upcoming · ${finishedCount} finished`;
+    } else if (finishedCount > 0) {
+        statsText += ` · ${finishedCount} finished`;
+    }
+    statsLabel.textContent = statsText;
 
     if (filtered.length === 0) {
         grid.innerHTML = `
@@ -529,6 +661,8 @@ function renderMatches() {
         return;
     }
 
+    let pastDividerInserted = false;
+
     filtered.forEach((match, idx) => {
         const originalIndex = matches.indexOf(match);
         const live = liveMatchData[originalIndex];
@@ -537,8 +671,17 @@ function renderMatches() {
         const isKnockout = match.group.includes("Round") || match.group.includes("Quarter") || match.group.includes("Semi") || match.group.includes("Final") || match.group.includes("Third");
         const isHostNation = ["USA","Mexico","Canada"].includes(match.team1) || ["USA","Mexico","Canada"].includes(match.team2);
         const isLive = live?.status === "IN_PLAY" || live?.status === "PAUSED";
-        const isFinished = live?.status === "FINISHED";
+        const isFinished = matchIsFinished(match, live);
         const isImportant = isKnockout || isHostNation || isLive;
+
+        // Insert past-matches divider before the first finished match
+        if (isFinished && !pastDividerInserted) {
+            pastDividerInserted = true;
+            const divider = document.createElement("div");
+            divider.className = "past-matches-divider";
+            divider.innerHTML = `<span>✅ Past Matches</span>`;
+            grid.appendChild(divider);
+        }
 
         let displayGroup = match.group;
         if (currentLang === "es") {
@@ -568,11 +711,6 @@ function renderMatches() {
 
         const card = document.createElement("div");
         card.className = `match-card ${isImportant ? 'important' : ''} ${isLive ? 'is-live' : ''} ${isFinished ? 'is-finished' : ''}`;
-
-        // Create pre-filled share text for Twitter/X
-        const shareText = encodeURIComponent(`I just converted the ${team1Display} vs ${team2Display} match to my local time (${timeStr}). Check your local World Cup kickoff time here:`);
-        const shareUrl = encodeURIComponent("https://kickofftime.live/");
-        const twitterLink = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
 
         card.innerHTML = `
             <div class="match-header">
@@ -604,9 +742,9 @@ function renderMatches() {
                     <button class="add-calendar-btn" onclick="triggerICS(${originalIndex})">
                         📅 ${t.addToCalendar}
                     </button>
-                    <a href="${twitterLink}" target="_blank" class="share-btn">
-                        🔗 Share
-                    </a>
+                    <button class="share-btn" onclick="openShareModal(${originalIndex})">
+                        🎨 Share
+                    </button>
                 </div>
             </div>
         `;
@@ -618,6 +756,227 @@ function renderMatches() {
 window.triggerICS = function(originalIndex) {
     downloadICS(matches[originalIndex], originalIndex);
 };
+
+// =============================================
+// Share Modal + Canvas Card System
+// =============================================
+let currentShareIndex = null;
+
+function openShareModal(matchIndex) {
+    currentShareIndex = matchIndex;
+    const match = matches[matchIndex];
+    const live = liveMatchData[matchIndex];
+    const team1 = live?.homeTeam || parseKnockoutCode(match.team1);
+    const team2 = live?.awayTeam || parseKnockoutCode(match.team2);
+    const { dateStr, timeStr, suffix } = formatMatchTime(match.time_utc, currentTimezone, currentLang);
+
+    // Update modal title
+    document.getElementById("shareModalTitle").textContent = `🎨 Share: ${team1} vs ${team2}`;
+
+    // Update Twitter link
+    const tweetText = encodeURIComponent(
+        `🏆 ${team1} vs ${team2} — World Cup 2026\n` +
+        `⏰ Kickoff: ${timeStr} ${suffix} (${dateStr})\n` +
+        `Check your local time → kickofftime.live`
+    );
+    document.getElementById("btnShareTwitter").href =
+        `https://twitter.com/intent/tweet?text=${tweetText}`;
+
+    // Store share text for copy
+    document.getElementById("btnCopyText").dataset.text =
+        `🏆 ${team1} vs ${team2} — FIFA World Cup 2026\n` +
+        `⏰ My local kickoff: ${timeStr} ${suffix} (${dateStr})\n` +
+        `📅 ${match.venue}\n` +
+        `🌐 See your local time → https://kickofftime.live`;
+
+    // Render Canvas card
+    renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match);
+
+    // Open overlay
+    document.getElementById("shareModalOverlay").classList.add("open");
+    document.body.style.overflow = "hidden";
+}
+window.openShareModal = openShareModal;
+
+function closeShareModal(event) {
+    if (event && event.target !== document.getElementById("shareModalOverlay")) return;
+    document.getElementById("shareModalOverlay").classList.remove("open");
+    document.body.style.overflow = "";
+}
+window.closeShareModal = closeShareModal;
+
+// Keyboard ESC to close
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeShareModal(null);
+});
+
+// ---- Canvas Card Renderer ----
+function renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match) {
+    const canvas = document.getElementById("shareCanvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const W = 800, H = 420;
+    canvas.width = W;
+    canvas.height = H;
+
+    // Background
+    const bgGrad = ctx.createLinearGradient(0, 0, W, H);
+    bgGrad.addColorStop(0, "#0d1117");
+    bgGrad.addColorStop(0.5, "#111827");
+    bgGrad.addColorStop(1, "#0d1117");
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    // Gold top border stripe
+    const goldGrad = ctx.createLinearGradient(0, 0, W, 0);
+    goldGrad.addColorStop(0, "hsl(45,85%,58%)");
+    goldGrad.addColorStop(0.5, "hsl(150,75%,42%)");
+    goldGrad.addColorStop(1, "hsl(45,85%,58%)");
+    ctx.fillStyle = goldGrad;
+    ctx.fillRect(0, 0, W, 5);
+
+    // Subtle glow blob top-left
+    const glowGrad = ctx.createRadialGradient(200, 150, 0, 200, 150, 350);
+    glowGrad.addColorStop(0, "hsla(45,85%,58%,0.07)");
+    glowGrad.addColorStop(1, "transparent");
+    ctx.fillStyle = glowGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    // --- Trophy icon area ---
+    ctx.font = "52px serif";
+    ctx.textAlign = "center";
+    ctx.fillText("🏆", W / 2, 72);
+
+    // --- VS Teams line ---
+    ctx.font = "bold 38px 'Outfit', 'Inter', sans-serif";
+    ctx.fillStyle = "#f0f4ff";
+    ctx.textAlign = "center";
+    const vsText = `${team1}  vs  ${team2}`;
+    ctx.fillText(vsText, W / 2, 140);
+
+    // Gold underline
+    ctx.strokeStyle = "hsl(45,85%,58%)";
+    ctx.lineWidth = 2;
+    const textWidth = Math.min(ctx.measureText(vsText).width + 40, W - 80);
+    ctx.beginPath();
+    ctx.moveTo((W - textWidth) / 2, 152);
+    ctx.lineTo((W + textWidth) / 2, 152);
+    ctx.stroke();
+
+    // --- Match Stage / Group ---
+    ctx.font = "500 15px 'Inter', sans-serif";
+    ctx.fillStyle = "hsl(45,85%,58%)";
+    ctx.textAlign = "center";
+    ctx.fillText(`FIFA WORLD CUP 2026 · ${match.group.toUpperCase()}`, W / 2, 185);
+
+    // --- Time block ---
+    // Background pill
+    const pillW = 340, pillH = 80;
+    const pillX = (W - pillW) / 2, pillY = 205;
+    ctx.fillStyle = "hsla(45,85%,58%,0.1)";
+    roundRect(ctx, pillX, pillY, pillW, pillH, 16);
+    ctx.fill();
+    ctx.strokeStyle = "hsla(45,85%,58%,0.25)";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Time text
+    ctx.font = "bold 42px 'Outfit', 'Inter', sans-serif";
+    ctx.fillStyle = "#ffffff";
+    ctx.textAlign = "center";
+    ctx.fillText(`${timeStr} ${suffix}`, W / 2, pillY + 50);
+
+    // --- Date & Venue ---
+    ctx.font = "500 16px 'Inter', sans-serif";
+    ctx.fillStyle = "hsla(220,20%,96%,0.65)";
+    ctx.textAlign = "center";
+    ctx.fillText(dateStr, W / 2, 312);
+
+    ctx.font = "14px 'Inter', sans-serif";
+    ctx.fillStyle = "hsla(220,20%,96%,0.45)";
+    ctx.fillText(`📍 ${match.venue}`, W / 2, 338);
+
+    // --- Timezone label ---
+    ctx.font = "13px 'Inter', sans-serif";
+    ctx.fillStyle = "hsla(45,85%,58%,0.8)";
+    ctx.fillText(`Your time: ${currentTimezone.replace(/_/g, " ")}`, W / 2, 364);
+
+    // --- Bottom branding bar ---
+    ctx.fillStyle = "hsla(220,20%,96%,0.06)";
+    ctx.fillRect(0, H - 48, W, 48);
+
+    ctx.font = "bold 15px 'Outfit', 'Inter', sans-serif";
+    ctx.fillStyle = "hsl(45,85%,58%)";
+    ctx.textAlign = "left";
+    ctx.fillText("⏱ KICKOFF TIME", 28, H - 17);
+
+    ctx.font = "13px 'Inter', sans-serif";
+    ctx.fillStyle = "hsla(220,20%,96%,0.45)";
+    ctx.textAlign = "right";
+    ctx.fillText("kickofftime.live", W - 28, H - 17);
+}
+
+// Utility: rounded rectangle path
+function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+}
+
+// Download the canvas as PNG
+function downloadShareImage() {
+    const canvas = document.getElementById("shareCanvas");
+    const match = matches[currentShareIndex];
+    const link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    const t1 = match.team1.replace(/\s+/g, "_");
+    const t2 = match.team2.replace(/\s+/g, "_");
+    link.download = `WC2026_${t1}_vs_${t2}_KickoffTime.png`;
+    link.click();
+    showToast("🖼️ Image saved!");
+}
+window.downloadShareImage = downloadShareImage;
+
+// Copy canvas image to clipboard
+async function copyShareImage() {
+    const canvas = document.getElementById("shareCanvas");
+    try {
+        canvas.toBlob(async (blob) => {
+            try {
+                await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+                showToast("🖼️ Image copied to clipboard!");
+            } catch {
+                // Fallback: download instead
+                downloadShareImage();
+                showToast("📥 Copied failed — image downloaded instead.");
+            }
+        }, "image/png");
+    } catch {
+        downloadShareImage();
+    }
+}
+window.copyShareImage = copyShareImage;
+
+// Copy share text to clipboard
+async function copyShareText() {
+    const btn = document.getElementById("btnCopyText");
+    const text = btn.dataset.text || "";
+    try {
+        await navigator.clipboard.writeText(text);
+        showToast("📋 Match info copied!");
+    } catch {
+        showToast("Could not copy text.");
+    }
+}
+window.copyShareText = copyShareText;
 
 // Update static language content on page
 function updateLanguage() {
