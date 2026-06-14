@@ -390,9 +390,7 @@ const i18n = {
         matchEnded: "Match ended",
         shareTeamTitle: "Share Team Matches",
         optWc: "🏆 World Cup 2026",
-        optUcl: "⚽ UEFA Champions League (Soon)",
-        optNba: "🏀 NBA Finals (Soon)",
-        optLa: "🏅 LA 2028 Olympics (Soon)",
+        optPl: "⚽ Premier League 26/27 (Soon)",
         q1: "Will the matches automatically adjust to my local time?",
         a1: "Yes! The site detects your browser's local timezone automatically and translates every match kickoff to your exact local time.",
         q2: "Can I manually select a different timezone?",
@@ -459,9 +457,7 @@ const i18n = {
         matchEnded: "Partido finalizado",
         shareTeamTitle: "Compartir Partidos del Equipo",
         optWc: "🏆 Copa Mundial 2026",
-        optUcl: "⚽ UEFA Champions League (Pronto)",
-        optNba: "🏀 Finales de la NBA (Pronto)",
-        optLa: "🏅 Juegos Olímpicos LA 2028 (Pronto)",
+        optPl: "⚽ Premier League 26/27 (Pronto)",
         q1: "¿Se ajustarán automáticamente los partidos a mi hora local?",
         a1: "¡Sí! El sitio detecta automáticamente la zona horaria de tu navegador y traduce cada inicio de partido a tu hora local exacta.",
         q2: "¿Puedo seleccionar manualmente una zona horaria diferente?",
@@ -527,9 +523,7 @@ const i18n = {
         matchEnded: "Partida encerrada",
         shareTeamTitle: "Compartilhar Partidas da Seleção",
         optWc: "🏆 Copa do Mundo 2026",
-        optUcl: "⚽ UEFA Champions League",
-        optNba: "🏀 Finais da NBA",
-        optLa: "🏅 Olimpíadas LA 2028",
+        optPl: "⚽ Premier League 26/27 (Em Breve)",
         q1: "As partidas se ajustarão automaticamente?",
         a1: "Sim! O site detecta automaticamente seu fuso horário.",
         q2: "Posso selecionar manualmente?",
@@ -595,9 +589,7 @@ const i18n = {
         matchEnded: "Match terminé",
         shareTeamTitle: "Partager les Matchs de l'Équipe",
         optWc: "🏆 Coupe du Monde 2026",
-        optUcl: "⚽ UEFA Champions League",
-        optNba: "🏀 Finales NBA",
-        optLa: "🏅 JO LA 2028",
+        optPl: "⚽ Premier League 26/27 (Bientôt)",
         q1: "Les matchs s'ajustent-ils ?",
         a1: "Oui, automatiquement.",
         q2: "Puis-je changer de fuseau ?",
@@ -663,9 +655,7 @@ const i18n = {
         matchEnded: "انتهت المباراة",
         shareTeamTitle: "مشاركة مباريات الفريق",
         optWc: "🏆 كأس العالم 2026",
-        optUcl: "⚽ دوري أبطال أوروبا",
-        optNba: "🏀 نهائيات الدوري الاميركي للمحترفين",
-        optLa: "🏅 أولمبياد لوس أنجلوس 2028",
+        optPl: "⚽ الدوري الإنجليزي الممتاز 26/27 (قريباً)",
         q1: "هل تتكيف المباريات تلقائياً؟",
         a1: "نعم!",
         q2: "هل يمكنني اختيار منطقة مختلفة؟",
@@ -731,9 +721,7 @@ const i18n = {
         matchEnded: "比赛已结束",
         shareTeamTitle: "分享球队赛程",
         optWc: "🏆 2026 世界杯",
-        optUcl: "⚽ 欧冠联赛 (即将推出)",
-        optNba: "🏀 NBA 总决赛 (即将推出)",
-        optLa: "🏅 2028 洛杉矶奥运会 (即将推出)",
+        optPl: "⚽ 26/27赛季英超 (敬请期待)",
         q1: "时间会自动转换为我的本地时间吗？",
         a1: "是的！网站会自动检测您浏览器的时区。",
         q2: "我可以手动切换时区吗？",
@@ -1897,9 +1885,7 @@ function updateLanguage() {
     const tournSelect = document.getElementById("tournamentSelect");
     if (tournSelect && tournSelect.options.length > 0) {
         tournSelect.options[0].text = t.optWc;
-        tournSelect.options[1].text = t.optUcl;
-        tournSelect.options[2].text = t.optNba;
-        tournSelect.options[3].text = t.optLa;
+        if(tournSelect.options.length > 1) tournSelect.options[1].text = t.optPl;
     }
 
     // Footer
