@@ -1638,7 +1638,9 @@ function downloadShareImage() {
         link.download = "WC2026_Schedule.png";
     }
     
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
     showToast("🖼️ Image saved!");
 }
 window.downloadShareImage = downloadShareImage;
