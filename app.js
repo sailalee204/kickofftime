@@ -1092,11 +1092,11 @@ function buildVEVENT(match, index) {
     const t1 = match.team1.replace(/[^\w\s]/g, "");
     const t2 = match.team2.replace(/[^\w\s]/g, "");
     const summary = `${t1} vs ${t2} - FIFA World Cup 2026`;
-    const description = `FIFA World Cup 2026\\n${match.group}\\nVenue: ${getLocString(match.venue)}\\nConverted to your timezone by kickofftime.live`;
+    const description = `FIFA World Cup 2026\\n${match.group}\\nVenue: ${getLocString(match.venue)}\\nConverted to your timezone by kickofftracker.com`;
 
     return [
         "BEGIN:VEVENT",
-        `UID:match-${index}-2026@kickofftime.live`,
+        `UID:match-${index}-2026@kickofftracker.com`,
         `DTSTAMP:${formatICSDate(new Date())}`,
         `DTSTART:${formatICSDate(startDate)}`,
         `DTEND:${formatICSDate(endDate)}`,
@@ -1449,7 +1449,7 @@ function openShareModal(matchIndex) {
     const tweetText = encodeURIComponent(
         `🏆 ${team1} vs ${team2} — ${shareI18n[currentLang].wc2026}\n` +
         `⏰ ${shareI18n[currentLang].kickoff}: ${timeStr} ${suffix} (${dateStr})\n` +
-        `${shareI18n[currentLang].checkTime} → kickofftime.live`
+        `${shareI18n[currentLang].checkTime} → kickofftracker.com`
     );
     document.getElementById("btnShareTwitter").href =
         `https://twitter.com/intent/tweet?text=${tweetText}`;
@@ -1459,7 +1459,7 @@ function openShareModal(matchIndex) {
         `🏆 ${team1} vs ${team2} — ${shareI18n[currentLang].wc2026}\n` +
         `⏰ ${shareI18n[currentLang].myKickoff}: ${timeStr} ${suffix} (${dateStr})\n` +
         `📅 ${getLocString(match.venue)}\n` +
-        `🌐 ${shareI18n[currentLang].seeAllMatches} → https://kickofftime.live`;
+        `🌐 ${shareI18n[currentLang].seeAllMatches} → https://kickofftracker.com`;
 
     // Render Canvas card
     renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match);
@@ -1585,7 +1585,7 @@ function renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match) {
     ctx.font = "13px 'Inter', sans-serif";
     ctx.fillStyle = "hsla(220,20%,96%,0.45)";
     ctx.textAlign = "right";
-    ctx.fillText("kickofftime.live", W - 28, H - 17);
+    ctx.fillText("kickofftracker.com", W - 28, H - 17);
 }
 
 // Utility: rounded rectangle path
@@ -1673,13 +1673,13 @@ function openTeamShareModal(teamName) {
     // Update Twitter link
     const tweetText = encodeURIComponent(
         `🏆 ${shareI18n[currentLang].followTeam.replace('{team}', teamDisplay)}\n` +
-        `${shareI18n[currentLang].fullSchedule} → kickofftime.live`
+        `${shareI18n[currentLang].fullSchedule} → kickofftracker.com`
     );
     document.getElementById("btnShareTwitter").href = `https://twitter.com/intent/tweet?text=${tweetText}`;
     
     document.getElementById("btnCopyText").dataset.text =
         `🏆 ${teamDisplay} — ${shareI18n[currentLang].wc2026} ${shareI18n[currentLang].schedule}\n` +
-        `🌐 ${shareI18n[currentLang].seeAllMatches} → https://kickofftime.live`;
+        `🌐 ${shareI18n[currentLang].seeAllMatches} → https://kickofftracker.com`;
         
     renderTeamShareCanvas(teamName);
     document.getElementById("shareModalOverlay").classList.add("open");
@@ -1785,7 +1785,7 @@ function renderTeamShareCanvas(teamName) {
     ctx.font = "13px 'Inter', sans-serif";
     ctx.fillStyle = "hsla(220,20%,96%,0.45)";
     ctx.textAlign = "right";
-    ctx.fillText("kickofftime.live", W - 28, H - 17);
+    ctx.fillText("kickofftracker.com", W - 28, H - 17);
 }
 
 // ---- Copy Share Deep Link ----

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kickofftime.live/sitemap.xml
+Sitemap: https://kickofftracker.com/sitemap.xml
