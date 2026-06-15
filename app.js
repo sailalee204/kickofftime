@@ -1446,10 +1446,80 @@ function renderMatches() {
                     <button class="share-btn" onclick="openShareModal(${originalIndex})">
                         ${t.btnShare}
                     </button>
+            </div>
+            ${(!isFinished && !isLive) ? `
+            <!-- INTERACTIVE PANEL -->
+            <div class="interactive-panel-toggle" onclick="toggleInteractivePanel(${originalIndex})">
+                🔥 参与赛前竞猜 / Predict Score ▼
+            </div>
+            <div class="interactive-panel" id="panel-${originalIndex}">
+                <div class="panel-content-inner">
+                    <!-- Predictor UI -->
+                    <div class="predict-section" style="border-top: none; padding-top: 5px;">
+                        <div class="predict-title">Predict Score (赢取积分)</div>
+                        <div class="predict-inputs" id="predict-inputs-${originalIndex}">
+                            <input type="number" id="pred1-${originalIndex}" min="0" max="20" placeholder="0">
+                            <span>-</span>
+                            <input type="number" id="pred2-${originalIndex}" min="0" max="20" placeholder="0">
+                            <button class="save-pred-btn" onclick="savePrediction(${originalIndex}, '${team1Raw}', '${team2Raw}')">Save</button>
+                        </div>
+                        <div id="pred-saved-${originalIndex}" class="pred-saved-msg" style="display: none;">
+                            ✅ Prediction saved!
+                        </div>
+                    </div>
                 </div>
             </div>
+            ` : ''}
         `;
         grid.appendChild(card);
+    });
+
+    // Initialize Interactive Panels
+    setTimeout(initInteractivePanels, 50);
+}
+
+// =============================================
+// Interactive Panel Logic
+// =============================================
+
+function toggleInteractivePanel(index) {
+    const panel = document.getElementById(`panel-${index}`);
+    if (panel) {
+        panel.classList.toggle('expanded');
+    }
+}
+
+function savePrediction(index, t1, t2) {
+    const s1 = document.getElementById(`pred1-${index}`).value;
+    const s2 = document.getElementById(`pred2-${index}`).value;
+    if (s1 === "" || s2 === "") return;
+    
+    const matchKey = `pred_${t1}_${t2}`;
+    localStorage.setItem(matchKey, JSON.stringify({ s1, s2 }));
+    
+    document.getElementById(`pred-saved-${index}`).style.display = 'block';
+    setTimeout(() => {
+        const msg = document.getElementById(`pred-saved-${index}`);
+        if(msg) msg.style.display = 'none';
+    }, 2000);
+}
+
+function initInteractivePanels() {
+    matches.forEach((match, index) => {
+        const t1 = match.team1; // simplify for mock
+        const t2 = match.team2;
+        
+        // Restore Predictions
+        const predStr = localStorage.getItem(`pred_${t1}_${t2}`);
+        if (predStr) {
+            try {
+                const p = JSON.parse(predStr);
+                const i1 = document.getElementById(`pred1-${index}`);
+                const i2 = document.getElementById(`pred2-${index}`);
+                if (i1) i1.value = p.s1;
+                if (i2) i2.value = p.s2;
+            } catch(e){}
+        }
     });
 }
 
@@ -1595,16 +1665,35 @@ function renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match) {
     ctx.font = "500 16px 'Inter', sans-serif";
     ctx.fillStyle = "hsla(220,20%,96%,0.65)";
     ctx.textAlign = "center";
-    ctx.fillText(dateStr, W / 2, 312);
+    ctx.fillText(dateStr, W / 2, 298);
 
     ctx.font = "14px 'Inter', sans-serif";
     ctx.fillStyle = "hsla(220,20%,96%,0.45)";
-    ctx.fillText(`📍 ${getLocString(match.venue)}`, W / 2, 338);
+    ctx.fillText(`📍 ${getLocString(match.venue)}`, W / 2, 320);
+
+    // --- Fan Prediction ---
+    let extraText = "";
+    const team1Raw = parseKnockoutCode(match.team1);
+    const team2Raw = parseKnockoutCode(match.team2);
+    
+    const predStr = localStorage.getItem(`pred_${team1Raw}_${team2Raw}`);
+    if (predStr) {
+        try {
+            const p = JSON.parse(predStr);
+            extraText += `🎯 My Prediction: ${team1} ${p.s1} - ${p.s2} ${team2}`;
+        } catch(e){}
+    }
+    
+    if (extraText) {
+        ctx.font = "bold 15px 'Inter', sans-serif";
+        ctx.fillStyle = "#ff4757";
+        ctx.fillText(extraText, W / 2, 345);
+    }
 
     // --- Timezone label ---
     ctx.font = "13px 'Inter', sans-serif";
     ctx.fillStyle = "hsla(45,85%,58%,0.8)";
-    ctx.fillText(`${shareI18n[currentLang].yourTime}: ${currentTimezone.replace(/_/g, " ")}`, W / 2, 364);
+    ctx.fillText(`${shareI18n[currentLang].yourTime}: ${currentTimezone.replace(/_/g, " ")}`, W / 2, 365);
 
     // --- Bottom branding bar ---
     ctx.fillStyle = "hsla(220,20%,96%,0.06)";

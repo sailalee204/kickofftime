@@ -1327,3 +1327,138 @@ footer p {
     }
 }
 
+
+/* ========================================= */
+/* Fan Voting & Predictor Interactive Panel  */
+/* ========================================= */
+.interactive-panel-toggle {
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    transition: background 0.2s;
+    user-select: none;
+}
+.interactive-panel-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+.interactive-panel {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin-top: 5px;
+}
+.interactive-panel.expanded {
+    max-height: 250px;
+}
+.panel-content-inner {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Voting UI */
+.vote-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.vote-btn {
+    flex: 1;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+.vote-btn:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: var(--primary-color);
+}
+.vote-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.vote-bar-container {
+    display: flex;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #333;
+}
+.vote-bar {
+    height: 100%;
+    transition: width 1s ease-out;
+}
+.team1-bar { background: #ff4757; }
+.team2-bar { background: #1e90ff; }
+.vote-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.label-t1 { color: #ff4757; }
+.label-t2 { color: #1e90ff; }
+
+/* Predictor UI */
+.predict-section {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 15px;
+}
+.predict-title {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 8px;
+}
+.predict-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.predict-inputs input {
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.predict-inputs input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+.save-pred-btn {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 8px;
+    padding: 0 15px;
+    height: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.pred-saved-msg {
+    text-align: center;
+    color: #2ed573;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
