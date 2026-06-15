@@ -1242,6 +1242,7 @@ function renderMatches() {
     grid.innerHTML = "";
 
     const t = i18n[currentLang];
+    renderTimezoneOptions();
 
     // Filter Matches
     const filtered = matches.filter((match, idx) => {

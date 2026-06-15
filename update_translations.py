@@ -73,7 +73,7 @@ translations = {
   }
 }
 
-with open('e:\\kickofftime\\app.js', 'r', encoding='utf-8') as f:
+with open('app.js', 'r', encoding='utf-8') as f:
     c = f.read()
 
 # 1. Inject teamTranslations
@@ -103,7 +103,7 @@ new_badge = """        } else if (isFinished) {
 if old_badge in c:
     c = c.replace(old_badge, new_badge)
 
-with open('e:\\kickofftime\\app.js', 'w', encoding='utf-8') as f:
+with open('app.js', 'w', encoding='utf-8') as f:
     f.write(c)
 
 print("Injections successful.")
