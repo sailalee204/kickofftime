@@ -2154,8 +2154,22 @@ function renderTodaysBanner() {
     const section = document.getElementById("todaySection");
     if (!section) return;
     const now = new Date();
-    const todayUTC = now.toISOString().slice(0, 10);
-    const todayMatches = matches.filter(m => m.time_utc && m.time_utc.startsWith(todayUTC));
+    
+    // Get user's current local date in the selected timezone
+    const formatter = new Intl.DateTimeFormat("en-US", { 
+        timeZone: currentTimezone, 
+        year: 'numeric', 
+        month: 'numeric', 
+        day: 'numeric' 
+    });
+    const todayLocalStr = formatter.format(now);
+
+    const todayMatches = matches.filter(m => {
+        if (!m.time_utc) return false;
+        const matchDate = new Date(m.time_utc);
+        if (isNaN(matchDate.getTime())) return false;
+        return formatter.format(matchDate) === todayLocalStr;
+    });
     if (!todayMatches.length) { section.style.display = "none"; return; }
     const t = i18n[currentLang];
     section.style.display = "block";
