@@ -2072,6 +2072,7 @@ function renderTodaysBanner() {
 updateLanguage();
 renderMatches(); // Render immediately with static data
 fetchLiveData(); // Then fetch API data and re-render
+setInterval(fetchLiveData, 60000); // Auto-refresh live scores every 1 minute
 console.log("App loaded with local timezone:", currentTimezone);
 
 // =============================================
