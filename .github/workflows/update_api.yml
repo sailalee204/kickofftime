@@ -1,0 +1,31 @@
+name: Auto-update Live Match Data
+
+on:
+  schedule:
+    # Run every 15 minutes
+    - cron: '*/15 * * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch latest WC matches from API
+        run: |
+          echo "Fetching latest live scores..."
+          curl -s -H "X-Auth-Token: 32c68282e7e948139b35e1b2aff0f7de" https://api.football-data.org/v4/competitions/WC/matches -o wc_out.json
+          
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add wc_out.json
+          
+          # Only commit and push if there are changes
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update live match data [skip ci]" && git push)
