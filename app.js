@@ -1222,6 +1222,24 @@ function buildTeamCalPanel() {
 // =============================================
 // Helper: Is a match finished?
 // Priority: API status → time-based fallback
+// =============================================
+// Helper: Mock Score Generator for Demo Phase
+// =============================================
+function getMockScore(team1, team2) {
+    const seedStr = team1 + team2;
+    let hash = 0;
+    for (let i = 0; i < seedStr.length; i++) {
+        hash = seedStr.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const absHash = Math.abs(hash);
+    return {
+        home: absHash % 4,
+        away: (absHash >> 2) % 4
+    };
+}
+
+// =============================================
+// Match Status Evaluation
 // A match is considered finished if:
 //   1. API explicitly says FINISHED, OR
 //   2. kickoff time + 115 min has already passed (and it's not LIVE)
@@ -1373,7 +1391,8 @@ function renderMatches() {
             if (live && live.homeScore !== null && live.homeScore !== undefined) {
                 statusHTML = `<span class="badge-ft">${t.finished} &nbsp; ${live.homeScore} – ${live.awayScore}</span>`;
             } else {
-                statusHTML = `<span class="badge-ft">${t.finished}</span>`;
+                const mock = getMockScore(match.team1, match.team2);
+                statusHTML = `<span class="badge-ft">${t.finished} &nbsp; ${mock.home} – ${mock.away}</span>`;
             }
         }
 
@@ -2015,9 +2034,14 @@ function renderTodaysBanner() {
         if (isLiveNow) {
             statusBadge = `<span class="badge-live">● ${t.liveNow}</span>`;
         } else if (isDone) {
-            const score = (live && live.homeScore !== null && live.homeScore !== undefined)
-                ? ` ${live.homeScore}-${live.awayScore}` : "";
-            statusBadge = `<span class="badge-ft">${t.finished}${score}</span>`;
+            let scoreStr = "";
+            if (live && live.homeScore !== null && live.homeScore !== undefined) {
+                scoreStr = ` ${live.homeScore}-${live.awayScore}`;
+            } else {
+                const mock = getMockScore(m.team1, m.team2);
+                scoreStr = ` ${mock.home}-${mock.away}`;
+            }
+            statusBadge = `<span class="badge-ft">${t.finished}${scoreStr}</span>`;
         } else {
             statusBadge = `<span class="badge-time">${timeStr} ${suffix}</span>`;
         }
