@@ -841,9 +841,10 @@ const majorTimezones = [
 // App State
 let currentLang = localStorage.getItem("wc_lang") || (navigator.language.startsWith("es") ? "es" : "en");
 let currentTimezone = localStorage.getItem("wc_timezone") || Intl.DateTimeFormat().resolvedOptions().timeZone;
-let activeTab = "all"; // all, group, knockout
+let activeTab = window.INITIAL_TAB || "all"; // all, group, knockout
 let activeGroup = "all"; // all, A, B, C...
-let searchQuery = "";
+let searchQuery = window.INITIAL_SEARCH ? window.INITIAL_SEARCH.toLowerCase() : "";
+
 
 // Ensure current timezone is in the select list
 if (!majorTimezones.includes(currentTimezone)) {
@@ -985,8 +986,13 @@ if (subscribeForm) {
 }
 
 // Search & Filter Events
+let isStrictMode = !!window.INITIAL_SEARCH;
 const searchInput = document.getElementById("searchInput");
+if (window.INITIAL_SEARCH) {
+    searchInput.value = window.INITIAL_SEARCH + (window.INITIAL_SEARCH_2 ? ` vs ${window.INITIAL_SEARCH_2}` : "");
+}
 searchInput.addEventListener("input", (e) => {
+    isStrictMode = false;
     searchQuery = e.target.value.toLowerCase().trim();
     renderMatches();
 });
@@ -1234,7 +1240,7 @@ function getMockScore(team1, team2) {
     const absHash = Math.abs(hash);
     return {
         home: absHash % 4,
-        away: (absHash >> 2) % 4
+        away: Math.floor(absHash / 4) % 4
     };
 }
 
@@ -1279,10 +1285,18 @@ function renderMatches() {
         if (searchQuery) {
             const team1 = match.team1.toLowerCase();
             const team2 = match.team2.toLowerCase();
-            const venue = match.venue.toLowerCase();
-            const group = match.group.toLowerCase();
-            if (!team1.includes(searchQuery) && !team2.includes(searchQuery) && !venue.includes(searchQuery) && !group.includes(searchQuery)) {
-                return false;
+            
+            if (isStrictMode) {
+                const q1 = window.INITIAL_SEARCH.toLowerCase();
+                const q2 = window.INITIAL_SEARCH_2 ? window.INITIAL_SEARCH_2.toLowerCase() : null;
+                const match1 = team1.includes(q1) || team2.includes(q1);
+                const match2 = q2 ? (team1.includes(q2) || team2.includes(q2)) : true;
+                if (!(match1 && match2)) return false;
+            } else {
+                // Fuzzy search restricted to team names only
+                if (!team1.includes(searchQuery) && !team2.includes(searchQuery)) {
+                    return false;
+                }
             }
         }
 
@@ -1938,8 +1952,8 @@ async function fetchLiveData() {
             if (!res.ok) throw new Error(`API error ${res.status}`);
             data = await res.json();
         } catch (apiErr) {
-            console.warn("Live API failed (likely CORS). Falling back to local snapshot wc_out.json...");
-            const res2 = await fetch("./wc_out.json");
+            console.warn("Live API failed (likely CORS). Falling back to local snapshot /wc_out.json...");
+            const res2 = await fetch("/wc_out.json");
             data = await res2.json();
         }
 
