@@ -1478,7 +1478,7 @@ function renderMatches() {
                     </button>
                 </div>
             </div>
-            ${(!isFinished && !isLive) ? `
+            ${(!isFinished && !isLive && !isTeam1Placeholder && !isTeam2Placeholder) ? `
             <!-- INTERACTIVE PANEL -->
             <div class="interactive-panel-toggle" onclick="toggleInteractivePanel(${originalIndex})">
                 ${t.predictToggle}
