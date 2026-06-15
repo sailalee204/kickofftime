@@ -2,8 +2,8 @@ name: Auto-update Live Match Data
 
 on:
   schedule:
-    # Run every 15 minutes
-    - cron: '*/15 * * * *'
+    # Run every 5 minutes (GitHub's minimum allowed interval)
+    - cron: '*/5 * * * *'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 jobs:
