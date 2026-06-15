@@ -414,7 +414,12 @@ const i18n = {
         disclaimer: "Disclaimer: This website is an independent tool for fans and is not affiliated with, authorized, or endorsed by FIFA or the official World Cup organization. All product names, logos, and brands are property of their respective owners.",
         hostedIn: "Host Stadiums: USA, Canada, Mexico",
         groupStage: "Group Stage",
-        knockoutStage: "Knockouts"
+        knockoutStage: "Knockouts",
+        predictToggle: "🔥 Predict Score ▼",
+        predictTitle: "Predict Match Score",
+        btnSave: "Save",
+        predSaved: "✅ Prediction saved!",
+        myPrediction: "🎯 My Prediction"
     },
     es: {
         title: "Conversor de Horarios Mundial 2026",
@@ -481,7 +486,12 @@ const i18n = {
         disclaimer: "Descargo de responsabilidad: Este sitio web es una herramienta independiente para fanáticos y no está afiliado, autorizado ni respaldado por la FIFA ni la organización oficial del Mundial. Todos los nombres y logotipos son propiedad de sus respectivos dueños.",
         hostedIn: "Estadios Anfitriones: EE. UU., Canadá, México",
         groupStage: "Fase de Grupos",
-        knockoutStage: "Eliminatorias"
+        knockoutStage: "Eliminatorias",
+        predictToggle: "🔥 Predecir Resultado ▼",
+        predictTitle: "Predecir Resultado",
+        btnSave: "Guardar",
+        predSaved: "✅ ¡Predicción guardada!",
+        myPrediction: "🎯 Mi Predicción"
     },
     pt: {
         title: "Conversor de Fuso Horário da Copa do Mundo 2026",
@@ -547,7 +557,12 @@ const i18n = {
         disclaimer: "Isenção de responsabilidade: Ferramenta independente.",
         hostedIn: "Estádios: EUA, Canadá, México",
         groupStage: "Fase de Grupos",
-        knockoutStage: "Eliminatórias"
+        knockoutStage: "Eliminatórias",
+        predictToggle: "🔥 Prever Placar ▼",
+        predictTitle: "Prever Placar",
+        btnSave: "Salvar",
+        predSaved: "✅ Previsão salva!",
+        myPrediction: "🎯 Minha Previsão"
     },
     fr: {
         title: "Convertisseur de Fuseau Horaire Coupe du Monde 2026",
@@ -613,7 +628,12 @@ const i18n = {
         disclaimer: "Outil indépendant.",
         hostedIn: "Stades: USA, Canada, Mexique",
         groupStage: "Groupes",
-        knockoutStage: "Élimination Directe"
+        knockoutStage: "Élimination Directe",
+        predictToggle: "🔥 Prédire le Score ▼",
+        predictTitle: "Prédire le Score",
+        btnSave: "Enregistrer",
+        predSaved: "✅ Prédiction enregistrée !",
+        myPrediction: "🎯 Ma Prédiction"
     },
     ar: {
         title: "محول المنطقة الزمنية لكأس العالم 2026",
@@ -679,7 +699,12 @@ const i18n = {
         disclaimer: "أداة مستقلة.",
         hostedIn: "الملاعب: أمريكا، كندا، المكسيك",
         groupStage: "المجموعات",
-        knockoutStage: "خروج المغلوب"
+        knockoutStage: "خروج المغلوب",
+        predictToggle: "🔥 توقع النتيجة ▼",
+        predictTitle: "توقع نتيجة المباراة",
+        btnSave: "حفظ",
+        predSaved: "✅ تم حفظ التوقع!",
+        myPrediction: "🎯 توقعاتي"
     },
     zh: {
         title: "2026 世界杯时区转换器",
@@ -745,7 +770,12 @@ const i18n = {
         disclaimer: "免责声明：本网站是为球迷提供的独立工具，与 FIFA 或官方组织无关。",
         hostedIn: "主办国：美国、加拿大、墨西哥",
         groupStage: "小组赛",
-        knockoutStage: "淘汰赛"
+        knockoutStage: "淘汰赛",
+        predictToggle: "🔥 参与赛前竞猜 ▼",
+        predictTitle: "预测比赛比分",
+        btnSave: "保存",
+        predSaved: "✅ 预测已保存！",
+        myPrediction: "🎯 我的预测"
     }
 };
 
@@ -1451,21 +1481,21 @@ function renderMatches() {
             ${(!isFinished && !isLive) ? `
             <!-- INTERACTIVE PANEL -->
             <div class="interactive-panel-toggle" onclick="toggleInteractivePanel(${originalIndex})">
-                🔥 参与赛前竞猜 / Predict Score ▼
+                ${t.predictToggle}
             </div>
             <div class="interactive-panel" id="panel-${originalIndex}">
                 <div class="panel-content-inner">
                     <!-- Predictor UI -->
                     <div class="predict-section" style="border-top: none; padding-top: 5px;">
-                        <div class="predict-title">Predict Score (赢取积分)</div>
+                        <div class="predict-title">${t.predictTitle}</div>
                         <div class="predict-inputs" id="predict-inputs-${originalIndex}">
                             <input type="number" id="pred1-${originalIndex}" min="0" max="20" placeholder="0">
                             <span>-</span>
                             <input type="number" id="pred2-${originalIndex}" min="0" max="20" placeholder="0">
-                            <button class="save-pred-btn" onclick="savePrediction(${originalIndex}, '${team1Raw}', '${team2Raw}')">Save</button>
+                            <button class="save-pred-btn" onclick="savePrediction(${originalIndex}, '${team1Raw}', '${team2Raw}')">${t.btnSave}</button>
                         </div>
                         <div id="pred-saved-${originalIndex}" class="pred-saved-msg" style="display: none;">
-                            ✅ Prediction saved!
+                            ${t.predSaved}
                         </div>
                     </div>
                 </div>
@@ -1681,7 +1711,8 @@ function renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match) {
     if (predStr) {
         try {
             const p = JSON.parse(predStr);
-            extraText += `🎯 My Prediction: ${team1} ${p.s1} - ${p.s2} ${team2}`;
+            const myPredText = i18n[currentLang]?.myPrediction || "🎯 My Prediction";
+            extraText += `${myPredText}: ${team1} ${p.s1} - ${p.s2} ${team2}`;
         } catch(e){}
     }
     
