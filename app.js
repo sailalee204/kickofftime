@@ -1422,8 +1422,8 @@ function renderMatches() {
         
         let team1Display = team1Raw;
         let team2Display = team2Raw;
-        const isTeam1Placeholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(team1Raw);
-        const isTeam2Placeholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(team2Raw);
+        const isTeam1Placeholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(match.team1);
+        const isTeam2Placeholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(match.team2);
         if (!isTeam1Placeholder) team1Display = getTeamName(team1Raw);
         if (!isTeam2Placeholder) team2Display = getTeamName(team2Raw);
 
