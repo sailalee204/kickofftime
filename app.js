@@ -1446,6 +1446,7 @@ function renderMatches() {
                     <button class="share-btn" onclick="openShareModal(${originalIndex})">
                         ${t.btnShare}
                     </button>
+                </div>
             </div>
             ${(!isFinished && !isLive) ? `
             <!-- INTERACTIVE PANEL -->

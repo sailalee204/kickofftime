@@ -1442,11 +1442,11 @@ footer p {
 }
 .predict-inputs input:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: var(--primary);
 }
 .save-pred-btn {
-    background: var(--primary-color);
-    color: var(--bg-color);
+    background: var(--primary);
+    color: var(--bg-main);
     border: none;
     border-radius: 8px;
     padding: 0 15px;
@@ -1456,7 +1456,7 @@ footer p {
 }
 .pred-saved-msg {
     text-align: center;
-    color: #2ed573;
+    color: hsl(150, 75%, 42%);
     font-size: 0.9rem;
     margin-top: 10px;
     font-weight: bold;
