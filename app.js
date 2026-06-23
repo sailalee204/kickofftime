@@ -224,6 +224,7 @@ const shareI18n = {
         shareTwitter: "🐦 Share on X / Twitter",
         shareCopyLink: "🔗 Copy Link",
         shareCopyText: "📋 Copy Text",
+        shareChallenge: "⚔️ Challenge a Friend",
         wc2026: "World Cup 2026",
         kickoff: "Kickoff",
         myKickoff: "My local kickoff",
@@ -250,6 +251,7 @@ const shareI18n = {
         shareTwitter: "🐦 分享到 X",
         shareCopyLink: "🔗 复制链接",
         shareCopyText: "📋 复制文本",
+        shareChallenge: "⚔️ 发起预测挑战",
         wc2026: "2026世界杯",
         kickoff: "开赛时间",
         myKickoff: "本地开赛时间",
@@ -276,6 +278,7 @@ const shareI18n = {
         shareTwitter: "🐦 Compartir en X",
         shareCopyLink: "🔗 Copiar Enlace",
         shareCopyText: "📋 Copiar Texto",
+        shareChallenge: "⚔️ Desafiar a un Amigo",
         wc2026: "Mundial 2026",
         kickoff: "Inicio",
         myKickoff: "Mi hora de inicio",
@@ -302,6 +305,7 @@ const shareI18n = {
         shareTwitter: "🐦 Compartilhar no X",
         shareCopyLink: "🔗 Copiar Link",
         shareCopyText: "📋 Copiar Texto",
+        shareChallenge: "⚔️ Desafiar um Amigo",
         wc2026: "Copa do Mundo 2026",
         kickoff: "Início",
         myKickoff: "Meu início local",
@@ -328,6 +332,7 @@ const shareI18n = {
         shareTwitter: "🐦 Partager sur X",
         shareCopyLink: "🔗 Copier le lien",
         shareCopyText: "📋 Copier le texte",
+        shareChallenge: "⚔️ Défier un Ami",
         wc2026: "Coupe du Monde 2026",
         kickoff: "Coup d'envoi",
         myKickoff: "Mon coup d'envoi local",
@@ -354,6 +359,7 @@ const shareI18n = {
         shareTwitter: "🐦 شارك على X",
         shareCopyLink: "🔗 نسخ الرابط",
         shareCopyText: "📋 نسخ النص",
+        shareChallenge: "⚔️ تحدي صديق",
         wc2026: "كأس العالم 2026",
         kickoff: "ركلة البداية",
         myKickoff: "وقت البداية المحلي",
@@ -1767,16 +1773,20 @@ function openShareModal(matchIndex) {
         `🌐 ${shareI18n[currentLang].seeAllMatches} → https://kickofftracker.com`;
 
     const predStr = localStorage.getItem(`pred_${team1Raw}_${team2Raw}`);
+    let isChallenge = false;
     if (predStr) {
         try {
             const p = JSON.parse(predStr);
             const chalUrl = `${baseUrl}?challengeMatch=${matchIndex}&p1=${p.s1}&p2=${p.s2}`;
             const t = shareI18n[currentLang] || shareI18n['en'];
             shareText = t.chalText.replace("{t1}", team1).replace("{s1}", p.s1).replace("{s2}", p.s2).replace("{t2}", team2).replace("{url}", chalUrl);
+            isChallenge = true;
         } catch(e) {}
     }
     
-    document.getElementById("btnCopyText").dataset.text = shareText;
+    const btnCopyText = document.getElementById("btnCopyText");
+    btnCopyText.dataset.text = shareText;
+    btnCopyText.textContent = isChallenge ? (shareI18n[currentLang].shareChallenge || "⚔️ Challenge a Friend") : shareI18n[currentLang].shareCopyText;
 
     // Render Canvas card
     renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match);
