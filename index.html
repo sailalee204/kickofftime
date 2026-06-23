@@ -169,11 +169,38 @@
                 <a class="share-action-btn twitter" id="btnShareTwitter" href="#" target="_blank" rel="noopener">
                     🐦 Share on X / Twitter
                 </a>
+                <button class="share-action-btn pto-btn" id="btnGeneratePTO" onclick="generatePTO()" style="background-color: #ff4757; color: white;">
+                    🏥 Generate Sick Note
+                </button>
                 <button class="share-action-btn" id="btnCopyLink" onclick="copyShareLink()">
                     🔗 Copy Link
                 </button>
                 <button class="share-action-btn" id="btnCopyText" onclick="copyShareText()">
                     📋 Copy Text
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Challenge Modal -->
+    <div class="share-modal-overlay" id="challengeModalOverlay" onclick="closeChallengeModal(event)">
+        <div class="share-modal" id="challengeModal">
+            <button class="share-modal-close" onclick="closeChallengeModal(null)" aria-label="Close">✕</button>
+            <div class="share-modal-title" id="challengeModalTitle">⚔️ You've Been Challenged!</div>
+            <div class="challenge-content">
+                <p id="challengeText" style="text-align: center; margin-bottom: 20px; font-size: 1.1rem; color: #475569;">
+                    <span id="challengeDesc1">A friend challenged your football knowledge.</span><br><span id="challengeDesc2">They predict:</span> <br>
+                    <strong id="challengeFriendPred" style="color: #ff4757; font-size: 1.5rem; display: block; margin-top: 10px;"></strong>
+                </p>
+                <div class="predict-inputs" style="display: flex; justify-content: center; margin-bottom: 20px; align-items: center; gap: 10px;">
+                    <span id="challengeTeam1" style="font-weight: bold; font-size: 1.2rem; color: #1e293b;">Team 1</span>
+                    <input type="number" id="challengeScore1" min="0" max="20" placeholder="0" class="score-input" style="width: 50px; text-align: center; font-size: 1.2rem; border-radius: 5px; border: 1px solid #cbd5e1; padding: 5px; color: #1e293b; background: #f8fafc;">
+                    <span class="score-divider" style="color: #64748b; font-weight: bold;">-</span>
+                    <input type="number" id="challengeScore2" min="0" max="20" placeholder="0" class="score-input" style="width: 50px; text-align: center; font-size: 1.2rem; border-radius: 5px; border: 1px solid #cbd5e1; padding: 5px; color: #1e293b; background: #f8fafc;">
+                    <span id="challengeTeam2" style="font-weight: bold; font-size: 1.2rem; color: #1e293b;">Team 2</span>
+                </div>
+                <button class="btn-hero-primary" id="challengeSaveBtn" style="width: 100%;" onclick="submitChallenge()">
+                    Save My Prediction
                 </button>
             </div>
         </div>

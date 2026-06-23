@@ -233,7 +233,15 @@ const shareI18n = {
         yourTime: "Your local time",
         schedule: "Schedule",
         followTeam: "Follow {team} at the World Cup 2026!",
-        fullSchedule: "Check their full match schedule in your local time"
+        fullSchedule: "Check their full match schedule in your local time",
+        chalTitle: "⚔️ You've Been Challenged!",
+        chalDesc1: "A friend challenged your football knowledge.",
+        chalDesc2: "They predict:",
+        chalBtn: "Save My Prediction",
+        chalLinkCopied: "⚔️ Challenge link copied!",
+        counterSaved: "✅ Counter-prediction saved!",
+        chalText: "I predict {t1} {s1} - {s2} {t2}. Think you know better? Click here to challenge my prediction: {url}",
+        btnPto: "🏥 Generate Sick Note"
     },
     zh: {
         shareMatch: "分享",
@@ -251,7 +259,15 @@ const shareI18n = {
         yourTime: "您的本地时间",
         schedule: "赛程",
         followTeam: "在2026世界杯关注 {team}！",
-        fullSchedule: "使用本地时间查看完整赛程"
+        fullSchedule: "使用本地时间查看完整赛程",
+        chalTitle: "⚔️ 你被挑战了！",
+        chalDesc1: "你的朋友向你发起了懂球帝挑战。",
+        chalDesc2: "TA的预测是：",
+        chalBtn: "保存我的反击预测",
+        chalLinkCopied: "⚔️ 挑战链接已复制！",
+        counterSaved: "✅ 反击预测已保存！",
+        chalText: "我预测 {t1} {s1} - {s2} {t2}。觉得你比我懂球？点这里接受挑战：{url}",
+        btnPto: "🏥 生成请假条"
     },
     es: {
         shareMatch: "Compartir",
@@ -269,7 +285,15 @@ const shareI18n = {
         yourTime: "Tu hora local",
         schedule: "Calendario",
         followTeam: "¡Sigue a {team} en el Mundial 2026!",
-        fullSchedule: "Consulta su calendario en tu hora local"
+        fullSchedule: "Consulta su calendario en tu hora local",
+        chalTitle: "⚔️ ¡Has sido desafiado!",
+        chalDesc1: "Un amigo ha desafiado tus conocimientos.",
+        chalDesc2: "Su predicción:",
+        chalBtn: "Guardar mi predicción",
+        chalLinkCopied: "⚔️ ¡Enlace de desafío copiado!",
+        counterSaved: "✅ ¡Contra-predicción guardada!",
+        chalText: "Predigo que {t1} {s1} - {s2} {t2}. ¿Crees que sabes más? Haz clic aquí para desafiar mi predicción: {url}",
+        btnPto: "🏥 Generar Justificante"
     },
     pt: {
         shareMatch: "Compartilhar",
@@ -287,7 +311,15 @@ const shareI18n = {
         yourTime: "Sua hora local",
         schedule: "Calendário",
         followTeam: "Acompanhe {team} na Copa 2026!",
-        fullSchedule: "Veja o calendário completo na sua hora local"
+        fullSchedule: "Veja o calendário completo na sua hora local",
+        chalTitle: "⚔️ Você foi desafiado!",
+        chalDesc1: "Um amigo desafiou seus conhecimentos.",
+        chalDesc2: "Ele prevê:",
+        chalBtn: "Salvar Minha Previsão",
+        chalLinkCopied: "⚔️ Link de desafio copiado!",
+        counterSaved: "✅ Contra-previsão salva!",
+        chalText: "Eu prevejo {t1} {s1} - {s2} {t2}. Acha que sabe mais? Clique aqui para desafiar minha previsão: {url}",
+        btnPto: "🏥 Gerar Atestado"
     },
     fr: {
         shareMatch: "Partager",
@@ -305,7 +337,15 @@ const shareI18n = {
         yourTime: "Votre heure locale",
         schedule: "Calendrier",
         followTeam: "Suivez {team} à la Coupe du Monde 2026 !",
-        fullSchedule: "Consultez leur calendrier complet à votre heure locale"
+        fullSchedule: "Consultez leur calendrier complet à votre heure locale",
+        chalTitle: "⚔️ Vous avez été mis au défi !",
+        chalDesc1: "Un ami a défié vos connaissances.",
+        chalDesc2: "Sa prédiction :",
+        chalBtn: "Enregistrer ma prédiction",
+        chalLinkCopied: "⚔️ Lien de défi copié !",
+        counterSaved: "✅ Contre-prédiction enregistrée !",
+        chalText: "Je prédis {t1} {s1} - {s2} {t2}. Tu penses faire mieux ? Clique ici pour relever le défi : {url}",
+        btnPto: "🏥 Générer Mot d'Absence"
     },
     ar: {
         shareMatch: "مشاركة",
@@ -323,7 +363,126 @@ const shareI18n = {
         yourTime: "وقتك المحلي",
         schedule: "جدول",
         followTeam: "تابع {team} في كأس العالم 2026!",
-        fullSchedule: "تحقق من جدول مبارياتهم بتوقيتك المحلي"
+        fullSchedule: "تحقق من جدول مبارياتهم بتوقيتك المحلي",
+        chalTitle: "⚔️ لقد تم تحديك!",
+        chalDesc1: "صديق يتحدى معرفتك.",
+        chalDesc2: "توقعه:",
+        chalBtn: "حفظ توقعي",
+        chalLinkCopied: "⚔️ تم نسخ رابط التحدي!",
+        counterSaved: "✅ تم حفظ التوقع المضاد!",
+        chalText: "أتوقع {t1} {s1} - {s2} {t2}. هل تعتقد أنك تعرف أفضل؟ انقر هنا لتحدي توقعي: {url}",
+        btnPto: "🏥 إنشاء عذر طبي"
+    }
+};
+
+const canvasI18n = {
+    en: {
+        ticketTitle: "🎟️ WORLD CUP 2026 OFFICIAL TICKET",
+        admitOne: "ADMIT ONE",
+        stage: "STAGE",
+        localTz: "LOCAL TIMEZONE",
+        kickoff: "KICKOFF TIME",
+        pred: "Prediction",
+        ptoTitle: "OFFICIAL MEDICAL CERTIFICATE",
+        ptoDate: "Date:",
+        ptoTo: "To Whom It May Concern:",
+        ptoP1: "Please excuse my absence. I have contracted a severe case of",
+        ptoP2: "WorldCup-itis.",
+        ptoP3: "My symptoms require me to watch",
+        ptoP4: "at exactly",
+        ptoP5: "in my local time.",
+        ptoUnfit: "UNFIT FOR WORK",
+        ptoDr: "Dr. Kickoff"
+    },
+    zh: {
+        ticketTitle: "🎟️ 2026世界杯 官方电子球票",
+        admitOne: "单人票",
+        stage: "阶段",
+        localTz: "本地时区",
+        kickoff: "开球时间",
+        pred: "我的预测",
+        ptoTitle: "官方医疗证明",
+        ptoDate: "日期：",
+        ptoTo: "敬启者：",
+        ptoP1: "特此请假。本人不幸感染了重度的",
+        ptoP2: "“世界杯综合症”",
+        ptoP3: "该病症要求本人必须在准时收看",
+        ptoP4: "本地时间",
+        ptoP5: "的比赛。",
+        ptoUnfit: "不适宜工作",
+        ptoDr: "Dr. Kickoff"
+    },
+    es: {
+        ticketTitle: "🎟️ ENTRADA OFICIAL MUNDIAL 2026",
+        admitOne: "ADMITIR UNO",
+        stage: "FASE",
+        localTz: "ZONA HORARIA LOCAL",
+        kickoff: "HORA DE INICIO",
+        pred: "Predicción",
+        ptoTitle: "CERTIFICADO MÉDICO OFICIAL",
+        ptoDate: "Fecha:",
+        ptoTo: "A quien corresponda:",
+        ptoP1: "Por favor, disculpe mi ausencia. He contraído un caso severo de",
+        ptoP2: "Mundial-itis.",
+        ptoP3: "Mis síntomas requieren que vea",
+        ptoP4: "exactamente a las",
+        ptoP5: "en mi hora local.",
+        ptoUnfit: "NO APTO PARA TRABAJAR",
+        ptoDr: "Dr. Kickoff"
+    },
+    pt: {
+        ticketTitle: "🎟️ INGRESSO OFICIAL COPA 2026",
+        admitOne: "ACESSO ÚNICO",
+        stage: "FASE",
+        localTz: "FUSO HORÁRIO LOCAL",
+        kickoff: "HORÁRIO",
+        pred: "Previsão",
+        ptoTitle: "ATESTADO MÉDICO OFICIAL",
+        ptoDate: "Data:",
+        ptoTo: "A quem possa interessar:",
+        ptoP1: "Por favor, desculpe minha ausência. Contraí um caso grave de",
+        ptoP2: "Copa-itis.",
+        ptoP3: "Meus sintomas exigem que eu assista",
+        ptoP4: "exatamente às",
+        ptoP5: "no meu horário local.",
+        ptoUnfit: "INAPTO PARA O TRABALHO",
+        ptoDr: "Dr. Kickoff"
+    },
+    fr: {
+        ticketTitle: "🎟️ BILLET OFFICIEL COUPE DU MONDE 2026",
+        admitOne: "ADMETTRE UN",
+        stage: "PHASE",
+        localTz: "FUSEAU HORAIRE LOCAL",
+        kickoff: "COUP D'ENVOI",
+        pred: "Prédiction",
+        ptoTitle: "CERTIFICAT MÉDICAL OFFICIEL",
+        ptoDate: "Date :",
+        ptoTo: "À qui de droit :",
+        ptoP1: "Veuillez excuser mon absence. J'ai contracté un cas grave de",
+        ptoP2: "Mondial-ite.",
+        ptoP3: "Mes symptômes m'obligent à regarder",
+        ptoP4: "exactement à",
+        ptoP5: "à mon heure locale.",
+        ptoUnfit: "INAPTE AU TRAVAIL",
+        ptoDr: "Dr. Kickoff"
+    },
+    ar: {
+        ticketTitle: "🎟️ تذكرة رسمية لكأس العالم 2026",
+        admitOne: "دخول فرد واحد",
+        stage: "المرحلة",
+        localTz: "المنطقة الزمنية المحلية",
+        kickoff: "وقت البداية",
+        pred: "توقعي",
+        ptoTitle: "شهادة طبية رسمية",
+        ptoDate: "التاريخ:",
+        ptoTo: "إلى من يهمه الأمر:",
+        ptoP1: "يرجى معذرة غيابي. لقد أصبت بحالة شديدة من",
+        ptoP2: "حمى كأس العالم.",
+        ptoP3: "تتطلب أعراضي أن أشاهد",
+        ptoP4: "في تمام الساعة",
+        ptoP5: "بتوقيتي المحلي.",
+        ptoUnfit: "غير لائق للعمل",
+        ptoDr: "Dr. Kickoff"
     }
 };
 
@@ -387,6 +546,7 @@ const i18n = {
         fourthPlace: "4th Place",
         thirdPlaceMatch: "3rd Place Match",
         btnShare: "🎨 Share",
+        watchLive: "📺 Watch Live",
         matchEnded: "Match ended",
         shareTeamTitle: "Share Team Matches",
         optWc: "🏆 World Cup 2026",
@@ -459,6 +619,7 @@ const i18n = {
         fourthPlace: "4to Lugar",
         thirdPlaceMatch: "Partido por el 3er Lugar",
         btnShare: "🎨 Compartir",
+        watchLive: "📺 Ver en vivo",
         matchEnded: "Partido finalizado",
         shareTeamTitle: "Compartir Partidos del Equipo",
         optWc: "🏆 Copa Mundial 2026",
@@ -530,6 +691,7 @@ const i18n = {
         fourthPlace: "4º Lugar",
         thirdPlaceMatch: "Disputa do 3º Lugar",
         btnShare: "🎨 Compartilhar",
+        watchLive: "📺 Assistir ao vivo",
         matchEnded: "Partida encerrada",
         shareTeamTitle: "Compartilhar Partidas da Seleção",
         optWc: "🏆 Copa do Mundo 2026",
@@ -601,6 +763,7 @@ const i18n = {
         fourthPlace: "4e Place",
         thirdPlaceMatch: "Match pour la 3e Place",
         btnShare: "🎨 Partager",
+        watchLive: "📺 Regarder en direct",
         matchEnded: "Match terminé",
         shareTeamTitle: "Partager les Matchs de l'Équipe",
         optWc: "🏆 Coupe du Monde 2026",
@@ -672,6 +835,7 @@ const i18n = {
         fourthPlace: "المركز الرابع",
         thirdPlaceMatch: "مباراة المركز الثالث",
         btnShare: "🎨 مشاركة",
+        watchLive: "📺 مشاهدة البث المباشر",
         matchEnded: "انتهت المباراة",
         shareTeamTitle: "مشاركة مباريات الفريق",
         optWc: "🏆 كأس العالم 2026",
@@ -743,6 +907,7 @@ const i18n = {
         fourthPlace: "小组第四",
         thirdPlaceMatch: "季军赛",
         btnShare: "🎨 分享",
+        watchLive: "📺 观看直播",
         matchEnded: "比赛已结束",
         shareTeamTitle: "分享球队赛程",
         optWc: "🏆 2026 世界杯",
@@ -1476,6 +1641,12 @@ function renderMatches() {
                     <button class="share-btn" onclick="openShareModal(${originalIndex})">
                         ${t.btnShare}
                     </button>
+                    ${!isFinished ? `
+                    <a href="https://www.google.com/search?q=watch+world+cup+live+${encodeURIComponent(team1Raw)}+vs+${encodeURIComponent(team2Raw)}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; width: 100%;">
+                        <button class="share-btn" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; font-weight: 600; width: 100%; justify-content: center; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
+                            ${t.watchLive}
+                        </button>
+                    </a>` : ''}
                 </div>
             </div>
             ${(!isFinished && !isLive && !isTeam1Placeholder && !isTeam2Placeholder) ? `
@@ -1617,129 +1788,202 @@ document.addEventListener("keydown", (e) => {
 });
 
 // ---- Canvas Card Renderer ----
+// ---- Canvas Card Renderer ----
 function renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match) {
     const canvas = document.getElementById("shareCanvas");
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
+    const t = canvasI18n[currentLang] || canvasI18n['en'];
     const W = 800, H = 420;
     canvas.width = W;
     canvas.height = H;
 
-    // Background
-    const bgGrad = ctx.createLinearGradient(0, 0, W, H);
-    bgGrad.addColorStop(0, "#0d1117");
-    bgGrad.addColorStop(0.5, "#111827");
-    bgGrad.addColorStop(1, "#0d1117");
-    ctx.fillStyle = bgGrad;
+    // Background (Cream color)
+    ctx.fillStyle = "#fdfbf7";
     ctx.fillRect(0, 0, W, H);
-
-    // Gold top border stripe
-    const goldGrad = ctx.createLinearGradient(0, 0, W, 0);
-    goldGrad.addColorStop(0, "hsl(45,85%,58%)");
-    goldGrad.addColorStop(0.5, "hsl(150,75%,42%)");
-    goldGrad.addColorStop(1, "hsl(45,85%,58%)");
-    ctx.fillStyle = goldGrad;
-    ctx.fillRect(0, 0, W, 5);
-
-    // Subtle glow blob top-left
-    const glowGrad = ctx.createRadialGradient(200, 150, 0, 200, 150, 350);
-    glowGrad.addColorStop(0, "hsla(45,85%,58%,0.07)");
-    glowGrad.addColorStop(1, "transparent");
-    ctx.fillStyle = glowGrad;
-    ctx.fillRect(0, 0, W, H);
-
-    // --- Trophy icon area ---
-    ctx.font = "52px serif";
-    ctx.textAlign = "center";
-    ctx.fillText("🏆", W / 2, 72);
-
-    // --- VS Teams line ---
-    ctx.font = "bold 38px 'Outfit', 'Inter', sans-serif";
-    ctx.fillStyle = "#f0f4ff";
-    ctx.textAlign = "center";
-    const vsText = `${team1}  vs  ${team2}`;
-    ctx.fillText(vsText, W / 2, 140);
-
-    // Gold underline
-    ctx.strokeStyle = "hsl(45,85%,58%)";
-    ctx.lineWidth = 2;
-    const textWidth = Math.min(ctx.measureText(vsText).width + 40, W - 80);
+    
+    // Ticket Stub Dashed Line
+    const stubX = W - 220;
+    ctx.strokeStyle = "#cbd5e1";
+    ctx.setLineDash([12, 12]);
+    ctx.lineWidth = 3;
     ctx.beginPath();
-    ctx.moveTo((W - textWidth) / 2, 152);
-    ctx.lineTo((W + textWidth) / 2, 152);
+    ctx.moveTo(stubX, 0);
+    ctx.lineTo(stubX, H);
     ctx.stroke();
+    ctx.setLineDash([]); // reset
 
-    // --- Match Stage / Group ---
-    ctx.font = "500 15px 'Inter', sans-serif";
-    ctx.fillStyle = "hsl(45,85%,58%)";
+    // Top Header
+    ctx.fillStyle = "#1e293b";
+    ctx.fillRect(0, 0, W, 50);
+    ctx.fillStyle = "#fdfbf7";
+    ctx.font = "bold 18px 'Inter', sans-serif";
+    ctx.textAlign = "left";
+    ctx.fillText(t.ticketTitle, 30, 32);
+
     ctx.textAlign = "center";
-    ctx.fillText(`FIFA WORLD CUP 2026 · ${match.group.toUpperCase()}`, W / 2, 185);
+    ctx.font = "bold 16px 'Inter', sans-serif";
+    ctx.fillText(t.admitOne, stubX + 110, 30);
 
-    // --- Time block ---
-    // Background pill
-    const pillW = 340, pillH = 80;
-    const pillX = (W - pillW) / 2, pillY = 205;
-    ctx.fillStyle = "hsla(45,85%,58%,0.1)";
-    roundRect(ctx, pillX, pillY, pillW, pillH, 16);
-    ctx.fill();
-    ctx.strokeStyle = "hsla(45,85%,58%,0.25)";
-    ctx.lineWidth = 1;
-    ctx.stroke();
+    // Teams
+    ctx.fillStyle = "#1e293b";
+    ctx.textAlign = "left";
+    ctx.font = "bold 44px 'Outfit', sans-serif";
+    ctx.fillText(team1.toUpperCase(), 40, 130);
+    ctx.font = "italic 22px serif";
+    ctx.fillStyle = "#64748b";
+    ctx.fillText("VS", 40, 175);
+    ctx.fillStyle = "#1e293b";
+    ctx.font = "bold 44px 'Outfit', sans-serif";
+    ctx.fillText(team2.toUpperCase(), 40, 230);
 
-    // Time text
-    ctx.font = "bold 42px 'Outfit', 'Inter', sans-serif";
+    // Group / Stage
+    ctx.fillStyle = "#ef4444";
+    ctx.font = "bold 16px 'Inter', sans-serif";
+    ctx.fillText(`${t.stage}: ${match.group.toUpperCase()}`, 40, 280);
+
+    // Venue
+    ctx.fillStyle = "#0f172a";
+    ctx.font = "18px 'Inter', sans-serif";
+    ctx.fillText(`📍 ${getLocString(match.venue)}`, 40, 315);
+
+    // Bottom Footer (Your Time)
+    ctx.fillStyle = "#10b981"; // green accent
+    ctx.fillRect(0, H - 50, stubX, 50);
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 16px 'Inter', sans-serif";
+    ctx.fillText(`${t.localTz}: ${currentTimezone.replace(/_/g, " ")}`, 40, H - 18);
+
+    // Stub Content (The right side)
+    ctx.fillStyle = "#ef4444"; // red accent for time
+    ctx.fillRect(stubX, 50, 220, 100);
+    
     ctx.fillStyle = "#ffffff";
     ctx.textAlign = "center";
-    ctx.fillText(`${timeStr} ${suffix}`, W / 2, pillY + 50);
-
-    // --- Date & Venue ---
-    ctx.font = "500 16px 'Inter', sans-serif";
-    ctx.fillStyle = "hsla(220,20%,96%,0.65)";
-    ctx.textAlign = "center";
-    ctx.fillText(dateStr, W / 2, 298);
-
-    ctx.font = "14px 'Inter', sans-serif";
-    ctx.fillStyle = "hsla(220,20%,96%,0.45)";
-    ctx.fillText(`📍 ${getLocString(match.venue)}`, W / 2, 320);
-
-    // --- Fan Prediction ---
+    ctx.font = "bold 14px 'Inter', sans-serif";
+    ctx.fillText(t.kickoff, stubX + 110, 80);
+    ctx.font = "bold 32px 'Inter', sans-serif";
+    ctx.fillText(`${timeStr} ${suffix}`.trim(), stubX + 110, 120);
+    
+    ctx.fillStyle = "#1e293b";
+    ctx.font = "bold 16px 'Inter', sans-serif";
+    ctx.fillText(dateStr, stubX + 110, 190);
+    
+    // Barcode (fake)
+    ctx.fillStyle = "#000000";
+    const barW = 160;
+    const barX = stubX + 30;
+    const barY = 240;
+    
+    // seeded random for consistent barcode
+    let seed = team1.length + team2.length;
+    for (let i = 0; i < barW; i += ((seed * 17) % 8) + 2) {
+        seed++;
+        ctx.fillRect(barX + i, barY, ((seed * 23) % 4) + 1, 80);
+    }
+    
+    ctx.font = "12px monospace";
+    ctx.fillText("WC2026-KICKOFFTRACKER", stubX + 110, 340);
+    
+    // Fan Prediction text
     let extraText = "";
     const team1Raw = parseKnockoutCode(match.team1);
     const team2Raw = parseKnockoutCode(match.team2);
-    
     const predStr = localStorage.getItem(`pred_${team1Raw}_${team2Raw}`);
     if (predStr) {
         try {
             const p = JSON.parse(predStr);
-            const myPredText = i18n[currentLang]?.myPrediction || "🎯 My Prediction";
-            extraText += `${myPredText}: ${team1} ${p.s1} - ${p.s2} ${team2}`;
+            extraText = `${t.pred}: ${team1} ${p.s1} - ${p.s2} ${team2}`;
         } catch(e){}
     }
     
     if (extraText) {
-        ctx.font = "bold 15px 'Inter', sans-serif";
-        ctx.fillStyle = "#ff4757";
-        ctx.fillText(extraText, W / 2, 345);
+        ctx.fillStyle = "#ef4444";
+        ctx.textAlign = "right";
+        ctx.font = "bold 18px 'Inter', sans-serif";
+        ctx.fillText(extraText, stubX - 20, H - 70);
     }
+}
 
-    // --- Timezone label ---
-    ctx.font = "13px 'Inter', sans-serif";
-    ctx.fillStyle = "hsla(45,85%,58%,0.8)";
-    ctx.fillText(`${shareI18n[currentLang].yourTime}: ${currentTimezone.replace(/_/g, " ")}`, W / 2, 365);
+// ---- PTO Generator ----
+function generatePTO() {
+    if (currentShareIndex === null) return;
+    const match = matches[currentShareIndex];
+    const { dateStr, timeStr, suffix } = formatMatchTime(match.time_utc, currentTimezone, currentLang);
+    renderExcuseCanvas(match.team1, match.team2, dateStr, timeStr, suffix, match);
+    
+    // Auto download
+    setTimeout(() => {
+        const canvas = document.getElementById("shareCanvas");
+        const link = document.createElement("a");
+        link.download = `SickNote_${match.team1}_vs_${match.team2}.png`;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    }, 100);
+}
+window.generatePTO = generatePTO;
 
-    // --- Bottom branding bar ---
-    ctx.fillStyle = "hsla(220,20%,96%,0.06)";
-    ctx.fillRect(0, H - 48, W, 48);
+function renderExcuseCanvas(team1, team2, dateStr, timeStr, suffix, match) {
+    const canvas = document.getElementById("shareCanvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const t = canvasI18n[currentLang] || canvasI18n['en'];
+    const W = 800, H = 420;
+    canvas.width = W;
+    canvas.height = H;
 
-    ctx.font = "bold 15px 'Outfit', 'Inter', sans-serif";
-    ctx.fillStyle = "hsl(45,85%,58%)";
+    // Doctor's note paper background
+    ctx.fillStyle = "#f8fafc";
+    ctx.fillRect(0, 0, W, H);
+    
+    // Add blue lines like a notepad
+    ctx.strokeStyle = "#e2e8f0";
+    ctx.lineWidth = 1;
+    for (let i = 80; i < H; i += 40) {
+        ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(W, i); ctx.stroke();
+    }
+    
+    // Red margin line
+    ctx.strokeStyle = "#fecaca";
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(80, 0); ctx.lineTo(80, H); ctx.stroke();
+
+    // Text
+    ctx.fillStyle = "#0f172a";
     ctx.textAlign = "left";
-    ctx.fillText("⏱ KICKOFF TIME", 28, H - 17);
-
-    ctx.font = "13px 'Inter', sans-serif";
-    ctx.fillStyle = "hsla(220,20%,96%,0.45)";
-    ctx.textAlign = "right";
-    ctx.fillText("kickofftracker.com", W - 28, H - 17);
+    
+    ctx.font = "bold 26px serif";
+    ctx.fillText(t.ptoTitle, 100, 60);
+    
+    ctx.font = "20px 'Inter', sans-serif";
+    ctx.fillText(`${t.ptoDate} ${dateStr}`, 100, 110);
+    
+    const d = new Date(match.time_utc);
+    const hour = d.getHours(); 
+    
+    ctx.font = "bold 22px 'Inter', sans-serif";
+    ctx.fillText(t.ptoTo, 100, 150);
+    
+    ctx.font = "italic 20px serif";
+    ctx.fillText(t.ptoP1, 100, 195);
+    ctx.font = "bold italic 22px serif";
+    ctx.fillText(t.ptoP2, 100, 235);
+    
+    ctx.font = "20px 'Inter', sans-serif";
+    ctx.fillText(`${t.ptoP3} ${team1} vs ${team2}`, 100, 275);
+    ctx.fillText(`${t.ptoP4} ${timeStr} ${suffix} ${t.ptoP5}`, 100, 315);
+    
+    ctx.fillStyle = "#ef4444";
+    ctx.font = "bold 24px sans-serif";
+    ctx.fillText(t.ptoUnfit, 100, 370);
+    
+    // Fake Doctor Signature
+    ctx.font = "italic 28px serif"; 
+    ctx.fillStyle = "#1d4ed8";
+    ctx.fillText(t.ptoDr, 620, 370);
+    ctx.font = "14px sans-serif";
+    ctx.fillStyle = "#94a3b8";
+    ctx.fillText("kickofftracker.com", 620, 395);
 }
 
 // Utility: rounded rectangle path
@@ -1947,19 +2191,103 @@ async function copyShareLink() {
     if (currentShareIndex === null && !currentShareTeam) return;
     const baseUrl = window.location.origin + window.location.pathname;
     let url = "";
+    let isChallenge = false;
+    let copyText = "";
+    
     if (currentShareIndex !== null) {
-        url = `${baseUrl}?shareMatch=${currentShareIndex}`;
+        const match = matches[currentShareIndex];
+        const team1Raw = parseKnockoutCode(match.team1);
+        const team2Raw = parseKnockoutCode(match.team2);
+        const predStr = localStorage.getItem(`pred_${team1Raw}_${team2Raw}`);
+        
+        if (predStr) {
+            try {
+                const p = JSON.parse(predStr);
+                url = `${baseUrl}?challengeMatch=${currentShareIndex}&p1=${p.s1}&p2=${p.s2}`;
+                isChallenge = true;
+                const team1Name = getTeamName(match.team1);
+                const team2Name = getTeamName(match.team2);
+                const t = shareI18n[currentLang] || shareI18n['en'];
+                copyText = t.chalText.replace("{t1}", team1Name).replace("{s1}", p.s1).replace("{s2}", p.s2).replace("{t2}", team2Name).replace("{url}", url);
+            } catch(e) {
+                url = `${baseUrl}?shareMatch=${currentShareIndex}`;
+                copyText = url;
+            }
+        } else {
+            url = `${baseUrl}?shareMatch=${currentShareIndex}`;
+            copyText = url;
+        }
     } else if (currentShareTeam) {
         url = `${baseUrl}?shareTeam=${encodeURIComponent(currentShareTeam)}`;
+        copyText = url;
     }
+    
     try {
-        await navigator.clipboard.writeText(url);
-        showToast("🔗 Share link copied!");
+        await navigator.clipboard.writeText(copyText);
+        const t = shareI18n[currentLang] || shareI18n['en'];
+        showToast(isChallenge ? t.chalLinkCopied : "🔗 Share link copied!");
     } catch {
         showToast("Could not copy link.");
     }
 }
 window.copyShareLink = copyShareLink;
+
+// ---- Challenge Modal Logic ----
+window.currentChallengeIndex = null;
+function openChallengeModal(matchIdx, p1, p2) {
+    const match = matches[matchIdx];
+    if (!match) return;
+    
+    document.getElementById("challengeTeam1").textContent = getTeamName(match.team1);
+    document.getElementById("challengeTeam2").textContent = getTeamName(match.team2);
+    document.getElementById("challengeFriendPred").textContent = `${getTeamName(match.team1)} ${p1} - ${p2} ${getTeamName(match.team2)}`;
+    
+    window.currentChallengeIndex = matchIdx;
+    
+    const overlay = document.getElementById("challengeModalOverlay");
+    if(overlay) {
+        overlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
+}
+window.openChallengeModal = openChallengeModal;
+
+function closeChallengeModal(event) {
+    const overlay = document.getElementById("challengeModalOverlay");
+    if(!overlay) return;
+    if (event && event.target !== overlay) return;
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+}
+window.closeChallengeModal = closeChallengeModal;
+
+function submitChallenge() {
+    const s1 = document.getElementById("challengeScore1").value;
+    const s2 = document.getElementById("challengeScore2").value;
+    if (s1 === "" || s2 === "") {
+        showToast("Please enter a valid prediction.");
+        return;
+    }
+    
+    const match = matches[window.currentChallengeIndex];
+    if (!match) return;
+    
+    const team1Raw = parseKnockoutCode(match.team1);
+    const team2Raw = parseKnockoutCode(match.team2);
+    
+    // Save locally
+    localStorage.setItem(`pred_${team1Raw}_${team2Raw}`, JSON.stringify({ s1, s2 }));
+    const t = shareI18n[currentLang] || shareI18n['en'];
+    showToast(t.counterSaved);
+    
+    closeChallengeModal(null);
+    renderMatches();
+    
+    setTimeout(() => {
+        openShareModal(window.currentChallengeIndex);
+    }, 500);
+}
+window.submitChallenge = submitChallenge;
 
 // Update static language content on page
 function updateLanguage() {
@@ -1980,6 +2308,31 @@ function updateLanguage() {
     // Timezone Selector Header
     document.getElementById("tzLabel").textContent = t.tzLabel;
     document.getElementById("tzHelper").textContent = t.tzHelper;
+    
+    // Challenge Modal
+    const shareT = shareI18n[currentLang] || shareI18n['en'];
+    const chalTitle = document.getElementById("challengeModalTitle");
+    if(chalTitle) chalTitle.textContent = shareT.chalTitle;
+    const chalDesc1 = document.getElementById("challengeDesc1");
+    if(chalDesc1) chalDesc1.textContent = shareT.chalDesc1;
+    const chalDesc2 = document.getElementById("challengeDesc2");
+    if(chalDesc2) chalDesc2.textContent = shareT.chalDesc2;
+    const chalSaveBtn = document.getElementById("challengeSaveBtn");
+    if(chalSaveBtn) chalSaveBtn.textContent = shareT.chalBtn;
+    
+    // Share Modal Buttons
+    const btnCopyImg = document.getElementById("btnCopyImg");
+    if(btnCopyImg) btnCopyImg.textContent = shareT.shareCopyImg;
+    const btnDownloadImg = document.getElementById("btnDownloadImg");
+    if(btnDownloadImg) btnDownloadImg.textContent = shareT.shareSaveImg;
+    const btnShareTwitter = document.getElementById("btnShareTwitter");
+    if(btnShareTwitter) btnShareTwitter.textContent = shareT.shareTwitter;
+    const btnCopyLink = document.getElementById("btnCopyLink");
+    if(btnCopyLink) btnCopyLink.textContent = shareT.shareCopyLink;
+    const btnCopyText = document.getElementById("btnCopyText");
+    if(btnCopyText) btnCopyText.textContent = shareT.shareCopyText;
+    const btnGeneratePTO = document.getElementById("btnGeneratePTO");
+    if(btnGeneratePTO) btnGeneratePTO.textContent = shareT.btnPto;
     
     // Search input
     searchInput.placeholder = t.searchPlaceholder;
@@ -2023,18 +2376,6 @@ function updateLanguage() {
         if(emailInput) emailInput.placeholder = t.emailPlaceholder;
     }
 
-    // Share Modal Buttons
-    const st = shareI18n[currentLang];
-    const btnCopyImage = document.getElementById("btnCopyImg");
-    if(btnCopyImage) btnCopyImage.textContent = st.shareCopyImg;
-    const btnDownloadImage = document.getElementById("btnDownloadImg");
-    if(btnDownloadImage) btnDownloadImage.textContent = st.shareSaveImg;
-    const btnShareTwitter = document.getElementById("btnShareTwitter");
-    if(btnShareTwitter) btnShareTwitter.textContent = st.shareTwitter;
-    const btnCopyLink = document.getElementById("btnCopyLink");
-    if(btnCopyLink) btnCopyLink.textContent = st.shareCopyLink;
-    const btnCopyTextModal = document.getElementById("btnCopyText");
-    if(btnCopyTextModal) btnCopyTextModal.textContent = st.shareCopyText;
 
     // Tournament Selector Options
     const tournSelect = document.getElementById("tournamentSelect");
@@ -2215,7 +2556,14 @@ console.log("App loaded with local timezone:", currentTimezone);
 // =============================================
 function handleDeepLinking() {
     const params = new URLSearchParams(window.location.search);
-    if (params.has("shareMatch")) {
+    if (params.has("challengeMatch")) {
+        const idx = parseInt(params.get("challengeMatch"));
+        const p1 = params.get("p1");
+        const p2 = params.get("p2");
+        if (!isNaN(idx) && matches[idx] && p1 !== null && p2 !== null) {
+            setTimeout(() => openChallengeModal(idx, p1, p2), 500);
+        }
+    } else if (params.has("shareMatch")) {
         const idx = parseInt(params.get("shareMatch"));
         if (!isNaN(idx) && matches[idx]) {
             setTimeout(() => openShareModal(idx), 500);
