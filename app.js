@@ -1,8 +1,8 @@
 // =============================================
 // API Configuration
 // =============================================
-const API_TOKEN = "32c68282e7e948139b35e1b2aff0f7de";
-const API_BASE = "https://api.football-data.org/v4";
+// Token is now securely stored in Cloudflare Worker environment variables
+const API_BASE = "https://restless-tree-a86afootball-proxy.sailalee204.workers.dev/v4";
 
 // API team name → our internal team name
 const apiNameMap = {
@@ -2443,9 +2443,7 @@ async function fetchLiveData() {
     try {
         let data;
         try {
-            const res = await fetch(`${API_BASE}/competitions/WC/matches`, {
-                headers: { "X-Auth-Token": API_TOKEN }
-            });
+            const res = await fetch(`${API_BASE}/competitions/WC/matches`);
             if (!res.ok) throw new Error(`API error ${res.status}`);
             data = await res.json();
         } catch (apiErr) {
