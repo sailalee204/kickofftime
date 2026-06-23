@@ -2,7 +2,7 @@
 // API Configuration
 // =============================================
 // Token is now securely stored in Cloudflare Worker environment variables
-const API_BASE = "https://restless-tree-a86afootball-proxy.sailalee204.workers.dev/v4";
+// Using ESPN's free public API instead - no key required
 
 // API team name → our internal team name
 const apiNameMap = {
@@ -1579,14 +1579,7 @@ function renderMatches() {
         
         const isKnockout = match.group.includes("Round") || match.group.includes("Quarter") || match.group.includes("Semi") || match.group.includes("Final") || match.group.includes("Third");
         const isHostNation = ["USA","Mexico","Canada"].includes(match.team1) || ["USA","Mexico","Canada"].includes(match.team2);
-        let isLive = live?.status === "IN_PLAY" || live?.status === "PAUSED";
-        if (!isLive && live?.status !== "FINISHED") {
-            const kickoffTime = new Date(match.time_utc).getTime();
-            const nowTime = Date.now();
-            if (nowTime >= kickoffTime && nowTime <= kickoffTime + 115 * 60 * 1000) {
-                isLive = true;
-            }
-        }
+        const isLive = live?.status === "IN_PLAY" || live?.status === "PAUSED";
         const isFinished = matchIsFinished(match, live);
         const isImportant = isKnockout || isHostNation || isLive;
 
@@ -2437,58 +2430,80 @@ faqItems.forEach(item => {
 });
 
 // =============================================
-// API: Fetch live match data
+// API: Fetch live match data (ESPN Public API - no key needed)
 // =============================================
 async function fetchLiveData() {
     try {
-        let data;
-        try {
-            const res = await fetch(`${API_BASE}/competitions/WC/matches`);
-            if (!res.ok) throw new Error(`API error ${res.status}`);
-            data = await res.json();
-        } catch (apiErr) {
-            console.warn("Live API failed (likely CORS). Falling back to local snapshot /wc_out.json...");
-            const res2 = await fetch("/wc_out.json");
-            data = await res2.json();
-        }
+        // ESPN's free public scoreboard API - no API key required
+        const res = await fetch("https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard");
+        if (!res.ok) throw new Error(`ESPN API error ${res.status}`);
+        const data = await res.json();
 
-        // Build a lookup by utcDate+homeTeam to find our static match index
-        data.matches.forEach(apiMatch => {
-            const apiHome = apiNameMap[apiMatch.homeTeam.name] || apiMatch.homeTeam.name;
-            const apiAway = apiNameMap[apiMatch.awayTeam.name] || apiMatch.awayTeam.name;
-            const apiDate = apiMatch.utcDate; // ISO string
+        // Map ESPN status names to our internal format
+        const statusMap = {
+            "STATUS_SCHEDULED":  "SCHEDULED",
+            "STATUS_IN_PROGRESS": "IN_PLAY",
+            "STATUS_HALFTIME":   "PAUSED",
+            "STATUS_FULL_TIME":  "FINISHED",
+            "STATUS_FINAL":      "FINISHED",
+            "STATUS_POSTPONED":  "POSTPONED",
+            "STATUS_CANCELED":   "CANCELED",
+        };
 
-            // Find the corresponding static match
+        data.events.forEach(event => {
+            const comp = event.competitions[0];
+            if (!comp) return;
+
+            // ESPN lists competitors: home first, then away
+            const homeComp = comp.competitors.find(c => c.homeAway === "home") || comp.competitors[0];
+            const awayComp = comp.competitors.find(c => c.homeAway === "away") || comp.competitors[1];
+            const apiHome = homeComp?.team?.displayName;
+            const apiAway = awayComp?.team?.displayName;
+            const apiDate = event.date;
+            const espnStatus = comp.status?.type?.name;
+            const ourStatus = statusMap[espnStatus] || "SCHEDULED";
+            const homeScore = homeComp?.score != null ? parseInt(homeComp.score) : null;
+            const awayScore = awayComp?.score != null ? parseInt(awayComp.score) : null;
+            const minute = comp.status?.displayClock || null;
+
+            // Find corresponding match in our static data by time + team names
             const idx = matches.findIndex(m => {
-                const apiTime = new Date(apiDate).getTime();
+                const espnTime = new Date(apiDate).getTime();
                 const mTime = new Date(m.time_utc).getTime();
-                // To avoid mapping Matchday 3 matches to Matchday 1, require date to be within 36 hours
-                const within36Hours = Math.abs(mTime - apiTime) < 36 * 60 * 60 * 1000;
-                const sameTeams = (m.team1 === apiHome && m.team2 === apiAway) ||
-                                  (m.team1 === apiHome || m.team2 === apiAway);
-                return within36Hours && sameTeams;
+                const withinWindow = Math.abs(mTime - espnTime) < 36 * 60 * 60 * 1000;
+
+                // Normalize names for comparison
+                const normalize = s => (s || "").toLowerCase().replace(/[^a-z]/g, "");
+                const h = normalize(apiHome);
+                const a = normalize(apiAway);
+                const t1 = normalize(m.team1);
+                const t2 = normalize(m.team2);
+                const sameTeams = (h && a) && (
+                    (t1.includes(h) || h.includes(t1)) ||
+                    (t2.includes(a) || a.includes(t2))
+                );
+                return withinWindow && sameTeams;
             });
 
-            const target = idx >= 0 ? idx : null;
-            if (target !== null) {
-                liveMatchData[target] = {
-                    status: apiMatch.status,           // SCHEDULED | IN_PLAY | PAUSED | FINISHED
-                    homeScore: apiMatch.score?.fullTime?.home,
-                    awayScore: apiMatch.score?.fullTime?.away,
+            if (idx >= 0) {
+                liveMatchData[idx] = {
+                    status: ourStatus,
+                    homeScore,
+                    awayScore,
                     homeTeam: apiHome,
                     awayTeam: apiAway,
-                    minute: apiMatch.minute || null
+                    minute,
                 };
-                // Update static match team names if API resolved them
-                if (apiHome && !apiHome.match(/^[W1-4]/)) matches[target].team1 = apiHome;
-                if (apiAway && !apiAway.match(/^[W1-4]/)) matches[target].team2 = apiAway;
+                // Update team names from ESPN if they're real names
+                if (apiHome && !apiHome.match(/^[W1-4]/)) matches[idx].team1 = apiHome;
+                if (apiAway && !apiAway.match(/^[W1-4]/)) matches[idx].team2 = apiAway;
             }
         });
 
         apiLoaded = true;
-        console.log("✅ Live data loaded from API");
+        console.log(`✅ ESPN live data loaded: ${data.events.length} matches`);
     } catch (err) {
-        console.warn("⚠️ API fetch failed, using static data:", err.message);
+        console.warn("⚠️ ESPN API fetch failed, using static data:", err.message);
     } finally {
         renderCountdown();
         renderTodaysBanner();
