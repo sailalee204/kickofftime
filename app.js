@@ -131,6 +131,26 @@ const teamTranslations = {
   }
 };
 
+const groupTranslations = {
+    es: { "Group": "Grupo", "Round of 32": "Dieciseisavos", "Round of 16": "Octavos", "Quarter-finals": "Cuartos", "Semi-finals": "Semis", "Third-place play-off": "3er Puesto", "Final": "Gran Final" },
+    pt: { "Group": "Grupo", "Round of 32": "Fase de 32", "Round of 16": "Oitavas", "Quarter-finals": "Quartas", "Semi-finals": "Semis", "Third-place play-off": "3º Lugar", "Final": "Final" },
+    fr: { "Group": "Groupe", "Round of 32": "32e de Finale", "Round of 16": "16e de Finale", "Quarter-finals": "Quarts", "Semi-finals": "Demies", "Third-place play-off": "3e Place", "Final": "Finale" },
+    zh: { "Group": "小组", "Round of 32": "32强", "Round of 16": "16强", "Quarter-finals": "四分之一", "Semi-finals": "半决赛", "Third-place play-off": "季军赛", "Final": "决赛" },
+    ar: { "Group": "مجموعة", "Round of 32": "دور الـ32", "Round of 16": "دور الـ16", "Quarter-finals": "ربع النهائي", "Semi-finals": "نصف النهائي", "Third-place play-off": "المركز الثالث", "Final": "النهائي" }
+};
+
+function getTranslatedGroup(groupStr) {
+    let displayGroup = groupStr;
+    if (groupTranslations[currentLang]) {
+        const gt = groupTranslations[currentLang];
+        for (const [en, tr] of Object.entries(gt)) {
+            displayGroup = displayGroup.replace(en, tr);
+        }
+    }
+    return displayGroup;
+}
+
+
 function getTeamName(englishName) {
     if (currentLang === "en") return englishName;
     if (teamTranslations[currentLang] && teamTranslations[currentLang][englishName]) {
@@ -1572,20 +1592,7 @@ function renderMatches() {
             grid.appendChild(divider);
         }
 
-        let displayGroup = match.group;
-        const groupTranslations = {
-            es: { "Group": "Grupo", "Round of 32": "Dieciseisavos", "Round of 16": "Octavos", "Quarter-finals": "Cuartos", "Semi-finals": "Semis", "Third-place play-off": "3er Puesto", "Final": "Gran Final" },
-            pt: { "Group": "Grupo", "Round of 32": "Fase de 32", "Round of 16": "Oitavas", "Quarter-finals": "Quartas", "Semi-finals": "Semis", "Third-place play-off": "3º Lugar", "Final": "Final" },
-            fr: { "Group": "Groupe", "Round of 32": "32e de Finale", "Round of 16": "16e de Finale", "Quarter-finals": "Quarts", "Semi-finals": "Demies", "Third-place play-off": "3e Place", "Final": "Finale" },
-            zh: { "Group": "小组", "Round of 32": "32强", "Round of 16": "16强", "Quarter-finals": "四分之一", "Semi-finals": "半决赛", "Third-place play-off": "季军赛", "Final": "决赛" },
-            ar: { "Group": "مجموعة", "Round of 32": "دور الـ32", "Round of 16": "دور الـ16", "Quarter-finals": "ربع النهائي", "Semi-finals": "نصف النهائي", "Third-place play-off": "المركز الثالث", "Final": "النهائي" }
-        };
-        if (groupTranslations[currentLang]) {
-            const gt = groupTranslations[currentLang];
-            for (const [en, tr] of Object.entries(gt)) {
-                displayGroup = displayGroup.replace(en, tr);
-            }
-        }
+        let displayGroup = getTranslatedGroup(match.group);
 
         // Resolve team names: use API data, then knockout code parser, then raw
         const team1Raw = live?.homeTeam || parseKnockoutCode(match.team1);
@@ -1862,7 +1869,7 @@ function renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match) {
     // Group / Stage
     ctx.fillStyle = "#ef4444";
     ctx.font = "bold 16px 'Inter', sans-serif";
-    ctx.fillText(`${t.stage}: ${match.group.toUpperCase()}`, 40, 280);
+    ctx.fillText(`${t.stage}: ${getTranslatedGroup(match.group).toUpperCase()}`, 40, 280);
 
     // Venue
     ctx.fillStyle = "#0f172a";
