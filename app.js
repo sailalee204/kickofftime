@@ -2596,8 +2596,39 @@ function renderTodaysBanner() {
 updateLanguage();
 renderMatches(); // Render immediately with static data
 fetchLiveData(); // Then fetch API data and re-render
-setInterval(fetchLiveData, 60000); // Auto-refresh live scores every 1 minute
+
+// =============================================
+// Smart Adaptive Polling
+// - 30s  when a match is live right now
+// - 60s  on a match day (matches today)
+// - 5min otherwise (no matches today)
+// =============================================
+function getPollingInterval() {
+    const now = Date.now();
+    const hasLive = Object.values(liveMatchData).some(
+        d => d.status === "IN_PLAY" || d.status === "PAUSED"
+    );
+    if (hasLive) return 30 * 1000;
+
+    const hasToday = matches.some(m => {
+        const t = new Date(m.time_utc).getTime();
+        return Math.abs(t - now) < 12 * 60 * 60 * 1000; // within ±12h
+    });
+    return hasToday ? 60 * 1000 : 5 * 60 * 1000;
+}
+
+let _pollTimer = null;
+function schedulePoll() {
+    if (_pollTimer) clearTimeout(_pollTimer);
+    _pollTimer = setTimeout(async () => {
+        await fetchLiveData();
+        schedulePoll(); // re-schedule based on new state
+    }, getPollingInterval());
+}
+schedulePoll();
+
 console.log("App loaded with local timezone:", currentTimezone);
+
 
 // =============================================
 // Deep Linking
