@@ -12,8 +12,10 @@ let template = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf-8');
 // Ensure directories exist
 const matchDir = path.join(__dirname, '../match');
 const teamDir = path.join(__dirname, '../team');
+const countryDir = path.join(__dirname, '../time-in');
 if (!fs.existsSync(matchDir)) fs.mkdirSync(matchDir);
 if (!fs.existsSync(teamDir)) fs.mkdirSync(teamDir);
+if (!fs.existsSync(countryDir)) fs.mkdirSync(countryDir);
 
 // Helper to format team names for URLs
 function toSlug(text) {
@@ -114,6 +116,51 @@ uniqueTeams.forEach(team => {
     generatedTeamCount++;
 });
 
+// Generate Country/Timezone Pages (pSEO for geo-searches)
+const targetCountries = [
+    "Australia", "United Kingdom", "China", "India", "Philippines", "South Africa", 
+    "Nigeria", "Malaysia", "Singapore", "New Zealand", "Ireland", "UAE", "Saudi Arabia", 
+    "Qatar", "Japan", "South Korea", "Germany", "France", "Spain", "Italy", "Brazil", 
+    "Argentina", "Colombia", "Peru", "Chile", "Vietnam", "Thailand", "Indonesia",
+    "Egypt", "Morocco", "Senegal", "Ghana", "Kenya", "Pakistan", "Bangladesh",
+    "Taiwan", "Hong Kong", "Mexico", "USA", "Canada"
+];
+
+let generatedCountryCount = 0;
+targetCountries.forEach(country => {
+    const slug = toSlug(country);
+    const title = `What Time is the World Cup 2026 in ${country}? | KickoffTime`;
+    const description = `Find out exactly what time every FIFA World Cup 2026 match kicks off in ${country}. Automatically converts the entire tournament schedule to your local timezone.`;
+    const url = `https://kickofftracker.com/time-in/${slug}`;
+    
+    addToSitemap(url, '0.9');
+
+    let pageHTML = template;
+    
+    pageHTML = pageHTML.replace(/href="style\.css"/g, 'href="/style.css"');
+    pageHTML = pageHTML.replace(/src="matches\.js"/g, 'src="/matches.js"');
+    pageHTML = pageHTML.replace(/src="patch_locations\.js"/g, 'src="/patch_locations.js"');
+    pageHTML = pageHTML.replace(/src="app\.js"/g, 'src="/app.js"');
+    pageHTML = pageHTML.replace(/href="apple-touch-icon\.png"/g, 'href="/apple-touch-icon.png"');
+    pageHTML = pageHTML.replace(/href="favicon-/g, 'href="/favicon-');
+    pageHTML = pageHTML.replace(/wc_out\.json/g, '/wc_out.json');
+    
+    pageHTML = pageHTML.replace(/<title>.*?<\/title>/, `<title>${title}</title>`);
+    pageHTML = pageHTML.replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${description}">`);
+    pageHTML = pageHTML.replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${url}">`);
+    pageHTML = pageHTML.replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${title}">`);
+    pageHTML = pageHTML.replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${description}">`);
+    pageHTML = pageHTML.replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${url}">`);
+
+    // No initial search filter for country pages, show all matches
+    const initScript = `<script>window.INITIAL_TAB = "all";</script>`;
+    pageHTML = pageHTML.replace('</head>', `    ${initScript}\n</head>`);
+
+    fs.writeFileSync(path.join(countryDir, `${slug}.html`), pageHTML);
+    generatedCountryCount++;
+});
+
+
 // Update sitemap.xml
 let sitemapText = fs.readFileSync(path.join(__dirname, '../sitemap.xml'), 'utf-8');
 // remove the closing tag
@@ -122,4 +169,4 @@ sitemapText = sitemapText.replace('</urlset>', '');
 sitemapText += sitemapUrls.join('\n') + '\n</urlset>';
 fs.writeFileSync(path.join(__dirname, '../sitemap.xml'), sitemapText);
 
-console.log(`Generated ${generatedMatchCount} match pages, ${generatedTeamCount} team pages, and updated sitemap.xml!`);
+console.log(`Generated ${generatedMatchCount} match pages, ${generatedTeamCount} team pages, ${generatedCountryCount} country pages, and updated sitemap.xml!`);
