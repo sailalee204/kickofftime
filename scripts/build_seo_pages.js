@@ -48,10 +48,10 @@ matches.forEach((match, index) => {
     let pageHTML = template;
     
     // Replace Absolute Paths for CSS/JS since we are in a subfolder
-    pageHTML = pageHTML.replace(/href="style\.css"/g, 'href="/style.css"');
-    pageHTML = pageHTML.replace(/src="matches\.js"/g, 'src="/matches.js"');
-    pageHTML = pageHTML.replace(/src="patch_locations\.js"/g, 'src="/patch_locations.js"');
-    pageHTML = pageHTML.replace(/src="app\.js"/g, 'src="/app.js"');
+    pageHTML = pageHTML.replace(/href="style\.css(\?v=\d+)?"/g, 'href="/style.css$1"');
+    pageHTML = pageHTML.replace(/src="matches\.js(\?v=\d+)?"/g, 'src="/matches.js$1"');
+    pageHTML = pageHTML.replace(/src="patch_locations\.js(\?v=\d+)?"/g, 'src="/patch_locations.js$1"');
+    pageHTML = pageHTML.replace(/src="app\.js(\?v=\d+)?"/g, 'src="/app.js$1"');
     pageHTML = pageHTML.replace(/href="apple-touch-icon\.png"/g, 'href="/apple-touch-icon.png"');
     pageHTML = pageHTML.replace(/href="favicon-/g, 'href="/favicon-');
     pageHTML = pageHTML.replace(/wc_out\.json/g, '/wc_out.json');
@@ -94,10 +94,10 @@ uniqueTeams.forEach(team => {
 
     let pageHTML = template;
     
-    pageHTML = pageHTML.replace(/href="style\.css"/g, 'href="/style.css"');
-    pageHTML = pageHTML.replace(/src="matches\.js"/g, 'src="/matches.js"');
-    pageHTML = pageHTML.replace(/src="patch_locations\.js"/g, 'src="/patch_locations.js"');
-    pageHTML = pageHTML.replace(/src="app\.js"/g, 'src="/app.js"');
+    pageHTML = pageHTML.replace(/href="style\.css(\?v=\d+)?"/g, 'href="/style.css$1"');
+    pageHTML = pageHTML.replace(/src="matches\.js(\?v=\d+)?"/g, 'src="/matches.js$1"');
+    pageHTML = pageHTML.replace(/src="patch_locations\.js(\?v=\d+)?"/g, 'src="/patch_locations.js$1"');
+    pageHTML = pageHTML.replace(/src="app\.js(\?v=\d+)?"/g, 'src="/app.js$1"');
     pageHTML = pageHTML.replace(/href="apple-touch-icon\.png"/g, 'href="/apple-touch-icon.png"');
     pageHTML = pageHTML.replace(/href="favicon-/g, 'href="/favicon-');
     pageHTML = pageHTML.replace(/wc_out\.json/g, '/wc_out.json');
@@ -137,10 +137,10 @@ targetCountries.forEach(country => {
 
     let pageHTML = template;
     
-    pageHTML = pageHTML.replace(/href="style\.css"/g, 'href="/style.css"');
-    pageHTML = pageHTML.replace(/src="matches\.js"/g, 'src="/matches.js"');
-    pageHTML = pageHTML.replace(/src="patch_locations\.js"/g, 'src="/patch_locations.js"');
-    pageHTML = pageHTML.replace(/src="app\.js"/g, 'src="/app.js"');
+    pageHTML = pageHTML.replace(/href="style\.css(\?v=\d+)?"/g, 'href="/style.css$1"');
+    pageHTML = pageHTML.replace(/src="matches\.js(\?v=\d+)?"/g, 'src="/matches.js$1"');
+    pageHTML = pageHTML.replace(/src="patch_locations\.js(\?v=\d+)?"/g, 'src="/patch_locations.js$1"');
+    pageHTML = pageHTML.replace(/src="app\.js(\?v=\d+)?"/g, 'src="/app.js$1"');
     pageHTML = pageHTML.replace(/href="apple-touch-icon\.png"/g, 'href="/apple-touch-icon.png"');
     pageHTML = pageHTML.replace(/href="favicon-/g, 'href="/favicon-');
     pageHTML = pageHTML.replace(/wc_out\.json/g, '/wc_out.json');
