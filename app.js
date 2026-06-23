@@ -1579,7 +1579,14 @@ function renderMatches() {
         
         const isKnockout = match.group.includes("Round") || match.group.includes("Quarter") || match.group.includes("Semi") || match.group.includes("Final") || match.group.includes("Third");
         const isHostNation = ["USA","Mexico","Canada"].includes(match.team1) || ["USA","Mexico","Canada"].includes(match.team2);
-        const isLive = live?.status === "IN_PLAY" || live?.status === "PAUSED";
+        let isLive = live?.status === "IN_PLAY" || live?.status === "PAUSED";
+        if (!live?.status) {
+            const kickoffTime = new Date(match.time_utc).getTime();
+            const nowTime = Date.now();
+            if (nowTime >= kickoffTime && nowTime <= kickoffTime + 115 * 60 * 1000) {
+                isLive = true;
+            }
+        }
         const isFinished = matchIsFinished(match, live);
         const isImportant = isKnockout || isHostNation || isLive;
 
