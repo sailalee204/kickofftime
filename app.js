@@ -1760,11 +1760,23 @@ function openShareModal(matchIndex) {
         `https://twitter.com/intent/tweet?text=${tweetText}`;
 
     // Store share text for copy
-    document.getElementById("btnCopyText").dataset.text =
-        `🏆 ${team1} vs ${team2} — ${shareI18n[currentLang].wc2026}\n` +
+    const baseUrl = window.location.origin + window.location.pathname;
+    let shareText = `🏆 ${team1} vs ${team2} — ${shareI18n[currentLang].wc2026}\n` +
         `⏰ ${shareI18n[currentLang].myKickoff}: ${timeStr} ${suffix} (${dateStr})\n` +
         `📅 ${getLocString(match.venue)}\n` +
         `🌐 ${shareI18n[currentLang].seeAllMatches} → https://kickofftracker.com`;
+
+    const predStr = localStorage.getItem(`pred_${team1Raw}_${team2Raw}`);
+    if (predStr) {
+        try {
+            const p = JSON.parse(predStr);
+            const chalUrl = `${baseUrl}?challengeMatch=${matchIndex}&p1=${p.s1}&p2=${p.s2}`;
+            const t = shareI18n[currentLang] || shareI18n['en'];
+            shareText = t.chalText.replace("{t1}", team1).replace("{s1}", p.s1).replace("{s2}", p.s2).replace("{t2}", team2).replace("{url}", chalUrl);
+        } catch(e) {}
+    }
+    
+    document.getElementById("btnCopyText").dataset.text = shareText;
 
     // Render Canvas card
     renderShareCanvas(team1, team2, dateStr, timeStr, suffix, match);
@@ -2207,8 +2219,7 @@ async function copyShareLink() {
                 isChallenge = true;
                 const team1Name = getTeamName(match.team1);
                 const team2Name = getTeamName(match.team2);
-                const t = shareI18n[currentLang] || shareI18n['en'];
-                copyText = t.chalText.replace("{t1}", team1Name).replace("{s1}", p.s1).replace("{s2}", p.s2).replace("{t2}", team2Name).replace("{url}", url);
+                copyText = url;
             } catch(e) {
                 url = `${baseUrl}?shareMatch=${currentShareIndex}`;
                 copyText = url;
