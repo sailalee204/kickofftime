@@ -2486,8 +2486,8 @@ async function fetchLiveData() {
                 const t1 = normalize(m.team1);
                 const t2 = normalize(m.team2);
                 const sameTeams = (h && a) && (
-                    (t1.includes(h) || h.includes(t1)) ||
-                    (t2.includes(a) || a.includes(t2))
+                    ( (t1.includes(h) || h.includes(t1)) && (t2.includes(a) || a.includes(t2)) ) ||
+                    ( (t1.includes(a) || a.includes(t1)) && (t2.includes(h) || h.includes(t2)) )
                 );
                 
                 // Fallback: If it's a knockout match with placeholder teams, match by exact time
