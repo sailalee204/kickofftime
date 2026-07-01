@@ -1478,11 +1478,6 @@ function matchIsFinished(match, live) {
     // Time-based fallback: 115 minutes after kickoff
     const kickoff = new Date(match.time_utc);
     if (isNaN(kickoff.getTime())) return false;
-
-    // If teams are still placeholders and no live API status, it hasn't actually happened
-    const isPlaceholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(match.team1) || /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(match.team2);
-    if (isPlaceholder && !live?.status) return false;
-
     return Date.now() > kickoff.getTime() + 115 * 60 * 1000;
 }
 
@@ -1618,8 +1613,13 @@ function renderMatches() {
             if (live && live.homeScore !== null && live.homeScore !== undefined) {
                 statusHTML = `<span class="badge-ft">${t.finished} &nbsp; ${live.homeScore} – ${live.awayScore}</span>`;
             } else {
-                const mock = getMockScore(match.team1, match.team2);
-                statusHTML = `<span class="badge-ft">${t.finished} &nbsp; ${mock.home} – ${mock.away}</span>`;
+                const isPlaceholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/i.test(match.team1) || /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/i.test(match.team2);
+                if (isPlaceholder) {
+                    statusHTML = `<span class="badge-ft">${t.finished} (TBD)</span>`;
+                } else {
+                    const mock = getMockScore(match.team1, match.team2);
+                    statusHTML = `<span class="badge-ft">${t.finished} &nbsp; ${mock.home} – ${mock.away}</span>`;
+                }
             }
         }
 
