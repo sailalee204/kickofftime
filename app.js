@@ -2441,8 +2441,8 @@ faqItems.forEach(item => {
 // =============================================
 async function fetchLiveData() {
     try {
-        // ESPN's free public scoreboard API - no API key required
-        const res = await fetch("https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard");
+        // ESPN's free public scoreboard API - fetch all tournament dates
+        const res = await fetch("https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260720");
         if (!res.ok) throw new Error(`ESPN API error ${res.status}`);
         const data = await res.json();
 
