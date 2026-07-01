@@ -1478,6 +1478,11 @@ function matchIsFinished(match, live) {
     // Time-based fallback: 115 minutes after kickoff
     const kickoff = new Date(match.time_utc);
     if (isNaN(kickoff.getTime())) return false;
+
+    // If teams are still placeholders and no live API status, it hasn't actually happened
+    const isPlaceholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(match.team1) || /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(match.team2);
+    if (isPlaceholder && !live?.status) return false;
+
     return Date.now() > kickoff.getTime() + 115 * 60 * 1000;
 }
 
@@ -1648,9 +1653,11 @@ function renderMatches() {
                     <div class="match-venue">📍 ${getLocString(match.venue)}</div>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:0.4rem; align-items:flex-end;">
+                    ${!isFinished ? `
                     <button class="add-calendar-btn" onclick="triggerICS(${originalIndex})">
                         📅 ${t.addToCalendar}
                     </button>
+                    ` : ''}
                     <button class="share-btn" onclick="openShareModal(${originalIndex})">
                         ${t.btnShare}
                     </button>
@@ -2482,6 +2489,15 @@ async function fetchLiveData() {
                     (t1.includes(h) || h.includes(t1)) ||
                     (t2.includes(a) || a.includes(t2))
                 );
+                
+                // Fallback: If it's a knockout match with placeholder teams, match by exact time
+                const isPlaceholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/i.test(m.team1) || /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/i.test(m.team2);
+                const isTimeMatch = Math.abs(mTime - espnTime) < 2 * 60 * 60 * 1000;
+                
+                if (isPlaceholder && isTimeMatch) {
+                    return true;
+                }
+
                 return withinWindow && sameTeams;
             });
 
@@ -2494,9 +2510,10 @@ async function fetchLiveData() {
                     awayTeam: apiAway,
                     minute,
                 };
-                // Update team names from ESPN if they're real names
+                // Update team names and time from ESPN if they're real
                 if (apiHome && !apiHome.match(/^[W1-4]/)) matches[idx].team1 = apiHome;
                 if (apiAway && !apiAway.match(/^[W1-4]/)) matches[idx].team2 = apiAway;
+                if (apiDate) matches[idx].time_utc = apiDate;
             }
         });
 
