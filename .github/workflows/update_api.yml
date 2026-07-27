@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Stop when the API secret is not configured
         if: ${{ env.FOOTBALL_DATA_TOKEN == '' }}

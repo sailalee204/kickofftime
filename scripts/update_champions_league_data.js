@@ -8,7 +8,9 @@ if (!token) {
 }
 
 const outputPath = path.join(__dirname, "..", "data", "champions-league.json");
-const endpoint = "https://api.football-data.org/v4/competitions/CL/matches?season=2026";
+const targetSeason = "2026";
+const competitionEndpoint = "https://api.football-data.org/v4/competitions/CL/matches";
+const seasonEndpoint = `${competitionEndpoint}?season=${targetSeason}`;
 
 const TEAM_IDENTITIES = [
   ["Aarhus", ["AGF Aarhus", "Aarhus GF"]],
@@ -75,7 +77,9 @@ function requestJson(url) {
       });
       response.on("end", () => {
         if (response.statusCode < 200 || response.statusCode >= 300) {
-          reject(new Error(`Football data request failed with status ${response.statusCode}.`));
+          const error = new Error(`Football data request failed with status ${response.statusCode}.`);
+          error.statusCode = response.statusCode;
+          reject(error);
           return;
         }
         try {
@@ -88,6 +92,41 @@ function requestJson(url) {
     request.setTimeout(20000, () => request.destroy(new Error("Football data request timed out.")));
     request.on("error", reject);
   });
+}
+
+function responseSeason(response) {
+  if (response.filters && response.filters.season) {
+    return String(response.filters.season);
+  }
+
+  const matchWithSeason = Array.isArray(response.matches)
+    ? response.matches.find((match) => match.season && match.season.startDate)
+    : null;
+  return matchWithSeason ? String(matchWithSeason.season.startDate).slice(0, 4) : "";
+}
+
+async function fetchTargetSeason() {
+  try {
+    return await requestJson(seasonEndpoint);
+  } catch (error) {
+    if (error.statusCode !== 404) throw error;
+
+    console.warn(
+      `football-data.org does not currently expose Champions League season ${targetSeason}; checking its current season.`
+    );
+    const currentResponse = await requestJson(competitionEndpoint);
+    const currentSeason = responseSeason(currentResponse);
+
+    if (currentSeason !== targetSeason) {
+      console.warn(
+        `football-data.org currently reports Champions League season ${currentSeason || "unknown"}. ` +
+        `Keeping the existing verified ${targetSeason}/27 schedule.`
+      );
+      return null;
+    }
+
+    return currentResponse;
+  }
 }
 
 function stageLabel(stage) {
@@ -131,7 +170,9 @@ function normalizeMatch(match) {
 }
 
 async function main() {
-  const response = await requestJson(endpoint);
+  const response = await fetchTargetSeason();
+  if (!response) return;
+
   if (!Array.isArray(response.matches)) {
     throw new Error("Football data response did not contain a matches array.");
   }
