@@ -37,19 +37,18 @@ function parseKnockoutCode(code) {
     const tFourthPlace = i18n[currentLang]?.fourthPlace || "4th Place";
     const tThirdPlaceMatch = i18n[currentLang]?.thirdPlaceMatch || "3rd Place Match";
 
-    if (code.startsWith("W")) {
-        if (currentLang === "zh") return `第${code.slice(1)}场胜者`;
-        return `${tWinner} ${tMatch} ${code.slice(1)}`;
+    if (code.startsWith("W") || code.startsWith("L")) {
+        if (currentLang === "zh") return "待定";
+        return "To be decided";
     }
-    if (code.startsWith("L")) return tThirdPlaceMatch;
     
     const pos = code[0];
     const grp = code[1];
     const labels = { "1": tWinner, "2": tRunnerUp, "3": tThirdPlace, "4": tFourthPlace };
     
     if (grp && grp.match(/[A-L]/)) {
-        if (currentLang === "zh") return `${labels[pos] || pos} · ${grp}组`;
-        return `${labels[pos] || pos} · ${tGroup} ${grp}`;
+        if (currentLang === "zh") return "待定";
+        return "To be decided";
     }
     
     return code; // e.g. "3A/B/C/D/F" → show as-is
@@ -535,8 +534,8 @@ function getLocString(str) {
 
 const i18n = {
     en: {
-        title: "World Cup 2026 Timezone Converter",
-        subtitle: "Convert all 104 matches of the FIFA World Cup 2026 to your local time. Never miss a kickoff.",
+        title: "World Cup Final Time in Your Local Time",
+        subtitle: "Check the final stretch of the FIFA World Cup 2026, add matches to your calendar, and join reminders for the next major sports events.",
         tzLabel: "Your Timezone",
         searchPlaceholder: "Search by country, group, or stadium...",
         tabAll: "All Matches",
@@ -552,17 +551,17 @@ const i18n = {
         nextMatch: "Next match in",
         liveNow: "LIVE",
         finished: "FT",
-        btnDownloadAll: "📥 Download All 104 Matches",
+        btnDownloadAll: "📥 Download Match Calendar",
         btnTeamCal: "⭐ Subscribe by Team",
         tzHelper: "Detected automatically. Adjust manually below if needed.",
         upcoming: "upcoming",
         finishedStats: "finished",
         faqTitle: "Frequently Asked Questions (FAQ)",
-        subscribeTitle: "Coming Soon: Match Alerts 🚀",
-        subscribeDesc: "Leave your email to be the first to know when this feature goes live.",
-        subscribeBtn: "Join Waitlist",
+        subscribeTitle: "Get the next big match in your local time.",
+        subscribeDesc: "Join reminders for Champions League, Premier League, F1, NBA, NFL, esports and future international tournaments.",
+        subscribeBtn: "Get Reminders",
         emailPlaceholder: "Enter your email address...",
-        subSuccess: "🎉 Thanks for your interest! Email alerts are under active development. Stay tuned!",
+        subSuccess: "🎉 You're on the reminder list. We'll send future big-match times in your local timezone.",
         tournAlert: "Schedules for this tournament will be available closer to the event!",
         winner: "Winner",
         match: "Match",
@@ -897,8 +896,8 @@ const i18n = {
         myPrediction: "🎯 توقعاتي"
     },
     zh: {
-        title: "2026 世界杯时区转换器",
-        subtitle: "将 104 场比赛一键转换为您的本地时间。永远不会错过开球。",
+        title: "世界杯决赛本地时间查询",
+        subtitle: "查看 2026 世界杯最后阶段的本地开球时间，添加到日历，并订阅下一批全球体育大赛提醒。",
         tzLabel: "您的时区",
         searchPlaceholder: "按国家、小组或场馆搜索...",
         tabAll: "所有比赛",
@@ -913,17 +912,17 @@ const i18n = {
         nextMatch: "下一场比赛倒计时",
         liveNow: "直播中",
         finished: "完赛",
-        btnDownloadAll: "📥 下载所有104场比赛",
+        btnDownloadAll: "📥 下载比赛日历",
         btnTeamCal: "⭐ 按球队订阅",
         tzHelper: "自动检测。如需修改请在下方手动选择。",
         upcoming: "未赛",
         finishedStats: "完赛",
         faqTitle: "常见问题 (FAQ)",
-        subscribeTitle: "即将推出：赛事提醒推送 🚀",
-        subscribeDesc: "留下您的邮箱，功能上线时您将第一时间接到通知。",
-        subscribeBtn: "加入列表",
+        subscribeTitle: "下一场重要比赛，自动换成你的本地时间。",
+        subscribeDesc: "订阅欧冠、英超、F1、NBA、NFL、电竞和未来国际赛事提醒。",
+        subscribeBtn: "获取提醒",
         emailPlaceholder: "输入您的电子邮件地址...",
-        subSuccess: "加入成功！我们会保持联系。",
+        subSuccess: "加入成功！后续重要比赛时间会按你的本地时区提醒。",
         tournAlert: "其他赛事的赛程将在临近时公布！",
         winner: "胜者",
         match: "第",
@@ -1159,6 +1158,7 @@ if (subscribeForm) {
     subscribeForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         const email = document.getElementById("emailInput").value;
+        const interest = document.getElementById("interestSelect")?.value || "All major sports";
         const submitBtn = subscribeForm.querySelector("button");
         
         if (email) {
@@ -1175,7 +1175,8 @@ if (subscribeForm) {
                     const formData = new FormData();
                     formData.append("fi-sender-email", email);
                     formData.append("fi-text-timezone", currentTimezone);
-                    formData.append("fi-text-source", "KickoffTime Website");
+                    formData.append("fi-text-interest", interest);
+                    formData.append("fi-text-source", "KickoffTime future sports reminders");
 
                     await fetch(WEBHOOK_URL, {
                         method: "POST",
@@ -1602,6 +1603,7 @@ function renderMatches() {
         let team2Display = team2Raw;
         const isTeam1Placeholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(match.team1);
         const isTeam2Placeholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/.test(match.team2);
+        const hasPlaceholderTeam = isTeam1Placeholder || isTeam2Placeholder;
         if (!isTeam1Placeholder) team1Display = getTeamName(team1Raw);
         if (!isTeam2Placeholder) team2Display = getTeamName(team2Raw);
 
@@ -1610,17 +1612,7 @@ function renderMatches() {
         if (isLive) {
             statusHTML = `<span class="badge-live">● ${t.liveNow}</span>`;
         } else if (isFinished) {
-            if (live && live.homeScore !== null && live.homeScore !== undefined) {
-                statusHTML = `<span class="badge-ft">${t.finished} &nbsp; ${live.homeScore} – ${live.awayScore}</span>`;
-            } else {
-                const isPlaceholder = /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/i.test(match.team1) || /^[1-4][A-L]|^W\d|^L\d|Winner|Runner|3rd/i.test(match.team2);
-                if (isPlaceholder) {
-                    statusHTML = `<span class="badge-ft">${t.finished} (TBD)</span>`;
-                } else {
-                    const mock = getMockScore(match.team1, match.team2);
-                    statusHTML = `<span class="badge-ft">${t.finished} &nbsp; ${mock.home} – ${mock.away}</span>`;
-                }
-            }
+            statusHTML = `<span class="badge-ft">${t.finished}</span>`;
         }
 
         const card = document.createElement("div");
@@ -1661,7 +1653,7 @@ function renderMatches() {
                     <button class="share-btn" onclick="openShareModal(${originalIndex})">
                         ${t.btnShare}
                     </button>
-                    ${!isFinished ? `
+                    ${!isFinished && !hasPlaceholderTeam ? `
                     <a href="https://www.google.com/search?q=watch+world+cup+live+${encodeURIComponent(team1Raw)}+vs+${encodeURIComponent(team2Raw)}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; width: 100%;">
                         <button class="share-btn" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; font-weight: 600; width: 100%; justify-content: center; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
                             ${t.watchLive}
@@ -2589,14 +2581,7 @@ function renderTodaysBanner() {
         if (isLiveNow) {
             statusBadge = `<span class="badge-live">● ${t.liveNow}</span>`;
         } else if (isDone) {
-            let scoreStr = "";
-            if (live && live.homeScore !== null && live.homeScore !== undefined) {
-                scoreStr = ` ${live.homeScore}-${live.awayScore}`;
-            } else {
-                const mock = getMockScore(m.team1, m.team2);
-                scoreStr = ` ${mock.home}-${mock.away}`;
-            }
-            statusBadge = `<span class="badge-ft">${t.finished}${scoreStr}</span>`;
+            statusBadge = `<span class="badge-ft">${t.finished}</span>`;
         } else {
             statusBadge = `<span class="badge-time">${timeStr} ${suffix}</span>`;
         }
@@ -2612,7 +2597,8 @@ function renderTodaysBanner() {
 // =============================================
 updateLanguage();
 renderMatches(); // Render immediately with static data
-fetchLiveData(); // Then fetch API data and re-render
+renderCountdown();
+renderTodaysBanner();
 
 // =============================================
 // Smart Adaptive Polling
@@ -2642,7 +2628,9 @@ function schedulePoll() {
         schedulePoll(); // re-schedule based on new state
     }, getPollingInterval());
 }
-schedulePoll();
+// Live score polling is intentionally disabled for now. The site focuses on
+// reliable local kickoff times and calendar reminders until a trusted cached
+// data source is connected.
 
 console.log("App loaded with local timezone:", currentTimezone);
 

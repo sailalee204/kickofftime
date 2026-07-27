@@ -1,6 +1,9 @@
 const fs = require('fs');
 
-const API_TOKEN = "32c68282e7e948139b35e1b2aff0f7de";
+const API_TOKEN = process.env.FOOTBALL_DATA_TOKEN;
+if (!API_TOKEN) {
+  throw new Error("Set FOOTBALL_DATA_TOKEN before running this scratch script.");
+}
 const API_BASE = "https://api.football-data.org/v4";
 
 async function test() {

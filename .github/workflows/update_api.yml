@@ -1,31 +1,46 @@
-name: Auto-update Live Match Data
+name: Update Champions League schedule
 
 on:
   schedule:
-    # Run every 5 minutes (GitHub's minimum allowed interval)
-    - cron: '*/5 * * * *'
-  workflow_dispatch: # Allow manual trigger from GitHub UI
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: update-champions-league-schedule
+  cancel-in-progress: true
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
 
     steps:
-      - name: Checkout repository
+      - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Fetch latest WC matches from API
+      - name: Stop when the API secret is not configured
+        if: ${{ env.FOOTBALL_DATA_TOKEN == '' }}
         run: |
-          echo "Fetching latest live scores..."
-          curl -s -H "X-Auth-Token: 32c68282e7e948139b35e1b2aff0f7de" https://api.football-data.org/v4/competitions/WC/matches -o wc_out.json
-          
-      - name: Commit and push if changed
+          echo "::error::Add FOOTBALL_DATA_TOKEN in repository Settings > Secrets and variables > Actions."
+          exit 1
+
+      - name: Fetch and validate Champions League fixtures
+        run: node scripts/update_champions_league_data.js
+
+      - name: Build search pages and sitemap
+        run: node scripts/build_champions_league_pages.js
+
+      - name: Commit verified changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add wc_out.json
-          
-          # Only commit and push if there are changes
-          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update live match data [skip ci]" && git push)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/champions-league.json champions-league sitemap.xml
+          if git diff --staged --quiet; then
+            echo "No verified schedule changes."
+          else
+            git commit -m "Update Champions League schedule [skip ci]"
+            git push
+          fi

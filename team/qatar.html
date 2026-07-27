@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -10,8 +10,6 @@
     <meta name="description" content="View the full FIFA World Cup 2026 match schedule and local kickoff times for Qatar. Automatically converts to your timezone.">
     <meta name="keywords" content="world cup 2026 schedule, world cup 2026 time, world cup 2026 kickoff time, when is the world cup 2026, world cup 2026 my time, world cup 2026 China time, world cup 2026 UK time, world cup 2026 Australia time, horario mundial 2026, weltmeisterschaft 2026 uhrzeit, coupe du monde 2026 heure, world cup 2026 local time converter, FIFA 2026 fixtures local time, world cup 2026 EST CST PST GMT IST">
     <meta name="author" content="KickoffTime">
-    <link rel="canonical" href="https://kickofftracker.com/team/qatar">
-
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kickofftracker.com/team/qatar">
@@ -27,7 +25,7 @@
     <meta property="twitter:image" content="https://kickofftracker.com/og-image.jpg">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="/style.css?v=3">
+    <link rel="stylesheet" href="/style.css?v=4">
     
     <!-- Favicon (Emoji favicon as standard fallback) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>">
@@ -119,8 +117,8 @@
         },
         {
           "@type": "Question",
-          "name": "Does KickoffTime show live World Cup 2026 scores?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. KickoffTime shows live match status and final scores via ESPN's real-time sports data. Finished matches show the score (e.g. FT 2-0). Matches currently playing show a red LIVE indicator. Scores update automatically every 30-60 seconds during live matches." }
+          "name": "Does KickoffTime show World Cup 2026 kickoff times in my local timezone?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. KickoffTime converts World Cup 2026 kickoff times to your selected local timezone and lets you download calendar reminders. The site focuses on schedule clarity rather than real-time live score coverage." }
         },
         {
           "@type": "Question",
@@ -140,6 +138,9 @@
       gtag('config', 'G-X3D65XCZNY');
     </script>
     <script>window.INITIAL_SEARCH = "Qatar"; window.INITIAL_TAB = "all";</script>
+    <meta name="robots" content="noindex, follow">
+    <meta http-equiv="refresh" content="0; url=/world-cup-2026.html">
+    <link rel="canonical" href="https://kickofftracker.com/world-cup-2026.html">
 </head>
 <body>
     <div id="toast" class="toast"></div>
@@ -235,7 +236,7 @@
             <!-- Hero CTA Row -->
             <div class="hero-cta-row">
                 <button class="btn-hero-primary" id="btnDownloadAll" onclick="downloadAllICS()">
-                    📥 Download All 104 Matches
+                    📥 Download Match Calendar
                 </button>
                 <button class="btn-hero-secondary" id="btnTeamCal" onclick="toggleTeamCalPanel()">
                     ⭐ Subscribe by Team
@@ -349,7 +350,7 @@
                     <span class="faq-toggle">▼</span>
                 </div>
                 <div class="faq-answer" id="fa3">
-                    Click the 'Add to Cal' button on any match card. It will download a standard .ics calendar file that you can import directly into Google Calendar, Apple Calendar, or Microsoft Outlook. You can also click 'Download All 104 Matches' in the hero section to get every game at once, or use 'Subscribe by Team' to download only your favorite team's matches — all with a 30-minute pre-match reminder alarm built in.
+                    Click the 'Add to Cal' button on any match card. It will download a standard .ics calendar file that you can import directly into Google Calendar, Apple Calendar, or Microsoft Outlook. You can also download the full match calendar from the hero section, or use 'Subscribe by Team' to download only your favorite team's matches — all with a 30-minute pre-match reminder alarm built in.
                 </div>
             </div>
 
@@ -456,6 +457,6 @@
 
     <!-- Scripts -->
     <script src="/matches.js?v=9"></script>
-    <script src="/app.js?v=9"></script>
+    <script src="/app.js?v=11"></script>
 </body>
 </html>
