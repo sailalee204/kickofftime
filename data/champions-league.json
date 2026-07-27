@@ -1,10 +1,10 @@
 {
   "competition": "UEFA Champions League",
   "season": "2026/27",
-  "updated_at": "2026-07-27T03:00:00Z",
+  "updated_at": "2026-07-27T07:17:03Z",
   "source_name": "UEFA",
   "source_url": "https://www.uefa.com/uefachampionsleague/news/02a6-20e5a8be4e63-ae971c582f8c-1000--champions-league-qualifying-fixtures-dates-how-it-works/",
-  "source_timezone": "CET (UTC+1), as labelled by UEFA",
+  "source_timezone": "UTC timestamps cross-checked against UEFA and home-club listings",
   "matches": [
     {
       "id": "ucl-2026-q2-01",
@@ -149,7 +149,7 @@
     {
       "id": "ucl-2026-q2-15",
       "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-28T16:00:00Z",
+      "kickoff": "2026-07-28T15:00:00Z",
       "home": "KuPS Kuopio",
       "away": "Sabah",
       "status": "SCHEDULED"
@@ -157,7 +157,7 @@
     {
       "id": "ucl-2026-q2-16",
       "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-28T17:00:00Z",
+      "kickoff": "2026-07-28T16:00:00Z",
       "home": "Lincoln Red Imps",
       "away": "Mjällby",
       "status": "SCHEDULED"
@@ -165,7 +165,7 @@
     {
       "id": "ucl-2026-q2-17",
       "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-28T19:00:00Z",
+      "kickoff": "2026-07-28T16:00:00Z",
       "home": "GNK Dinamo",
       "away": "Thun",
       "status": "SCHEDULED"
@@ -173,7 +173,7 @@
     {
       "id": "ucl-2026-q2-18",
       "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-28T19:15:00Z",
+      "kickoff": "2026-07-28T18:15:00Z",
       "home": "Celje",
       "away": "Egnatia",
       "status": "SCHEDULED"
@@ -181,7 +181,7 @@
     {
       "id": "ucl-2026-q2-19",
       "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-28T20:00:00Z",
+      "kickoff": "2026-07-28T19:00:00Z",
       "home": "Shamrock Rovers",
       "away": "Ararat-Armenia",
       "status": "SCHEDULED"
@@ -189,7 +189,7 @@
     {
       "id": "ucl-2026-q2-20",
       "stage": "Second qualifying round · Second leg · League path",
-      "kickoff": "2026-07-28T19:45:00Z",
+      "kickoff": "2026-07-28T18:45:00Z",
       "home": "Hearts",
       "away": "Sturm Graz",
       "status": "SCHEDULED"
@@ -197,7 +197,7 @@
     {
       "id": "ucl-2026-q2-21",
       "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T16:00:00Z",
+      "kickoff": "2026-07-29T15:00:00Z",
       "home": "Kairat Almaty",
       "away": "Omonia",
       "status": "SCHEDULED"
@@ -205,7 +205,7 @@
     {
       "id": "ucl-2026-q2-22",
       "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T17:00:00Z",
+      "kickoff": "2026-07-29T16:00:00Z",
       "home": "Kauno Žalgiris",
       "away": "Klaksvík",
       "status": "SCHEDULED"
@@ -213,7 +213,7 @@
     {
       "id": "ucl-2026-q2-23",
       "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T18:00:00Z",
+      "kickoff": "2026-07-29T17:00:00Z",
       "home": "Lech Poznań",
       "away": "Aarhus",
       "status": "SCHEDULED"
@@ -221,7 +221,7 @@
     {
       "id": "ucl-2026-q2-24",
       "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T18:30:00Z",
+      "kickoff": "2026-07-29T17:30:00Z",
       "home": "Universitatea Craiova",
       "away": "Levski Sofia",
       "status": "SCHEDULED"
@@ -229,7 +229,7 @@
     {
       "id": "ucl-2026-q2-25",
       "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T18:30:00Z",
+      "kickoff": "2026-07-29T17:30:00Z",
       "home": "Hapoel Beer-Sheva",
       "away": "Víkingur Reykjavík",
       "status": "SCHEDULED"
@@ -237,7 +237,7 @@
     {
       "id": "ucl-2026-q2-26",
       "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T19:00:00Z",
+      "kickoff": "2026-07-29T18:00:00Z",
       "home": "Crvena Zvezda",
       "away": "Larne",
       "status": "SCHEDULED"
@@ -245,7 +245,7 @@
     {
       "id": "ucl-2026-q2-27",
       "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T19:15:00Z",
+      "kickoff": "2026-07-29T18:15:00Z",
       "home": "Slovan Bratislava",
       "away": "Iberia Tbilisi",
       "status": "SCHEDULED"
@@ -253,7 +253,7 @@
     {
       "id": "ucl-2026-q2-28",
       "stage": "Second qualifying round · Second leg · League path",
-      "kickoff": "2026-07-29T19:00:00Z",
+      "kickoff": "2026-07-29T18:00:00Z",
       "home": "Górnik Zabrze",
       "away": "Fenerbahçe",
       "status": "SCHEDULED"

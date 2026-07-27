@@ -9,7 +9,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT6H
 X-PUBLISHED-TTL:PT6H
 BEGIN:VEVENT
 UID:ucl-2026-q2-13@kickofftracker.com
-DTSTAMP:20260727T030000Z
+DTSTAMP:20260727T071703Z
 DTSTART:20260722T183000Z
 DTEND:20260722T203000Z
 SUMMARY:Levski Sofia vs Universitatea Craiova
@@ -18,9 +18,9 @@ URL:https://kickofftracker.com/champions-league/match/levski-sofia-vs-universita
 END:VEVENT
 BEGIN:VEVENT
 UID:ucl-2026-q2-24@kickofftracker.com
-DTSTAMP:20260727T030000Z
-DTSTART:20260729T183000Z
-DTEND:20260729T203000Z
+DTSTAMP:20260727T071703Z
+DTSTART:20260729T173000Z
+DTEND:20260729T193000Z
 SUMMARY:Universitatea Craiova vs Levski Sofia
 DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · Second leg\nVerified schedule from KickoffTime
 URL:https://kickofftracker.com/champions-league/match/universitatea-craiova-vs-levski-sofia.html

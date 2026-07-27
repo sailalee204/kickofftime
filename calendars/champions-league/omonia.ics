@@ -9,7 +9,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT6H
 X-PUBLISHED-TTL:PT6H
 BEGIN:VEVENT
 UID:ucl-2026-q2-12@kickofftracker.com
-DTSTAMP:20260727T030000Z
+DTSTAMP:20260727T071703Z
 DTSTART:20260722T160000Z
 DTEND:20260722T180000Z
 SUMMARY:Omonia vs Kairat Almaty
@@ -18,9 +18,9 @@ URL:https://kickofftracker.com/champions-league/match/omonia-vs-kairat-almaty.ht
 END:VEVENT
 BEGIN:VEVENT
 UID:ucl-2026-q2-21@kickofftracker.com
-DTSTAMP:20260727T030000Z
-DTSTART:20260729T160000Z
-DTEND:20260729T180000Z
+DTSTAMP:20260727T071703Z
+DTSTART:20260729T150000Z
+DTEND:20260729T170000Z
 SUMMARY:Kairat Almaty vs Omonia
 DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · Second leg\nVerified schedule from KickoffTime
 URL:https://kickofftracker.com/champions-league/match/kairat-almaty-vs-omonia.html

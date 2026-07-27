@@ -9,7 +9,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT6H
 X-PUBLISHED-TTL:PT6H
 BEGIN:VEVENT
 UID:ucl-2026-q2-09@kickofftracker.com
-DTSTAMP:20260727T030000Z
+DTSTAMP:20260727T071703Z
 DTSTART:20260721T200000Z
 DTEND:20260721T220000Z
 SUMMARY:Víkingur Reykjavík vs Hapoel Beer-Sheva
@@ -18,9 +18,9 @@ URL:https://kickofftracker.com/champions-league/match/vikingur-reykjavik-vs-hapo
 END:VEVENT
 BEGIN:VEVENT
 UID:ucl-2026-q2-25@kickofftracker.com
-DTSTAMP:20260727T030000Z
-DTSTART:20260729T183000Z
-DTEND:20260729T203000Z
+DTSTAMP:20260727T071703Z
+DTSTART:20260729T173000Z
+DTEND:20260729T193000Z
 SUMMARY:Hapoel Beer-Sheva vs Víkingur Reykjavík
 DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · Second leg\nVerified schedule from KickoffTime
 URL:https://kickofftracker.com/champions-league/match/hapoel-beer-sheva-vs-vikingur-reykjavik.html
