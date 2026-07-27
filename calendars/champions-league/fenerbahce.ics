@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//KickoffTime//Team Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Fenerbahçe - Champions League
+X-WR-TIMEZONE:UTC
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:ucl-2026-q2-10@kickofftracker.com
+DTSTAMP:20260727T030000Z
+DTSTART:20260721T200000Z
+DTEND:20260721T220000Z
+SUMMARY:Fenerbahçe vs Górnik Zabrze
+DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · First leg · League path\nFinal score: Fenerbahçe 1-0 Górnik Zabrze\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/fenerbahce-vs-gornik-zabrze.html
+END:VEVENT
+BEGIN:VEVENT
+UID:ucl-2026-q2-28@kickofftracker.com
+DTSTAMP:20260727T030000Z
+DTSTART:20260729T190000Z
+DTEND:20260729T210000Z
+SUMMARY:Górnik Zabrze vs Fenerbahçe
+DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · Second leg · League path\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/gornik-zabrze-vs-fenerbahce.html
+END:VEVENT
+END:VCALENDAR

@@ -10,6 +10,56 @@ if (!token) {
 const outputPath = path.join(__dirname, "..", "data", "champions-league.json");
 const endpoint = "https://api.football-data.org/v4/competitions/CL/matches?season=2026";
 
+const TEAM_IDENTITIES = [
+  ["Aarhus", ["AGF Aarhus", "Aarhus GF"]],
+  ["Ararat-Armenia", ["FC Ararat-Armenia"]],
+  ["Celje", ["NK Celje"]],
+  ["Crvena Zvezda", ["FK Crvena Zvezda", "Red Star Belgrade"]],
+  ["Egnatia", ["KF Egnatia"]],
+  ["Fenerbahçe", ["Fenerbahce", "Fenerbahce Istanbul", "Fenerbahçe SK"]],
+  ["GNK Dinamo", ["Dinamo Zagreb", "GNK Dinamo Zagreb"]],
+  ["Górnik Zabrze", ["Gornik Zabrze"]],
+  ["Hapoel Beer-Sheva", ["Hapoel Be'er Sheva", "Hapoel Beer Sheva"]],
+  ["Hearts", ["Heart of Midlothian", "Heart of Midlothian FC"]],
+  ["Iberia Tbilisi", ["FC Iberia 1999", "FC Iberia 1999 Tbilisi"]],
+  ["Kairat Almaty", ["FC Kairat", "Kairat"]],
+  ["Kauno Žalgiris", ["FK Kauno Zalgiris", "Kauno Zalgiris"]],
+  ["Klaksvík", ["KI Klaksvik", "KÍ Klaksvík", "Klaksvik"]],
+  ["KuPS Kuopio", ["KuPS", "Kuopion Palloseura"]],
+  ["Larne", ["Larne FC"]],
+  ["Lech Poznań", ["Lech Poznan"]],
+  ["Levski Sofia", ["PFC Levski Sofia"]],
+  ["Lincoln Red Imps", ["Lincoln Red Imps FC"]],
+  ["Mjällby", ["Mjallby", "Mjällby AIF"]],
+  ["Omonia", ["AC Omonia", "Omonia Nicosia"]],
+  ["Sabah", ["Sabah FC", "Sabah FK"]],
+  ["Shamrock Rovers", ["Shamrock Rovers FC"]],
+  ["Slovan Bratislava", ["SK Slovan Bratislava", "ŠK Slovan Bratislava"]],
+  ["Sturm Graz", ["SK Sturm Graz"]],
+  ["Thun", ["FC Thun"]],
+  ["Universitatea Craiova", ["CS Universitatea Craiova"]],
+  ["Víkingur Reykjavík", ["Vikingur Reykjavik", "Víkingur Reykjavik"]]
+];
+
+function teamKey(name) {
+  return String(name)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+const TEAM_NAME_LOOKUP = new Map();
+for (const [canonical, aliases] of TEAM_IDENTITIES) {
+  TEAM_NAME_LOOKUP.set(teamKey(canonical), canonical);
+  for (const alias of aliases) TEAM_NAME_LOOKUP.set(teamKey(alias), canonical);
+}
+
+function canonicalTeamName(name) {
+  return TEAM_NAME_LOOKUP.get(teamKey(name)) || name;
+}
+
 function requestJson(url) {
   return new Promise((resolve, reject) => {
     const request = https.get(url, {
@@ -55,8 +105,10 @@ function stageLabel(stage) {
 }
 
 function normalizeMatch(match) {
-  const home = match.homeTeam && match.homeTeam.name;
-  const away = match.awayTeam && match.awayTeam.name;
+  const homeName = match.homeTeam && (match.homeTeam.shortName || match.homeTeam.name);
+  const awayName = match.awayTeam && (match.awayTeam.shortName || match.awayTeam.name);
+  const home = homeName && canonicalTeamName(homeName);
+  const away = awayName && canonicalTeamName(awayName);
   if (!match.id || !match.utcDate || !home || !away) return null;
 
   const normalized = {

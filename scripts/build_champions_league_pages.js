@@ -5,9 +5,11 @@ const root = path.join(__dirname, "..");
 const data = JSON.parse(fs.readFileSync(path.join(root, "data", "champions-league.json"), "utf8"));
 const outputDir = path.join(root, "champions-league");
 const matchDir = path.join(outputDir, "match");
+const calendarDir = path.join(root, "calendars", "champions-league");
 const siteUrl = "https://kickofftracker.com";
 
 fs.mkdirSync(matchDir, { recursive: true });
+fs.mkdirSync(calendarDir, { recursive: true });
 
 function cleanHtml(html) {
   return `${html.replace(/[ \t]+$/gm, "").trimEnd()}\n`;
@@ -33,6 +35,54 @@ function slug(value) {
 
 function matchSlug(match) {
   return slug(`${match.home}-vs-${match.away}`);
+}
+
+function escapeIcs(value) {
+  return String(value)
+    .replaceAll("\\", "\\\\")
+    .replaceAll("\n", "\\n")
+    .replaceAll(",", "\\,")
+    .replaceAll(";", "\\;");
+}
+
+function toIcsUtc(dateValue) {
+  return new Date(dateValue).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+}
+
+function buildTeamCalendar(team, matches) {
+  const events = matches.map((match) => {
+    const start = new Date(match.kickoff);
+    const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+    const result = match.status === "FINISHED"
+      ? `\nFinal score: ${match.home} ${match.home_score}-${match.away_score} ${match.away}`
+      : "";
+    return [
+      "BEGIN:VEVENT",
+      `UID:${escapeIcs(match.id)}@kickofftracker.com`,
+      `DTSTAMP:${toIcsUtc(data.updated_at)}`,
+      `DTSTART:${toIcsUtc(start)}`,
+      `DTEND:${toIcsUtc(end)}`,
+      `SUMMARY:${escapeIcs(`${match.home} vs ${match.away}`)}`,
+      `DESCRIPTION:${escapeIcs(`${data.competition} ${data.season}\n${match.stage}${result}\nVerified schedule from KickoffTime`)}`,
+      `URL:${siteUrl}/champions-league/match/${matchSlug(match)}.html`,
+      "END:VEVENT"
+    ].join("\r\n");
+  });
+
+  return [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//KickoffTime//Team Calendar//EN",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    `X-WR-CALNAME:${escapeIcs(`${team} - Champions League`)}`,
+    "X-WR-TIMEZONE:UTC",
+    "REFRESH-INTERVAL;VALUE=DURATION:PT6H",
+    "X-PUBLISHED-TTL:PT6H",
+    ...events,
+    "END:VCALENDAR",
+    ""
+  ].join("\r\n");
 }
 
 function formatInZone(dateValue, timezone, includeZone = true) {
@@ -252,6 +302,19 @@ data.matches.forEach((match) => {
 });
 fs.writeFileSync(path.join(outputDir, "index.html"), cleanHtml(buildSeasonGuide()), "utf8");
 
+const teamNames = [...new Set(data.matches.flatMap((match) => [match.home, match.away]))]
+  .sort((a, b) => a.localeCompare(b));
+for (const team of teamNames) {
+  const teamMatches = data.matches
+    .filter((match) => match.home === team || match.away === team)
+    .sort((a, b) => new Date(a.kickoff) - new Date(b.kickoff));
+  fs.writeFileSync(
+    path.join(calendarDir, `${slug(team)}.ics`),
+    buildTeamCalendar(team, teamMatches),
+    "utf8"
+  );
+}
+
 const lastModified = data.updated_at.slice(0, 10);
 const coreUrls = [
   ["/", "1.0"],
@@ -279,4 +342,4 @@ ${sitemapEntries}
 `;
 fs.writeFileSync(path.join(root, "sitemap.xml"), sitemap, "utf8");
 
-console.log(`Generated ${data.matches.length} Champions League match pages and sitemap.xml.`);
+console.log(`Generated ${data.matches.length} match pages, ${teamNames.length} team calendars, and sitemap.xml.`);

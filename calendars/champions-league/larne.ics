@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//KickoffTime//Team Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Larne - Champions League
+X-WR-TIMEZONE:UTC
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:ucl-2026-q2-08@kickofftracker.com
+DTSTAMP:20260727T030000Z
+DTSTART:20260721T190000Z
+DTEND:20260721T210000Z
+SUMMARY:Larne vs Crvena Zvezda
+DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · First leg\nFinal score: Larne 0-4 Crvena Zvezda\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/larne-vs-crvena-zvezda.html
+END:VEVENT
+BEGIN:VEVENT
+UID:ucl-2026-q2-26@kickofftracker.com
+DTSTAMP:20260727T030000Z
+DTSTART:20260729T190000Z
+DTEND:20260729T210000Z
+SUMMARY:Crvena Zvezda vs Larne
+DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · Second leg\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/crvena-zvezda-vs-larne.html
+END:VEVENT
+END:VCALENDAR

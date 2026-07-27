@@ -283,6 +283,174 @@ h2 {
   color: var(--green-dark);
 }
 
+.fan-tools {
+  padding: 18px 0 8px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.fan-tool {
+  min-width: 0;
+  padding: 22px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.tool-heading {
+  min-height: 64px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.tool-heading h2 {
+  margin-bottom: 0;
+  font-size: 1.35rem;
+}
+
+.status-label {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 750;
+  text-align: right;
+}
+
+.team-picker {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.team-picker label {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.team-picker select,
+.region-control select {
+  min-width: 0;
+  height: 42px;
+  padding: 0 34px 0 11px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+
+.subscription-state {
+  min-height: 116px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.subscription-state p {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.subscription-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.remove-team-button {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.15rem;
+}
+
+.remove-team-button:hover {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.subscription-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.compact-button {
+  min-height: 36px;
+  padding: 7px 10px;
+  font-size: 0.76rem;
+}
+
+.region-control {
+  display: grid;
+  gap: 5px;
+}
+
+.region-control span {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.region-control select {
+  max-width: 190px;
+}
+
+.watch-partners {
+  min-height: 116px;
+  border-top: 1px solid var(--line);
+}
+
+.watch-partners > p {
+  margin: 16px 0 12px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.watch-partner {
+  padding: 11px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+}
+
+.watch-partner:hover strong {
+  color: var(--green);
+}
+
+.watch-partner span {
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-align: right;
+}
+
+.watch-source {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.watch-source a {
+  color: var(--green-dark);
+  font-weight: 800;
+}
+
 .time-board,
 .fixtures-section,
 .season-section,
@@ -368,11 +536,13 @@ h2 {
 
 .segmented-control {
   height: 42px;
+  max-width: 100%;
   display: flex;
   align-items: center;
   padding: 3px;
   background: #e9ede9;
   border-radius: 6px;
+  overflow-x: auto;
 }
 
 .filter-button {
@@ -763,7 +933,8 @@ body > footer:not(.site-footer) {
   }
 
   .product-intro,
-  .season-section {
+  .season-section,
+  .fan-tools {
     grid-template-columns: 1fr;
     gap: 28px;
   }
@@ -875,7 +1046,12 @@ body > footer:not(.site-footer) {
   }
 
   .segmented-control {
+    width: 100%;
     align-self: flex-start;
+  }
+
+  .filter-button {
+    flex: 1 0 auto;
   }
 
   .search-control input {
@@ -884,6 +1060,29 @@ body > footer:not(.site-footer) {
 
   .fixture-card {
     grid-template-columns: 1fr;
+  }
+
+  .tool-heading {
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .status-label {
+    text-align: left;
+  }
+
+  .team-picker {
+    grid-template-columns: 1fr;
+  }
+
+  .team-picker label {
+    grid-column: auto;
+  }
+
+  .region-control,
+  .region-control select {
+    width: 100%;
+    max-width: none;
   }
 
   .fixture-side {

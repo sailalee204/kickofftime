@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="KickoffTime | Champions League Times in Your Timezone">
   <meta name="twitter:description" content="The next Champions League kickoff, automatically shown in your local timezone.">
   <meta name="twitter:image" content="https://kickofftracker.com/og-kickofftime.png">
-  <link rel="stylesheet" href="/style.css?v=5">
+  <link rel="stylesheet" href="/style.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>">
   <script type="application/ld+json">
   {
@@ -76,6 +76,7 @@
     </a>
     <nav class="site-nav" aria-label="Main navigation">
       <a href="#fixtures">Fixtures</a>
+      <a href="#my-team">My team</a>
       <a href="#season">Season dates</a>
       <a href="/world-cup-2026.html">World Cup archive</a>
       <a href="/about.html">About</a>
@@ -110,11 +111,51 @@
 
     <section class="next-match" aria-labelledby="nextMatchHeading">
       <div class="next-match-label">
-        <span>Next kickoff</span>
+        <span id="nextMatchLabel">Next kickoff</span>
         <span id="dataFreshness">Loading verified schedule...</span>
       </div>
       <div id="nextMatch" class="next-match-content" aria-live="polite">
         <p>Loading the next match...</p>
+      </div>
+    </section>
+
+    <section id="my-team" class="fan-tools" aria-labelledby="myTeamHeading">
+      <div class="fan-tool team-tool">
+        <div class="tool-heading">
+          <div>
+            <p class="eyebrow">My team</p>
+            <h2 id="myTeamHeading">Follow a club</h2>
+          </div>
+          <span id="followStatus" class="status-label">Not following a club</span>
+        </div>
+        <div class="team-picker">
+          <label for="teamSelect">Club</label>
+          <select id="teamSelect" aria-label="Choose a club">
+            <option value="">Choose a club</option>
+          </select>
+          <button id="followTeamButton" class="primary-button" type="button">Follow</button>
+        </div>
+        <div id="teamSubscription" class="subscription-state" aria-live="polite">
+          <p>Select a club from the current verified schedule.</p>
+        </div>
+      </div>
+
+      <div class="fan-tool watch-tool">
+        <div class="tool-heading">
+          <div>
+            <p class="eyebrow">Where to watch</p>
+            <h2>Local broadcast partners</h2>
+          </div>
+          <label class="region-control" for="watchRegionSelect">
+            <span>Region</span>
+            <select id="watchRegionSelect" aria-label="Choose a broadcast region"></select>
+          </label>
+        </div>
+        <div id="watchPartners" class="watch-partners" aria-live="polite"></div>
+        <p class="watch-source">
+          Latest UEFA-listed partners for 2025/26. Match availability and 2026/27 rights may change.
+          <a href="https://www.uefa.com/uefachampionsleague/news/0253-0d82037aaedd-f371c464f919-1000--tv-channels-live-streams/" target="_blank" rel="noopener">Check UEFA</a>
+        </p>
       </div>
     </section>
 
@@ -142,6 +183,7 @@
         <div class="fixture-tools">
           <div class="segmented-control" role="group" aria-label="Filter fixtures">
             <button class="filter-button active" type="button" data-filter="upcoming">Upcoming</button>
+            <button class="filter-button" type="button" data-filter="following">Following</button>
             <button class="filter-button" type="button" data-filter="results">Results</button>
             <button class="filter-button" type="button" data-filter="all">All</button>
           </div>
@@ -194,6 +236,10 @@
         <p>Yes. Calendar files store the kickoff as UTC, allowing Google Calendar, Apple Calendar, Outlook, and other compatible apps to display it correctly wherever you are.</p>
       </details>
       <details>
+        <summary>Will a followed team's calendar update?</summary>
+        <p>Yes. Team subscriptions use a stable calendar address. When the verified schedule changes, the calendar feed at that address is rebuilt automatically.</p>
+      </details>
+      <details>
         <summary>Does KickoffTime provide live scores?</summary>
         <p>No. The site focuses on verified kickoff times, calendar tools, and basic completed results. It does not promise second-by-second live score coverage.</p>
       </details>
@@ -213,6 +259,6 @@
   </footer>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="/site.js?v=1" defer></script>
+  <script src="/site.js?v=2" defer></script>
 </body>
 </html>

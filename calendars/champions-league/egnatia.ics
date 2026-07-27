@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//KickoffTime//Team Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Egnatia - Champions League
+X-WR-TIMEZONE:UTC
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:ucl-2026-q2-14@kickofftracker.com
+DTSTAMP:20260727T030000Z
+DTSTART:20260722T190000Z
+DTEND:20260722T210000Z
+SUMMARY:Egnatia vs Celje
+DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · First leg\nFinal score: Egnatia 3-3 Celje\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/egnatia-vs-celje.html
+END:VEVENT
+BEGIN:VEVENT
+UID:ucl-2026-q2-18@kickofftracker.com
+DTSTAMP:20260727T030000Z
+DTSTART:20260728T191500Z
+DTEND:20260728T211500Z
+SUMMARY:Celje vs Egnatia
+DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · Second leg\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/celje-vs-egnatia.html
+END:VEVENT
+END:VCALENDAR

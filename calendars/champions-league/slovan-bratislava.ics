@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//KickoffTime//Team Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Slovan Bratislava - Champions League
+X-WR-TIMEZONE:UTC
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:ucl-2026-q2-04@kickofftracker.com
+DTSTAMP:20260727T030000Z
+DTSTART:20260721T170000Z
+DTEND:20260721T190000Z
+SUMMARY:Iberia Tbilisi vs Slovan Bratislava
+DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · First leg\nFinal score: Iberia Tbilisi 0-2 Slovan Bratislava\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/iberia-tbilisi-vs-slovan-bratislava.html
+END:VEVENT
+BEGIN:VEVENT
+UID:ucl-2026-q2-27@kickofftracker.com
+DTSTAMP:20260727T030000Z
+DTSTART:20260729T191500Z
+DTEND:20260729T211500Z
+SUMMARY:Slovan Bratislava vs Iberia Tbilisi
+DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · Second leg\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/slovan-bratislava-vs-iberia-tbilisi.html
+END:VEVENT
+END:VCALENDAR

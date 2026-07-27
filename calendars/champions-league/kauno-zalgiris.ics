@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//KickoffTime//Team Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Kauno Žalgiris - Champions League
+X-WR-TIMEZONE:UTC
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:ucl-2026-q2-07@kickofftracker.com
+DTSTAMP:20260727T030000Z
+DTSTART:20260721T190000Z
+DTEND:20260721T210000Z
+SUMMARY:Klaksvík vs Kauno Žalgiris
+DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · First leg\nFinal score: Klaksvík 0-0 Kauno Žalgiris\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/klaksvik-vs-kauno-zalgiris.html
+END:VEVENT
+BEGIN:VEVENT
+UID:ucl-2026-q2-22@kickofftracker.com
+DTSTAMP:20260727T030000Z
+DTSTART:20260729T170000Z
+DTEND:20260729T190000Z
+SUMMARY:Kauno Žalgiris vs Klaksvík
+DESCRIPTION:UEFA Champions League 2026/27\nSecond qualifying round · Second leg\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/kauno-zalgiris-vs-klaksvik.html
+END:VEVENT
+END:VCALENDAR
