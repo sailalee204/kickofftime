@@ -28,12 +28,15 @@ jobs:
           exit 1
 
       - name: Fetch and validate Champions League fixtures
+        id: fetch
         run: node scripts/update_champions_league_data.js
 
       - name: Build search pages and sitemap
+        if: ${{ steps.fetch.outputs.updated == 'true' }}
         run: node scripts/build_champions_league_pages.js
 
       - name: Commit verified changes
+        if: ${{ steps.fetch.outputs.updated == 'true' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -12,6 +12,11 @@ const targetSeason = "2026";
 const competitionEndpoint = "https://api.football-data.org/v4/competitions/CL/matches";
 const seasonEndpoint = `${competitionEndpoint}?season=${targetSeason}`;
 
+function setWorkflowUpdated(updated) {
+  if (!process.env.GITHUB_OUTPUT) return;
+  fs.appendFileSync(process.env.GITHUB_OUTPUT, `updated=${updated ? "true" : "false"}\n`, "utf8");
+}
+
 const TEAM_IDENTITIES = [
   ["Aarhus", ["AGF Aarhus", "Aarhus GF"]],
   ["Ararat-Armenia", ["FC Ararat-Armenia"]],
@@ -171,7 +176,10 @@ function normalizeMatch(match) {
 
 async function main() {
   const response = await fetchTargetSeason();
-  if (!response) return;
+  if (!response) {
+    setWorkflowUpdated(false);
+    return;
+  }
 
   if (!Array.isArray(response.matches)) {
     throw new Error("Football data response did not contain a matches array.");
@@ -196,8 +204,18 @@ async function main() {
     matches
   };
 
+  if (fs.existsSync(outputPath)) {
+    const currentData = JSON.parse(fs.readFileSync(outputPath, "utf8"));
+    if (JSON.stringify(currentData.matches) === JSON.stringify(nextData.matches)) {
+      console.log("No verified Champions League schedule changes.");
+      setWorkflowUpdated(false);
+      return;
+    }
+  }
+
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, `${JSON.stringify(nextData, null, 2)}\n`, "utf8");
+  setWorkflowUpdated(true);
   console.log(`Saved ${matches.length} validated Champions League matches.`);
 }
 
