@@ -2,9 +2,14 @@ const fs = require("fs");
 const path = require("path");
 const https = require("https");
 
-const apiKey = process.env.API_FOOTBALL_KEY;
+const apiKey = String(process.env.API_FOOTBALL_KEY || "").trim();
 if (!apiKey) {
   throw new Error("API_FOOTBALL_KEY is required.");
+}
+if (!/^[A-Za-z0-9_-]+$/.test(apiKey)) {
+  throw new Error(
+    "API_FOOTBALL_KEY contains invalid characters. Copy only the key value from API-Sports."
+  );
 }
 
 const apiBase = "https://v3.football.api-sports.io";
