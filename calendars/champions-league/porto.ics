@@ -1,0 +1,82 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//KickoffTime//Team Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Porto - Champions League
+X-WR-TIMEZONE:UTC
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:fd-575326@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20260908T190000Z
+DTEND:20260908T210000Z
+SUMMARY:Porto vs Man City
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/porto-vs-man-city.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575356@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261014T190000Z
+DTEND:20261014T210000Z
+SUMMARY:Real Betis vs Porto
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/real-betis-vs-porto.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575365@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261020T190000Z
+DTEND:20261020T210000Z
+SUMMARY:Porto vs PSV
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/porto-vs-psv.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575392@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261104T200000Z
+DTEND:20261104T220000Z
+SUMMARY:Porto vs Napoli
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/porto-vs-napoli.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575400@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261124T200000Z
+DTEND:20261124T220000Z
+SUMMARY:Feyenoord vs Porto
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/feyenoord-vs-porto.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575295@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261209T200000Z
+DTEND:20261209T220000Z
+SUMMARY:Liverpool vs Porto
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/liverpool-vs-porto.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575308@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20270119T200000Z
+DTEND:20270119T220000Z
+SUMMARY:Porto vs Slavia Praha
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/porto-vs-slavia-praha.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575309@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20270127T200000Z
+DTEND:20270127T220000Z
+SUMMARY:LASK vs Porto
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/lask-vs-porto.html
+END:VEVENT
+END:VCALENDAR

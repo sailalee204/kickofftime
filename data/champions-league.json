@@ -1,261 +1,1161 @@
 {
   "competition": "UEFA Champions League",
   "season": "2026/27",
-  "updated_at": "2026-07-27T07:17:03Z",
-  "source_name": "UEFA",
-  "source_url": "https://www.uefa.com/uefachampionsleague/news/02a6-20e5a8be4e63-ae971c582f8c-1000--champions-league-qualifying-fixtures-dates-how-it-works/",
-  "source_timezone": "UTC timestamps cross-checked against UEFA and home-club listings",
+  "updated_at": "2026-08-30T21:05:28.511Z",
+  "source_name": "football-data.org",
+  "source_url": "https://www.football-data.org/",
+  "official_reference": "https://www.uefa.com/uefachampionsleague/",
   "matches": [
     {
-      "id": "ucl-2026-q2-01",
-      "stage": "Second qualifying round · First leg",
-      "kickoff": "2026-07-21T16:00:00Z",
-      "home": "Mjällby",
-      "away": "Lincoln Red Imps",
-      "status": "FINISHED",
-      "home_score": 3,
-      "away_score": 0
+      "id": "fd-575323",
+      "stage": "League phase",
+      "kickoff": "2026-09-08T16:45:00Z",
+      "home": "Club Brugge",
+      "away": "Aston Villa",
+      "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-02",
-      "stage": "Second qualifying round · First leg",
-      "kickoff": "2026-07-21T17:00:00Z",
-      "home": "Sabah",
-      "away": "KuPS Kuopio",
-      "status": "FINISHED",
-      "home_score": 1,
-      "away_score": 0
+      "id": "fd-575324",
+      "stage": "League phase",
+      "kickoff": "2026-09-08T16:45:00Z",
+      "home": "PAE AEK",
+      "away": "LASK",
+      "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-03",
-      "stage": "Second qualifying round · First leg",
-      "kickoff": "2026-07-21T17:00:00Z",
-      "home": "Ararat-Armenia",
-      "away": "Shamrock Rovers",
-      "status": "FINISHED",
-      "home_score": 2,
-      "away_score": 0
+      "id": "fd-575325",
+      "stage": "League phase",
+      "kickoff": "2026-09-08T19:00:00Z",
+      "home": "Real Madrid",
+      "away": "Inter",
+      "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-04",
-      "stage": "Second qualifying round · First leg",
-      "kickoff": "2026-07-21T17:00:00Z",
-      "home": "Iberia Tbilisi",
-      "away": "Slovan Bratislava",
-      "status": "FINISHED",
-      "home_score": 0,
-      "away_score": 2
+      "id": "fd-575326",
+      "stage": "League phase",
+      "kickoff": "2026-09-08T19:00:00Z",
+      "home": "Porto",
+      "away": "Man City",
+      "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-05",
-      "stage": "Second qualifying round · First leg",
-      "kickoff": "2026-07-21T18:00:00Z",
-      "home": "Aarhus",
-      "away": "Lech Poznań",
-      "status": "FINISHED",
-      "home_score": 1,
-      "away_score": 4
+      "id": "fd-575327",
+      "stage": "League phase",
+      "kickoff": "2026-09-08T19:00:00Z",
+      "home": "Dortmund",
+      "away": "Villarreal",
+      "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-06",
-      "stage": "Second qualifying round · First leg",
-      "kickoff": "2026-07-21T19:00:00Z",
-      "home": "Thun",
-      "away": "GNK Dinamo",
-      "status": "FINISHED",
-      "home_score": 1,
-      "away_score": 1
+      "id": "fd-575328",
+      "stage": "League phase",
+      "kickoff": "2026-09-08T19:00:00Z",
+      "home": "Lille",
+      "away": "Real Betis",
+      "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-07",
-      "stage": "Second qualifying round · First leg",
-      "kickoff": "2026-07-21T19:00:00Z",
-      "home": "Klaksvík",
-      "away": "Kauno Žalgiris",
-      "status": "FINISHED",
-      "home_score": 0,
-      "away_score": 0
+      "id": "fd-575329",
+      "stage": "League phase",
+      "kickoff": "2026-09-09T16:45:00Z",
+      "home": "Barça",
+      "away": "Feyenoord",
+      "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-08",
-      "stage": "Second qualifying round · First leg",
-      "kickoff": "2026-07-21T19:00:00Z",
-      "home": "Larne",
-      "away": "Crvena Zvezda",
-      "status": "FINISHED",
-      "home_score": 0,
-      "away_score": 4
+      "id": "fd-575330",
+      "stage": "League phase",
+      "kickoff": "2026-09-09T16:45:00Z",
+      "home": "Stuttgart",
+      "away": "Viking",
+      "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-09",
-      "stage": "Second qualifying round · First leg",
-      "kickoff": "2026-07-21T20:00:00Z",
-      "home": "Víkingur Reykjavík",
-      "away": "Hapoel Beer-Sheva",
-      "status": "FINISHED",
-      "home_score": 2,
-      "away_score": 1
+      "id": "fd-575331",
+      "stage": "League phase",
+      "kickoff": "2026-09-09T19:00:00Z",
+      "home": "Liverpool",
+      "away": "Atleti",
+      "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-10",
-      "stage": "Second qualifying round · First leg · League path",
-      "kickoff": "2026-07-21T20:00:00Z",
+      "id": "fd-575332",
+      "stage": "League phase",
+      "kickoff": "2026-09-09T19:00:00Z",
+      "home": "PSG",
+      "away": "Sl. Bratislava",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575333",
+      "stage": "League phase",
+      "kickoff": "2026-09-09T19:00:00Z",
+      "home": "Napoli",
+      "away": "Arsenal",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575334",
+      "stage": "League phase",
+      "kickoff": "2026-09-09T19:00:00Z",
+      "home": "Sporting CP",
+      "away": "Galatasaray",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575335",
+      "stage": "League phase",
+      "kickoff": "2026-09-10T16:45:00Z",
       "home": "Fenerbahçe",
-      "away": "Górnik Zabrze",
-      "status": "FINISHED",
-      "home_score": 1,
-      "away_score": 0
+      "away": "Roma",
+      "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-11",
-      "stage": "Second qualifying round · First leg · League path",
-      "kickoff": "2026-07-21T19:00:00Z",
-      "home": "Sturm Graz",
-      "away": "Hearts",
-      "status": "FINISHED",
-      "home_score": 4,
-      "away_score": 0
+      "id": "fd-575336",
+      "stage": "League phase",
+      "kickoff": "2026-09-10T16:45:00Z",
+      "home": "PSV",
+      "away": "Shaktar",
+      "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-12",
-      "stage": "Second qualifying round · First leg",
-      "kickoff": "2026-07-22T16:00:00Z",
-      "home": "Omonia",
-      "away": "Kairat Almaty",
-      "status": "FINISHED",
-      "home_score": 1,
-      "away_score": 0
+      "id": "fd-575337",
+      "stage": "League phase",
+      "kickoff": "2026-09-10T19:00:00Z",
+      "home": "Bayern",
+      "away": "Bodø/Glimt",
+      "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-13",
-      "stage": "Second qualifying round · First leg",
-      "kickoff": "2026-07-22T18:30:00Z",
-      "home": "Levski Sofia",
-      "away": "Universitatea Craiova",
-      "status": "FINISHED",
-      "home_score": 1,
-      "away_score": 0
-    },
-    {
-      "id": "ucl-2026-q2-14",
-      "stage": "Second qualifying round · First leg",
-      "kickoff": "2026-07-22T19:00:00Z",
-      "home": "Egnatia",
-      "away": "Celje",
-      "status": "FINISHED",
-      "home_score": 3,
-      "away_score": 3
-    },
-    {
-      "id": "ucl-2026-q2-15",
-      "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-28T15:00:00Z",
-      "home": "KuPS Kuopio",
+      "id": "fd-575338",
+      "stage": "League phase",
+      "kickoff": "2026-09-10T19:00:00Z",
+      "home": "Man United",
       "away": "Sabah",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-16",
-      "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-28T16:00:00Z",
-      "home": "Lincoln Red Imps",
-      "away": "Mjällby",
+      "id": "fd-575339",
+      "stage": "League phase",
+      "kickoff": "2026-09-10T19:00:00Z",
+      "home": "Como 1907",
+      "away": "RB Leipzig",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-17",
-      "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-28T16:00:00Z",
-      "home": "GNK Dinamo",
-      "away": "Thun",
+      "id": "fd-575340",
+      "stage": "League phase",
+      "kickoff": "2026-09-10T19:00:00Z",
+      "home": "Slavia Praha",
+      "away": "RC Lens",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-18",
-      "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-28T18:15:00Z",
-      "home": "Celje",
-      "away": "Egnatia",
+      "id": "fd-575341",
+      "stage": "League phase",
+      "kickoff": "2026-10-13T16:45:00Z",
+      "home": "RC Lens",
+      "away": "Sporting CP",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-19",
-      "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-28T19:00:00Z",
-      "home": "Shamrock Rovers",
-      "away": "Ararat-Armenia",
+      "id": "fd-575342",
+      "stage": "League phase",
+      "kickoff": "2026-10-13T16:45:00Z",
+      "home": "Sabah",
+      "away": "Slavia Praha",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-20",
-      "stage": "Second qualifying round · Second leg · League path",
-      "kickoff": "2026-07-28T18:45:00Z",
-      "home": "Hearts",
-      "away": "Sturm Graz",
+      "id": "fd-575343",
+      "stage": "League phase",
+      "kickoff": "2026-10-13T19:00:00Z",
+      "home": "Inter",
+      "away": "Club Brugge",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-21",
-      "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T15:00:00Z",
-      "home": "Kairat Almaty",
-      "away": "Omonia",
+      "id": "fd-575344",
+      "stage": "League phase",
+      "kickoff": "2026-10-13T19:00:00Z",
+      "home": "Galatasaray",
+      "away": "Barça",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-22",
-      "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T16:00:00Z",
-      "home": "Kauno Žalgiris",
-      "away": "Klaksvík",
+      "id": "fd-575345",
+      "stage": "League phase",
+      "kickoff": "2026-10-13T19:00:00Z",
+      "home": "Atleti",
+      "away": "Man United",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-23",
-      "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T17:00:00Z",
-      "home": "Lech Poznań",
-      "away": "Aarhus",
+      "id": "fd-575346",
+      "stage": "League phase",
+      "kickoff": "2026-10-13T19:00:00Z",
+      "home": "Arsenal",
+      "away": "Lille",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-24",
-      "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T17:30:00Z",
-      "home": "Universitatea Craiova",
-      "away": "Levski Sofia",
+      "id": "fd-575347",
+      "stage": "League phase",
+      "kickoff": "2026-10-13T19:00:00Z",
+      "home": "Viking",
+      "away": "Bayern",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-25",
-      "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T17:30:00Z",
-      "home": "Hapoel Beer-Sheva",
-      "away": "Víkingur Reykjavík",
+      "id": "fd-575348",
+      "stage": "League phase",
+      "kickoff": "2026-10-13T19:00:00Z",
+      "home": "RB Leipzig",
+      "away": "PSV",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-26",
-      "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T18:00:00Z",
-      "home": "Crvena Zvezda",
-      "away": "Larne",
+      "id": "fd-575349",
+      "stage": "League phase",
+      "kickoff": "2026-10-13T19:00:00Z",
+      "home": "Villarreal",
+      "away": "Napoli",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-27",
-      "stage": "Second qualifying round · Second leg",
-      "kickoff": "2026-07-29T18:15:00Z",
-      "home": "Slovan Bratislava",
-      "away": "Iberia Tbilisi",
+      "id": "fd-575350",
+      "stage": "League phase",
+      "kickoff": "2026-10-14T16:45:00Z",
+      "home": "LASK",
+      "away": "Liverpool",
       "status": "SCHEDULED"
     },
     {
-      "id": "ucl-2026-q2-28",
-      "stage": "Second qualifying round · Second leg · League path",
-      "kickoff": "2026-07-29T18:00:00Z",
-      "home": "Górnik Zabrze",
+      "id": "fd-575351",
+      "stage": "League phase",
+      "kickoff": "2026-10-14T16:45:00Z",
+      "home": "Feyenoord",
+      "away": "Como 1907",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575352",
+      "stage": "League phase",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "home": "Roma",
+      "away": "Real Madrid",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575353",
+      "stage": "League phase",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "home": "Man City",
+      "away": "PSG",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575354",
+      "stage": "League phase",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "home": "Bodø/Glimt",
+      "away": "Dortmund",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575355",
+      "stage": "League phase",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "home": "Aston Villa",
       "away": "Fenerbahçe",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575356",
+      "stage": "League phase",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "home": "Real Betis",
+      "away": "Porto",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575357",
+      "stage": "League phase",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "home": "Shaktar",
+      "away": "PAE AEK",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575358",
+      "stage": "League phase",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "home": "Sl. Bratislava",
+      "away": "Stuttgart",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575359",
+      "stage": "League phase",
+      "kickoff": "2026-10-20T16:45:00Z",
+      "home": "Sabah",
+      "away": "Dortmund",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575360",
+      "stage": "League phase",
+      "kickoff": "2026-10-20T16:45:00Z",
+      "home": "Fenerbahçe",
+      "away": "Slavia Praha",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575361",
+      "stage": "League phase",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "home": "Man City",
+      "away": "PAE AEK",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575362",
+      "stage": "League phase",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "home": "Stuttgart",
+      "away": "Atleti",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575363",
+      "stage": "League phase",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "home": "Liverpool",
+      "away": "Villarreal",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575364",
+      "stage": "League phase",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "home": "Roma",
+      "away": "Sl. Bratislava",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575365",
+      "stage": "League phase",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "home": "Porto",
+      "away": "PSV",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575366",
+      "stage": "League phase",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "home": "Napoli",
+      "away": "Bodø/Glimt",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575367",
+      "stage": "League phase",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "home": "PSG",
+      "away": "Barça",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575368",
+      "stage": "League phase",
+      "kickoff": "2026-10-21T16:45:00Z",
+      "home": "Como 1907",
+      "away": "Man United",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575369",
+      "stage": "League phase",
+      "kickoff": "2026-10-21T16:45:00Z",
+      "home": "Lille",
+      "away": "Galatasaray",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575370",
+      "stage": "League phase",
+      "kickoff": "2026-10-21T19:00:00Z",
+      "home": "Real Madrid",
+      "away": "RB Leipzig",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575371",
+      "stage": "League phase",
+      "kickoff": "2026-10-21T19:00:00Z",
+      "home": "Inter",
+      "away": "Shaktar",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575372",
+      "stage": "League phase",
+      "kickoff": "2026-10-21T19:00:00Z",
+      "home": "Bayern",
+      "away": "Arsenal",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575373",
+      "stage": "League phase",
+      "kickoff": "2026-10-21T19:00:00Z",
+      "home": "Club Brugge",
+      "away": "RC Lens",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575374",
+      "stage": "League phase",
+      "kickoff": "2026-10-21T19:00:00Z",
+      "home": "Aston Villa",
+      "away": "Viking",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575375",
+      "stage": "League phase",
+      "kickoff": "2026-10-21T19:00:00Z",
+      "home": "Sporting CP",
+      "away": "LASK",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575376",
+      "stage": "League phase",
+      "kickoff": "2026-10-21T19:00:00Z",
+      "home": "Real Betis",
+      "away": "Feyenoord",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575377",
+      "stage": "League phase",
+      "kickoff": "2026-11-03T17:45:00Z",
+      "home": "Shaktar",
+      "away": "Sporting CP",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575378",
+      "stage": "League phase",
+      "kickoff": "2026-11-03T17:45:00Z",
+      "home": "Galatasaray",
+      "away": "Stuttgart",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575379",
+      "stage": "League phase",
+      "kickoff": "2026-11-03T20:00:00Z",
+      "home": "Feyenoord",
+      "away": "Inter",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575380",
+      "stage": "League phase",
+      "kickoff": "2026-11-03T20:00:00Z",
+      "home": "Barça",
+      "away": "Aston Villa",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575381",
+      "stage": "League phase",
+      "kickoff": "2026-11-03T20:00:00Z",
+      "home": "Atleti",
+      "away": "Bayern",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575382",
+      "stage": "League phase",
+      "kickoff": "2026-11-03T20:00:00Z",
+      "home": "Villarreal",
+      "away": "PSG",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575383",
+      "stage": "League phase",
+      "kickoff": "2026-11-03T20:00:00Z",
+      "home": "Man United",
+      "away": "Roma",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575384",
+      "stage": "League phase",
+      "kickoff": "2026-11-03T20:00:00Z",
+      "home": "Bodø/Glimt",
+      "away": "Lille",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575385",
+      "stage": "League phase",
+      "kickoff": "2026-11-03T20:00:00Z",
+      "home": "LASK",
+      "away": "Sl. Bratislava",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575386",
+      "stage": "League phase",
+      "kickoff": "2026-11-04T17:45:00Z",
+      "home": "PAE AEK",
+      "away": "Real Madrid",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575387",
+      "stage": "League phase",
+      "kickoff": "2026-11-04T17:45:00Z",
+      "home": "Fenerbahçe",
+      "away": "Liverpool",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575388",
+      "stage": "League phase",
+      "kickoff": "2026-11-04T20:00:00Z",
+      "home": "RB Leipzig",
+      "away": "Man City",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575389",
+      "stage": "League phase",
+      "kickoff": "2026-11-04T20:00:00Z",
+      "home": "Slavia Praha",
+      "away": "Arsenal",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575390",
+      "stage": "League phase",
+      "kickoff": "2026-11-04T20:00:00Z",
+      "home": "PSV",
+      "away": "Club Brugge",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575391",
+      "stage": "League phase",
+      "kickoff": "2026-11-04T20:00:00Z",
+      "home": "Dortmund",
+      "away": "Real Betis",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575392",
+      "stage": "League phase",
+      "kickoff": "2026-11-04T20:00:00Z",
+      "home": "Porto",
+      "away": "Napoli",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575393",
+      "stage": "League phase",
+      "kickoff": "2026-11-04T20:00:00Z",
+      "home": "RC Lens",
+      "away": "Como 1907",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575394",
+      "stage": "League phase",
+      "kickoff": "2026-11-04T20:00:00Z",
+      "home": "Viking",
+      "away": "Sabah",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575395",
+      "stage": "League phase",
+      "kickoff": "2026-11-24T17:45:00Z",
+      "home": "Galatasaray",
+      "away": "Aston Villa",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575396",
+      "stage": "League phase",
+      "kickoff": "2026-11-24T17:45:00Z",
+      "home": "Bodø/Glimt",
+      "away": "LASK",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575397",
+      "stage": "League phase",
+      "kickoff": "2026-11-24T20:00:00Z",
+      "home": "Real Madrid",
+      "away": "PSV",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575398",
+      "stage": "League phase",
+      "kickoff": "2026-11-24T20:00:00Z",
+      "home": "Man City",
+      "away": "Napoli",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575399",
+      "stage": "League phase",
+      "kickoff": "2026-11-24T20:00:00Z",
+      "home": "Arsenal",
+      "away": "Dortmund",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575400",
+      "stage": "League phase",
+      "kickoff": "2026-11-24T20:00:00Z",
+      "home": "Feyenoord",
+      "away": "Porto",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575401",
+      "stage": "League phase",
+      "kickoff": "2026-11-24T20:00:00Z",
+      "home": "Sl. Bratislava",
+      "away": "Real Betis",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575402",
+      "stage": "League phase",
+      "kickoff": "2026-11-24T20:00:00Z",
+      "home": "RB Leipzig",
+      "away": "RC Lens",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575403",
+      "stage": "League phase",
+      "kickoff": "2026-11-24T20:00:00Z",
+      "home": "Como 1907",
+      "away": "PAE AEK",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575404",
+      "stage": "League phase",
+      "kickoff": "2026-11-25T17:45:00Z",
+      "home": "Sabah",
+      "away": "Barça",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575405",
+      "stage": "League phase",
+      "kickoff": "2026-11-25T17:45:00Z",
+      "home": "Slavia Praha",
+      "away": "Villarreal",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575406",
+      "stage": "League phase",
+      "kickoff": "2026-11-25T20:00:00Z",
+      "home": "Inter",
+      "away": "Stuttgart",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575407",
+      "stage": "League phase",
+      "kickoff": "2026-11-25T20:00:00Z",
+      "home": "Atleti",
+      "away": "Viking",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575408",
+      "stage": "League phase",
+      "kickoff": "2026-11-25T20:00:00Z",
+      "home": "PSG",
+      "away": "Roma",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575409",
+      "stage": "League phase",
+      "kickoff": "2026-11-25T20:00:00Z",
+      "home": "Club Brugge",
+      "away": "Liverpool",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575410",
+      "stage": "League phase",
+      "kickoff": "2026-11-25T20:00:00Z",
+      "home": "Lille",
+      "away": "Bayern",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575411",
+      "stage": "League phase",
+      "kickoff": "2026-11-25T20:00:00Z",
+      "home": "Sporting CP",
+      "away": "Man United",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575412",
+      "stage": "League phase",
+      "kickoff": "2026-11-25T20:00:00Z",
+      "home": "Shaktar",
+      "away": "Fenerbahçe",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575413",
+      "stage": "League phase",
+      "kickoff": "2026-12-08T17:45:00Z",
+      "home": "Villarreal",
+      "away": "Sabah",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575414",
+      "stage": "League phase",
+      "kickoff": "2026-12-08T17:45:00Z",
+      "home": "Viking",
+      "away": "Feyenoord",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575415",
+      "stage": "League phase",
+      "kickoff": "2026-12-08T20:00:00Z",
+      "home": "Barça",
+      "away": "Man City",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575416",
+      "stage": "League phase",
+      "kickoff": "2026-12-08T20:00:00Z",
+      "home": "Aston Villa",
+      "away": "PSG",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575417",
+      "stage": "League phase",
+      "kickoff": "2026-12-08T20:00:00Z",
+      "home": "Bayern",
+      "away": "Slavia Praha",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575418",
+      "stage": "League phase",
+      "kickoff": "2026-12-08T20:00:00Z",
+      "home": "Napoli",
+      "away": "Club Brugge",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575419",
+      "stage": "League phase",
+      "kickoff": "2026-12-08T20:00:00Z",
+      "home": "Roma",
+      "away": "Sporting CP",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575420",
+      "stage": "League phase",
+      "kickoff": "2026-12-08T20:00:00Z",
+      "home": "Man United",
+      "away": "RB Leipzig",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575421",
+      "stage": "League phase",
+      "kickoff": "2026-12-08T20:00:00Z",
+      "home": "PAE AEK",
+      "away": "Galatasaray",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575422",
+      "stage": "League phase",
+      "kickoff": "2026-12-09T17:45:00Z",
+      "home": "Real Betis",
+      "away": "Como 1907",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575423",
+      "stage": "League phase",
+      "kickoff": "2026-12-09T17:45:00Z",
+      "home": "Sl. Bratislava",
+      "away": "Shaktar",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575280",
+      "stage": "League phase",
+      "kickoff": "2026-12-09T20:00:00Z",
+      "home": "Arsenal",
+      "away": "Real Madrid",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575286",
+      "stage": "League phase",
+      "kickoff": "2026-12-09T20:00:00Z",
+      "home": "Dortmund",
+      "away": "Inter",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575290",
+      "stage": "League phase",
+      "kickoff": "2026-12-09T20:00:00Z",
+      "home": "PSV",
+      "away": "Atleti",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575295",
+      "stage": "League phase",
+      "kickoff": "2026-12-09T20:00:00Z",
+      "home": "Liverpool",
+      "away": "Porto",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575315",
+      "stage": "League phase",
+      "kickoff": "2026-12-09T20:00:00Z",
+      "home": "RC Lens",
+      "away": "Bodø/Glimt",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575317",
+      "stage": "League phase",
+      "kickoff": "2026-12-09T20:00:00Z",
+      "home": "LASK",
+      "away": "Fenerbahçe",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575322",
+      "stage": "League phase",
+      "kickoff": "2026-12-09T20:00:00Z",
+      "home": "Stuttgart",
+      "away": "Lille",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575292",
+      "stage": "League phase",
+      "kickoff": "2027-01-19T17:45:00Z",
+      "home": "Bodø/Glimt",
+      "away": "Atleti",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575318",
+      "stage": "League phase",
+      "kickoff": "2027-01-19T17:45:00Z",
+      "home": "Galatasaray",
+      "away": "Feyenoord",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575282",
+      "stage": "League phase",
+      "kickoff": "2027-01-19T20:00:00Z",
+      "home": "Real Madrid",
+      "away": "LASK",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575285",
+      "stage": "League phase",
+      "kickoff": "2027-01-19T20:00:00Z",
+      "home": "Inter",
+      "away": "Liverpool",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575302",
+      "stage": "League phase",
+      "kickoff": "2027-01-19T20:00:00Z",
+      "home": "Stuttgart",
+      "away": "Club Brugge",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575303",
+      "stage": "League phase",
+      "kickoff": "2027-01-19T20:00:00Z",
+      "home": "Aston Villa",
+      "away": "Dortmund",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575307",
+      "stage": "League phase",
+      "kickoff": "2027-01-19T20:00:00Z",
+      "home": "PAE AEK",
+      "away": "Roma",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575308",
+      "stage": "League phase",
+      "kickoff": "2027-01-19T20:00:00Z",
+      "home": "Porto",
+      "away": "Slavia Praha",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575321",
+      "stage": "League phase",
+      "kickoff": "2027-01-19T20:00:00Z",
+      "home": "Lille",
+      "away": "Sl. Bratislava",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575314",
+      "stage": "League phase",
+      "kickoff": "2027-01-20T17:45:00Z",
+      "home": "Fenerbahçe",
+      "away": "Villarreal",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575320",
+      "stage": "League phase",
+      "kickoff": "2027-01-20T17:45:00Z",
+      "home": "Sabah",
+      "away": "Napoli",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575284",
+      "stage": "League phase",
+      "kickoff": "2027-01-20T20:00:00Z",
+      "home": "RC Lens",
+      "away": "Man City",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575288",
+      "stage": "League phase",
+      "kickoff": "2027-01-20T20:00:00Z",
+      "home": "Sporting CP",
+      "away": "Barça",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575294",
+      "stage": "League phase",
+      "kickoff": "2027-01-20T20:00:00Z",
+      "home": "Como 1907",
+      "away": "PSG",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575297",
+      "stage": "League phase",
+      "kickoff": "2027-01-20T20:00:00Z",
+      "home": "Real Betis",
+      "away": "Arsenal",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575300",
+      "stage": "League phase",
+      "kickoff": "2027-01-20T20:00:00Z",
+      "home": "Man United",
+      "away": "Bayern",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575312",
+      "stage": "League phase",
+      "kickoff": "2027-01-20T20:00:00Z",
+      "home": "Viking",
+      "away": "PSV",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575313",
+      "stage": "League phase",
+      "kickoff": "2027-01-20T20:00:00Z",
+      "home": "RB Leipzig",
+      "away": "Shaktar",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575281",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Shaktar",
+      "away": "Real Madrid",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575283",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Man City",
+      "away": "Sporting CP",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575287",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Sl. Bratislava",
+      "away": "Inter",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575289",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Barça",
+      "away": "Como 1907",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575291",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Atleti",
+      "away": "Fenerbahçe",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575293",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "PSG",
+      "away": "Galatasaray",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575296",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Liverpool",
+      "away": "RC Lens",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575298",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Arsenal",
+      "away": "Sabah",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575299",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Bayern",
+      "away": "Real Betis",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575301",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Club Brugge",
+      "away": "Bodø/Glimt",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575304",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Dortmund",
+      "away": "PAE AEK",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575305",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Slavia Praha",
+      "away": "Aston Villa",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575306",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Roma",
+      "away": "Lille",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575309",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "LASK",
+      "away": "Porto",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575310",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Villarreal",
+      "away": "Man United",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575311",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "PSV",
+      "away": "Stuttgart",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575316",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Feyenoord",
+      "away": "RB Leipzig",
+      "status": "SCHEDULED"
+    },
+    {
+      "id": "fd-575319",
+      "stage": "League phase",
+      "kickoff": "2027-01-27T20:00:00Z",
+      "home": "Napoli",
+      "away": "Viking",
       "status": "SCHEDULED"
     }
   ]

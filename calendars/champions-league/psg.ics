@@ -1,0 +1,82 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//KickoffTime//Team Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:PSG - Champions League
+X-WR-TIMEZONE:UTC
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:fd-575332@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20260909T190000Z
+DTEND:20260909T210000Z
+SUMMARY:PSG vs Sl. Bratislava
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/psg-vs-sl-bratislava.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575353@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261014T190000Z
+DTEND:20261014T210000Z
+SUMMARY:Man City vs PSG
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/man-city-vs-psg.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575367@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261020T190000Z
+DTEND:20261020T210000Z
+SUMMARY:PSG vs Barça
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/psg-vs-barca.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575382@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261103T200000Z
+DTEND:20261103T220000Z
+SUMMARY:Villarreal vs PSG
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/villarreal-vs-psg.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575408@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261125T200000Z
+DTEND:20261125T220000Z
+SUMMARY:PSG vs Roma
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/psg-vs-roma.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575416@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261208T200000Z
+DTEND:20261208T220000Z
+SUMMARY:Aston Villa vs PSG
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/aston-villa-vs-psg.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575294@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20270120T200000Z
+DTEND:20270120T220000Z
+SUMMARY:Como 1907 vs PSG
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/como-1907-vs-psg.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575293@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20270127T200000Z
+DTEND:20270127T220000Z
+SUMMARY:PSG vs Galatasaray
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/psg-vs-galatasaray.html
+END:VEVENT
+END:VCALENDAR

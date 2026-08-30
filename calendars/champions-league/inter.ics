@@ -1,0 +1,82 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//KickoffTime//Team Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Inter - Champions League
+X-WR-TIMEZONE:UTC
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:fd-575325@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20260908T190000Z
+DTEND:20260908T210000Z
+SUMMARY:Real Madrid vs Inter
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/real-madrid-vs-inter.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575343@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261013T190000Z
+DTEND:20261013T210000Z
+SUMMARY:Inter vs Club Brugge
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/inter-vs-club-brugge.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575371@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261021T190000Z
+DTEND:20261021T210000Z
+SUMMARY:Inter vs Shaktar
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/inter-vs-shaktar.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575379@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261103T200000Z
+DTEND:20261103T220000Z
+SUMMARY:Feyenoord vs Inter
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/feyenoord-vs-inter.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575406@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261125T200000Z
+DTEND:20261125T220000Z
+SUMMARY:Inter vs Stuttgart
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/inter-vs-stuttgart.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575286@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20261209T200000Z
+DTEND:20261209T220000Z
+SUMMARY:Dortmund vs Inter
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/dortmund-vs-inter.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575285@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20270119T200000Z
+DTEND:20270119T220000Z
+SUMMARY:Inter vs Liverpool
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/inter-vs-liverpool.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fd-575287@kickofftracker.com
+DTSTAMP:20260830T210528Z
+DTSTART:20270127T200000Z
+DTEND:20270127T220000Z
+SUMMARY:Sl. Bratislava vs Inter
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+URL:https://kickofftracker.com/champions-league/match/sl-bratislava-vs-inter.html
+END:VEVENT
+END:VCALENDAR
