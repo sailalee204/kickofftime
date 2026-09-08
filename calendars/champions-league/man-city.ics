@@ -9,16 +9,16 @@ REFRESH-INTERVAL;VALUE=DURATION:PT6H
 X-PUBLISHED-TTL:PT6H
 BEGIN:VEVENT
 UID:fd-575326@kickofftracker.com
-DTSTAMP:20260830T210528Z
+DTSTAMP:20260908T210906Z
 DTSTART:20260908T190000Z
 DTEND:20260908T210000Z
 SUMMARY:Porto vs Man City
-DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nFinal score: Porto 0-2 Man City\nVerified schedule from KickoffTime
 URL:https://kickofftracker.com/champions-league/match/porto-vs-man-city.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575353@kickofftracker.com
-DTSTAMP:20260830T210528Z
+DTSTAMP:20260908T210906Z
 DTSTART:20261014T190000Z
 DTEND:20261014T210000Z
 SUMMARY:Man City vs PSG
@@ -27,7 +27,7 @@ URL:https://kickofftracker.com/champions-league/match/man-city-vs-psg.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575361@kickofftracker.com
-DTSTAMP:20260830T210528Z
+DTSTAMP:20260908T210906Z
 DTSTART:20261020T190000Z
 DTEND:20261020T210000Z
 SUMMARY:Man City vs PAE AEK
@@ -36,7 +36,7 @@ URL:https://kickofftracker.com/champions-league/match/man-city-vs-pae-aek.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575388@kickofftracker.com
-DTSTAMP:20260830T210528Z
+DTSTAMP:20260908T210906Z
 DTSTART:20261104T200000Z
 DTEND:20261104T220000Z
 SUMMARY:RB Leipzig vs Man City
@@ -45,7 +45,7 @@ URL:https://kickofftracker.com/champions-league/match/rb-leipzig-vs-man-city.htm
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575398@kickofftracker.com
-DTSTAMP:20260830T210528Z
+DTSTAMP:20260908T210906Z
 DTSTART:20261124T200000Z
 DTEND:20261124T220000Z
 SUMMARY:Man City vs Napoli
@@ -54,7 +54,7 @@ URL:https://kickofftracker.com/champions-league/match/man-city-vs-napoli.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575415@kickofftracker.com
-DTSTAMP:20260830T210528Z
+DTSTAMP:20260908T210906Z
 DTSTART:20261208T200000Z
 DTEND:20261208T220000Z
 SUMMARY:Barça vs Man City
@@ -63,7 +63,7 @@ URL:https://kickofftracker.com/champions-league/match/barca-vs-man-city.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575284@kickofftracker.com
-DTSTAMP:20260830T210528Z
+DTSTAMP:20260908T210906Z
 DTSTART:20270120T200000Z
 DTEND:20270120T220000Z
 SUMMARY:RC Lens vs Man City
@@ -72,7 +72,7 @@ URL:https://kickofftracker.com/champions-league/match/rc-lens-vs-man-city.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575283@kickofftracker.com
-DTSTAMP:20260830T210528Z
+DTSTAMP:20260908T210906Z
 DTSTART:20270127T200000Z
 DTEND:20270127T220000Z
 SUMMARY:Man City vs Sporting CP

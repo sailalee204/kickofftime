@@ -1,7 +1,7 @@
 {
   "competition": "UEFA Champions League",
   "season": "2026/27",
-  "updated_at": "2026-08-30T21:05:28.511Z",
+  "updated_at": "2026-09-08T21:09:06.680Z",
   "source_name": "football-data.org",
   "source_url": "https://www.football-data.org/",
   "official_reference": "https://www.uefa.com/uefachampionsleague/",
@@ -12,7 +12,9 @@
       "kickoff": "2026-09-08T16:45:00Z",
       "home": "Club Brugge",
       "away": "Aston Villa",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 3
     },
     {
       "id": "fd-575324",
@@ -20,7 +22,9 @@
       "kickoff": "2026-09-08T16:45:00Z",
       "home": "PAE AEK",
       "away": "LASK",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 1,
+      "away_score": 0
     },
     {
       "id": "fd-575325",
@@ -28,7 +32,9 @@
       "kickoff": "2026-09-08T19:00:00Z",
       "home": "Real Madrid",
       "away": "Inter",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 1
     },
     {
       "id": "fd-575326",
@@ -36,7 +42,9 @@
       "kickoff": "2026-09-08T19:00:00Z",
       "home": "Porto",
       "away": "Man City",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 0,
+      "away_score": 2
     },
     {
       "id": "fd-575327",
@@ -44,7 +52,9 @@
       "kickoff": "2026-09-08T19:00:00Z",
       "home": "Dortmund",
       "away": "Villarreal",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 3,
+      "away_score": 2
     },
     {
       "id": "fd-575328",
@@ -52,7 +62,9 @@
       "kickoff": "2026-09-08T19:00:00Z",
       "home": "Lille",
       "away": "Real Betis",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 3
     },
     {
       "id": "fd-575329",
