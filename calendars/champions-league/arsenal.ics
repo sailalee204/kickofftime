@@ -9,7 +9,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT6H
 X-PUBLISHED-TTL:PT6H
 BEGIN:VEVENT
 UID:fd-575333@kickofftracker.com
-DTSTAMP:20260908T210906Z
+DTSTAMP:20260909T205537Z
 DTSTART:20260909T190000Z
 DTEND:20260909T210000Z
 SUMMARY:Napoli vs Arsenal
@@ -18,7 +18,7 @@ URL:https://kickofftracker.com/champions-league/match/napoli-vs-arsenal.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575346@kickofftracker.com
-DTSTAMP:20260908T210906Z
+DTSTAMP:20260909T205537Z
 DTSTART:20261013T190000Z
 DTEND:20261013T210000Z
 SUMMARY:Arsenal vs Lille
@@ -27,7 +27,7 @@ URL:https://kickofftracker.com/champions-league/match/arsenal-vs-lille.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575372@kickofftracker.com
-DTSTAMP:20260908T210906Z
+DTSTAMP:20260909T205537Z
 DTSTART:20261021T190000Z
 DTEND:20261021T210000Z
 SUMMARY:Bayern vs Arsenal
@@ -36,7 +36,7 @@ URL:https://kickofftracker.com/champions-league/match/bayern-vs-arsenal.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575389@kickofftracker.com
-DTSTAMP:20260908T210906Z
+DTSTAMP:20260909T205537Z
 DTSTART:20261104T200000Z
 DTEND:20261104T220000Z
 SUMMARY:Slavia Praha vs Arsenal
@@ -45,7 +45,7 @@ URL:https://kickofftracker.com/champions-league/match/slavia-praha-vs-arsenal.ht
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575399@kickofftracker.com
-DTSTAMP:20260908T210906Z
+DTSTAMP:20260909T205537Z
 DTSTART:20261124T200000Z
 DTEND:20261124T220000Z
 SUMMARY:Arsenal vs Dortmund
@@ -54,7 +54,7 @@ URL:https://kickofftracker.com/champions-league/match/arsenal-vs-dortmund.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575280@kickofftracker.com
-DTSTAMP:20260908T210906Z
+DTSTAMP:20260909T205537Z
 DTSTART:20261209T200000Z
 DTEND:20261209T220000Z
 SUMMARY:Arsenal vs Real Madrid
@@ -63,7 +63,7 @@ URL:https://kickofftracker.com/champions-league/match/arsenal-vs-real-madrid.htm
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575297@kickofftracker.com
-DTSTAMP:20260908T210906Z
+DTSTAMP:20260909T205537Z
 DTSTART:20270120T200000Z
 DTEND:20270120T220000Z
 SUMMARY:Real Betis vs Arsenal
@@ -72,7 +72,7 @@ URL:https://kickofftracker.com/champions-league/match/real-betis-vs-arsenal.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575298@kickofftracker.com
-DTSTAMP:20260908T210906Z
+DTSTAMP:20260909T205537Z
 DTSTART:20270127T200000Z
 DTEND:20270127T220000Z
 SUMMARY:Arsenal vs Sabah
