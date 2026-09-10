@@ -1,7 +1,7 @@
 {
   "competition": "UEFA Champions League",
   "season": "2026/27",
-  "updated_at": "2026-09-10T04:41:50.438Z",
+  "updated_at": "2026-09-10T20:52:05.839Z",
   "source_name": "football-data.org",
   "source_url": "https://www.football-data.org/",
   "official_reference": "https://www.uefa.com/uefachampionsleague/",
@@ -132,7 +132,9 @@
       "kickoff": "2026-09-10T16:45:00Z",
       "home": "Fenerbahçe",
       "away": "Roma",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 1,
+      "away_score": 1
     },
     {
       "id": "fd-575336",
@@ -140,7 +142,9 @@
       "kickoff": "2026-09-10T16:45:00Z",
       "home": "PSV",
       "away": "Shaktar",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 1,
+      "away_score": 1
     },
     {
       "id": "fd-575337",
