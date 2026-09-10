@@ -1,7 +1,7 @@
 {
   "competition": "UEFA Champions League",
   "season": "2026/27",
-  "updated_at": "2026-09-09T20:55:37.787Z",
+  "updated_at": "2026-09-10T04:41:50.438Z",
   "source_name": "football-data.org",
   "source_url": "https://www.football-data.org/",
   "official_reference": "https://www.uefa.com/uefachampionsleague/",
@@ -92,7 +92,9 @@
       "kickoff": "2026-09-09T19:00:00Z",
       "home": "Liverpool",
       "away": "Atleti",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 1
     },
     {
       "id": "fd-575332",
@@ -100,7 +102,9 @@
       "kickoff": "2026-09-09T19:00:00Z",
       "home": "PSG",
       "away": "Sl. Bratislava",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 6,
+      "away_score": 1
     },
     {
       "id": "fd-575333",
@@ -108,7 +112,9 @@
       "kickoff": "2026-09-09T19:00:00Z",
       "home": "Napoli",
       "away": "Arsenal",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 0,
+      "away_score": 1
     },
     {
       "id": "fd-575334",
@@ -116,7 +122,9 @@
       "kickoff": "2026-09-09T19:00:00Z",
       "home": "Sporting CP",
       "away": "Galatasaray",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 3,
+      "away_score": 1
     },
     {
       "id": "fd-575335",

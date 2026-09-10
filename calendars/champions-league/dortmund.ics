@@ -9,7 +9,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT6H
 X-PUBLISHED-TTL:PT6H
 BEGIN:VEVENT
 UID:fd-575327@kickofftracker.com
-DTSTAMP:20260909T205537Z
+DTSTAMP:20260910T044150Z
 DTSTART:20260908T190000Z
 DTEND:20260908T210000Z
 SUMMARY:Dortmund vs Villarreal
@@ -18,7 +18,7 @@ URL:https://kickofftracker.com/champions-league/match/dortmund-vs-villarreal.htm
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575354@kickofftracker.com
-DTSTAMP:20260909T205537Z
+DTSTAMP:20260910T044150Z
 DTSTART:20261014T190000Z
 DTEND:20261014T210000Z
 SUMMARY:Bodø/Glimt vs Dortmund
@@ -27,7 +27,7 @@ URL:https://kickofftracker.com/champions-league/match/bod-glimt-vs-dortmund.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575359@kickofftracker.com
-DTSTAMP:20260909T205537Z
+DTSTAMP:20260910T044150Z
 DTSTART:20261020T164500Z
 DTEND:20261020T184500Z
 SUMMARY:Sabah vs Dortmund
@@ -36,7 +36,7 @@ URL:https://kickofftracker.com/champions-league/match/sabah-vs-dortmund.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575391@kickofftracker.com
-DTSTAMP:20260909T205537Z
+DTSTAMP:20260910T044150Z
 DTSTART:20261104T200000Z
 DTEND:20261104T220000Z
 SUMMARY:Dortmund vs Real Betis
@@ -45,7 +45,7 @@ URL:https://kickofftracker.com/champions-league/match/dortmund-vs-real-betis.htm
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575399@kickofftracker.com
-DTSTAMP:20260909T205537Z
+DTSTAMP:20260910T044150Z
 DTSTART:20261124T200000Z
 DTEND:20261124T220000Z
 SUMMARY:Arsenal vs Dortmund
@@ -54,7 +54,7 @@ URL:https://kickofftracker.com/champions-league/match/arsenal-vs-dortmund.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575286@kickofftracker.com
-DTSTAMP:20260909T205537Z
+DTSTAMP:20260910T044150Z
 DTSTART:20261209T200000Z
 DTEND:20261209T220000Z
 SUMMARY:Dortmund vs Inter
@@ -63,7 +63,7 @@ URL:https://kickofftracker.com/champions-league/match/dortmund-vs-inter.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575303@kickofftracker.com
-DTSTAMP:20260909T205537Z
+DTSTAMP:20260910T044150Z
 DTSTART:20270119T200000Z
 DTEND:20270119T220000Z
 SUMMARY:Aston Villa vs Dortmund
@@ -72,7 +72,7 @@ URL:https://kickofftracker.com/champions-league/match/aston-villa-vs-dortmund.ht
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575304@kickofftracker.com
-DTSTAMP:20260909T205537Z
+DTSTAMP:20260910T044150Z
 DTSTART:20270127T200000Z
 DTEND:20270127T220000Z
 SUMMARY:Dortmund vs PAE AEK
