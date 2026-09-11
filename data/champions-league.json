@@ -1,7 +1,7 @@
 {
   "competition": "UEFA Champions League",
   "season": "2026/27",
-  "updated_at": "2026-09-10T20:52:05.839Z",
+  "updated_at": "2026-09-11T04:39:46.341Z",
   "source_name": "football-data.org",
   "source_url": "https://www.football-data.org/",
   "official_reference": "https://www.uefa.com/uefachampionsleague/",
@@ -152,7 +152,9 @@
       "kickoff": "2026-09-10T19:00:00Z",
       "home": "Bayern",
       "away": "Bodø/Glimt",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 5,
+      "away_score": 0
     },
     {
       "id": "fd-575338",
@@ -160,7 +162,9 @@
       "kickoff": "2026-09-10T19:00:00Z",
       "home": "Man United",
       "away": "Sabah",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 4,
+      "away_score": 0
     },
     {
       "id": "fd-575339",
@@ -168,7 +172,9 @@
       "kickoff": "2026-09-10T19:00:00Z",
       "home": "Como 1907",
       "away": "RB Leipzig",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 4,
+      "away_score": 1
     },
     {
       "id": "fd-575340",
@@ -176,7 +182,9 @@
       "kickoff": "2026-09-10T19:00:00Z",
       "home": "Slavia Praha",
       "away": "RC Lens",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 3
     },
     {
       "id": "fd-575341",
