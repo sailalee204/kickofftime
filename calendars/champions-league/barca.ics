@@ -9,7 +9,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT6H
 X-PUBLISHED-TTL:PT6H
 BEGIN:VEVENT
 UID:fd-575329@kickofftracker.com
-DTSTAMP:20260911T043946Z
+DTSTAMP:20261013T224405Z
 DTSTART:20260909T164500Z
 DTEND:20260909T184500Z
 SUMMARY:Barça vs Feyenoord
@@ -18,16 +18,16 @@ URL:https://kickofftracker.com/champions-league/match/barca-vs-feyenoord.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575344@kickofftracker.com
-DTSTAMP:20260911T043946Z
+DTSTAMP:20261013T224405Z
 DTSTART:20261013T190000Z
 DTEND:20261013T210000Z
 SUMMARY:Galatasaray vs Barça
-DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nVerified schedule from KickoffTime
+DESCRIPTION:UEFA Champions League 2026/27\nLeague phase\nFinal score: Galatasaray 1-4 Barça\nVerified schedule from KickoffTime
 URL:https://kickofftracker.com/champions-league/match/galatasaray-vs-barca.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575367@kickofftracker.com
-DTSTAMP:20260911T043946Z
+DTSTAMP:20261013T224405Z
 DTSTART:20261020T190000Z
 DTEND:20261020T210000Z
 SUMMARY:PSG vs Barça
@@ -36,7 +36,7 @@ URL:https://kickofftracker.com/champions-league/match/psg-vs-barca.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575380@kickofftracker.com
-DTSTAMP:20260911T043946Z
+DTSTAMP:20261013T224405Z
 DTSTART:20261103T200000Z
 DTEND:20261103T220000Z
 SUMMARY:Barça vs Aston Villa
@@ -45,7 +45,7 @@ URL:https://kickofftracker.com/champions-league/match/barca-vs-aston-villa.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575404@kickofftracker.com
-DTSTAMP:20260911T043946Z
+DTSTAMP:20261013T224405Z
 DTSTART:20261125T174500Z
 DTEND:20261125T194500Z
 SUMMARY:Sabah vs Barça
@@ -54,7 +54,7 @@ URL:https://kickofftracker.com/champions-league/match/sabah-vs-barca.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575415@kickofftracker.com
-DTSTAMP:20260911T043946Z
+DTSTAMP:20261013T224405Z
 DTSTART:20261208T200000Z
 DTEND:20261208T220000Z
 SUMMARY:Barça vs Man City
@@ -63,7 +63,7 @@ URL:https://kickofftracker.com/champions-league/match/barca-vs-man-city.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575288@kickofftracker.com
-DTSTAMP:20260911T043946Z
+DTSTAMP:20261013T224405Z
 DTSTART:20270120T200000Z
 DTEND:20270120T220000Z
 SUMMARY:Sporting CP vs Barça
@@ -72,7 +72,7 @@ URL:https://kickofftracker.com/champions-league/match/sporting-cp-vs-barca.html
 END:VEVENT
 BEGIN:VEVENT
 UID:fd-575289@kickofftracker.com
-DTSTAMP:20260911T043946Z
+DTSTAMP:20261013T224405Z
 DTSTART:20270127T200000Z
 DTEND:20270127T220000Z
 SUMMARY:Barça vs Como 1907
