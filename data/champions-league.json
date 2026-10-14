@@ -1,7 +1,7 @@
 {
   "competition": "UEFA Champions League",
   "season": "2026/27",
-  "updated_at": "2026-10-13T22:44:05.789Z",
+  "updated_at": "2026-10-14T21:40:23.218Z",
   "source_name": "football-data.org",
   "source_url": "https://www.football-data.org/",
   "official_reference": "https://www.uefa.com/uefachampionsleague/",
@@ -282,7 +282,9 @@
       "kickoff": "2026-10-14T16:45:00Z",
       "home": "LASK",
       "away": "Liverpool",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 3,
+      "away_score": 6
     },
     {
       "id": "fd-575351",
@@ -290,7 +292,9 @@
       "kickoff": "2026-10-14T16:45:00Z",
       "home": "Feyenoord",
       "away": "Como 1907",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 3,
+      "away_score": 2
     },
     {
       "id": "fd-575352",
@@ -298,7 +302,9 @@
       "kickoff": "2026-10-14T19:00:00Z",
       "home": "Roma",
       "away": "Real Madrid",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 3,
+      "away_score": 4
     },
     {
       "id": "fd-575353",
@@ -306,7 +312,9 @@
       "kickoff": "2026-10-14T19:00:00Z",
       "home": "Man City",
       "away": "PSG",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 4
     },
     {
       "id": "fd-575354",
@@ -314,7 +322,9 @@
       "kickoff": "2026-10-14T19:00:00Z",
       "home": "Bodø/Glimt",
       "away": "Dortmund",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 1,
+      "away_score": 0
     },
     {
       "id": "fd-575355",
@@ -322,7 +332,9 @@
       "kickoff": "2026-10-14T19:00:00Z",
       "home": "Aston Villa",
       "away": "Fenerbahçe",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 6,
+      "away_score": 0
     },
     {
       "id": "fd-575356",
@@ -330,7 +342,9 @@
       "kickoff": "2026-10-14T19:00:00Z",
       "home": "Real Betis",
       "away": "Porto",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 3,
+      "away_score": 2
     },
     {
       "id": "fd-575357",
@@ -338,7 +352,9 @@
       "kickoff": "2026-10-14T19:00:00Z",
       "home": "Shaktar",
       "away": "PAE AEK",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 3,
+      "away_score": 1
     },
     {
       "id": "fd-575358",
@@ -346,7 +362,9 @@
       "kickoff": "2026-10-14T19:00:00Z",
       "home": "Sl. Bratislava",
       "away": "Stuttgart",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 0,
+      "away_score": 3
     },
     {
       "id": "fd-575359",
