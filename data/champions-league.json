@@ -1,7 +1,7 @@
 {
   "competition": "UEFA Champions League",
   "season": "2026/27",
-  "updated_at": "2026-10-20T21:36:38.398Z",
+  "updated_at": "2026-10-21T21:41:58.576Z",
   "source_name": "football-data.org",
   "source_url": "https://www.football-data.org/",
   "official_reference": "https://www.uefa.com/uefachampionsleague/",
@@ -462,7 +462,9 @@
       "kickoff": "2026-10-21T16:45:00Z",
       "home": "Como 1907",
       "away": "Man United",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 4,
+      "away_score": 1
     },
     {
       "id": "fd-575369",
@@ -470,7 +472,9 @@
       "kickoff": "2026-10-21T16:45:00Z",
       "home": "Lille",
       "away": "Galatasaray",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 4
     },
     {
       "id": "fd-575370",
@@ -478,7 +482,9 @@
       "kickoff": "2026-10-21T19:00:00Z",
       "home": "Real Madrid",
       "away": "RB Leipzig",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 4,
+      "away_score": 1
     },
     {
       "id": "fd-575371",
@@ -486,7 +492,9 @@
       "kickoff": "2026-10-21T19:00:00Z",
       "home": "Inter",
       "away": "Shaktar",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 1,
+      "away_score": 0
     },
     {
       "id": "fd-575372",
@@ -494,7 +502,9 @@
       "kickoff": "2026-10-21T19:00:00Z",
       "home": "Bayern",
       "away": "Arsenal",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 2
     },
     {
       "id": "fd-575373",
@@ -502,7 +512,9 @@
       "kickoff": "2026-10-21T19:00:00Z",
       "home": "Club Brugge",
       "away": "RC Lens",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 3,
+      "away_score": 0
     },
     {
       "id": "fd-575374",
@@ -510,7 +522,9 @@
       "kickoff": "2026-10-21T19:00:00Z",
       "home": "Aston Villa",
       "away": "Viking",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 3,
+      "away_score": 1
     },
     {
       "id": "fd-575375",
@@ -518,7 +532,9 @@
       "kickoff": "2026-10-21T19:00:00Z",
       "home": "Sporting CP",
       "away": "LASK",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 3
     },
     {
       "id": "fd-575376",
@@ -526,7 +542,9 @@
       "kickoff": "2026-10-21T19:00:00Z",
       "home": "Real Betis",
       "away": "Feyenoord",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 1,
+      "away_score": 0
     },
     {
       "id": "fd-575377",
