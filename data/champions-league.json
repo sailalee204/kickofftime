@@ -1,7 +1,7 @@
 {
   "competition": "UEFA Champions League",
   "season": "2026/27",
-  "updated_at": "2026-11-04T19:44:27.973Z",
+  "updated_at": "2026-11-05T06:44:52.171Z",
   "source_name": "football-data.org",
   "source_url": "https://www.football-data.org/",
   "official_reference": "https://www.uefa.com/uefachampionsleague/",
@@ -642,7 +642,9 @@
       "kickoff": "2026-11-04T17:45:00Z",
       "home": "PAE AEK",
       "away": "Real Madrid",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 3
     },
     {
       "id": "fd-575387",
@@ -660,7 +662,9 @@
       "kickoff": "2026-11-04T20:00:00Z",
       "home": "RB Leipzig",
       "away": "Man City",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 3
     },
     {
       "id": "fd-575389",
@@ -668,7 +672,9 @@
       "kickoff": "2026-11-04T20:00:00Z",
       "home": "Slavia Praha",
       "away": "Arsenal",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 1,
+      "away_score": 2
     },
     {
       "id": "fd-575390",
@@ -676,7 +682,9 @@
       "kickoff": "2026-11-04T20:00:00Z",
       "home": "PSV",
       "away": "Club Brugge",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 1,
+      "away_score": 2
     },
     {
       "id": "fd-575391",
@@ -684,7 +692,9 @@
       "kickoff": "2026-11-04T20:00:00Z",
       "home": "Dortmund",
       "away": "Real Betis",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 1
     },
     {
       "id": "fd-575392",
@@ -692,7 +702,9 @@
       "kickoff": "2026-11-04T20:00:00Z",
       "home": "Porto",
       "away": "Napoli",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 4,
+      "away_score": 1
     },
     {
       "id": "fd-575393",
@@ -700,7 +712,9 @@
       "kickoff": "2026-11-04T20:00:00Z",
       "home": "RC Lens",
       "away": "Como 1907",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 1,
+      "away_score": 9
     },
     {
       "id": "fd-575394",
@@ -708,7 +722,9 @@
       "kickoff": "2026-11-04T20:00:00Z",
       "home": "Viking",
       "away": "Sabah",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 4,
+      "away_score": 1
     },
     {
       "id": "fd-575395",
