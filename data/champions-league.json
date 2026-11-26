@@ -1,7 +1,7 @@
 {
   "competition": "UEFA Champions League",
   "season": "2026/27",
-  "updated_at": "2026-11-25T21:40:45.218Z",
+  "updated_at": "2026-11-26T08:16:02.569Z",
   "source_name": "football-data.org",
   "source_url": "https://www.football-data.org/",
   "official_reference": "https://www.uefa.com/uefachampionsleague/",
@@ -842,7 +842,9 @@
       "kickoff": "2026-11-25T20:00:00Z",
       "home": "Inter",
       "away": "Stuttgart",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 0
     },
     {
       "id": "fd-575407",
@@ -850,7 +852,9 @@
       "kickoff": "2026-11-25T20:00:00Z",
       "home": "Atleti",
       "away": "Viking",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 0
     },
     {
       "id": "fd-575408",
@@ -858,7 +862,9 @@
       "kickoff": "2026-11-25T20:00:00Z",
       "home": "PSG",
       "away": "Roma",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 2
     },
     {
       "id": "fd-575409",
@@ -866,7 +872,9 @@
       "kickoff": "2026-11-25T20:00:00Z",
       "home": "Club Brugge",
       "away": "Liverpool",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 0,
+      "away_score": 3
     },
     {
       "id": "fd-575410",
@@ -874,7 +882,9 @@
       "kickoff": "2026-11-25T20:00:00Z",
       "home": "Lille",
       "away": "Bayern",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 1
     },
     {
       "id": "fd-575411",
@@ -882,7 +892,9 @@
       "kickoff": "2026-11-25T20:00:00Z",
       "home": "Sporting CP",
       "away": "Man United",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 2,
+      "away_score": 2
     },
     {
       "id": "fd-575412",
@@ -890,7 +902,9 @@
       "kickoff": "2026-11-25T20:00:00Z",
       "home": "Shaktar",
       "away": "Fenerbahçe",
-      "status": "SCHEDULED"
+      "status": "FINISHED",
+      "home_score": 0,
+      "away_score": 1
     },
     {
       "id": "fd-575413",
